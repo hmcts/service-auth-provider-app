@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suppressions xmlns="https://jeremylong.github.io/DependencyCheck/dependency-suppression.1.1.xsd">
+    <suppress>
+        <notes>Does not apply as tomcat is not installed as a service</notes>
+        <gav regex="true">^org\.apache\.tomcat\.embed:tomcat-embed.*:.*$</gav>
+        <cve>CVE-2016-6325</cve>
+    </suppress>
+    <suppress>
+        <notes>Does not apply as tomcat is not installed as a service</notes>
+        <gav regex="true">^org\.apache\.tomcat\.embed:tomcat-embed.*:.*$</gav>
+        <cve>CVE-2016-5425</cve>
+    </suppress>
+    <suppress>
+        <notes>Incorrect library matched</notes>
+        <gav regex="true">^io\.jsonwebtoken:jjwt:.*$</gav>
+        <cpe>cpe:/a:sonatype:nexus</cpe>
+    </suppress>
+    <suppress>
+        <notes>Does not apply as we do not use SocketServer or ServerSocketReceiver in prod</notes>
+        <gav regex="true">^ch\.qos\.logback:logback-.*:.*$</gav>
+        <cve>CVE-2017-5929</cve>
+    </suppress>
+    <suppress>
+        <notes>Does not apply as tomcat is configured to run as HTTP only</notes>
+        <gav regex="true">^org\.apache\.tomcat\.embed:tomcat-embed.*:.*$</gav>
+        <cve>CVE-2017-6056</cve>
+    </suppress>
+    <suppress>
+        <notes>Does not apply as we don't use Jackson XmlMapper</notes>
+        <gav regex="true">^com\.fasterxml\.jackson\.core:jackson-.*:.*$</gav>
+        <cve>CVE-2016-7051</cve>
+        <cve>CVE-2017-17485</cve>
+        <cve>CVE-2018-5968</cve>
+    </suppress>
+    <suppress>
+        <notes>Does not apply as tomcat is configured to run as HTTP only</notes>
+        <gav regex="true">^org\.apache\.tomcat\.embed:tomcat-embed.*:.*$</gav>
+        <cve>CVE-2017-12617</cve>
+    </suppress>
+</suppressions>

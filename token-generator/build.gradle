@@ -1,0 +1,7 @@
+dependencies {
+  compile group: 'uk.gov.hmcts.auth.totp', name: 'totp', version: '1.0.1'
+  compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.3'
+
+  testCompile group: 'com.github.tomakehurst', name: 'wiremock', version: '2.5.1'
+  testCompile group: 'org.mockito', name: 'mockito-all', version: '1.9.5'
+}

@@ -1,0 +1,100 @@
+buildscript {
+  dependencies {
+    classpath("org.springframework.boot:spring-boot-gradle-plugin:$springBootVersion")
+  }
+
+  repositories {
+    jcenter()
+  }
+}
+
+apply plugin: 'application'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'java'
+
+sourceSets {
+  functionalTest {
+    java {
+      compileClasspath += main.output
+      runtimeClasspath += main.output
+      srcDir file('src/functionalTest/java')
+    }
+  }
+
+  smokeTest {
+    java {
+      compileClasspath += main.output
+      runtimeClasspath += main.output
+      srcDir file('src/smokeTest/java')
+    }
+  }
+}
+dependencies {
+  compile group: 'uk.gov.hmcts.auth.totp', name: 'totp', version: '1.0.1'
+  compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: springBootVersion
+  compile group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: springBootVersion
+  compile group: 'com.google.guava', name: 'guava', version: '21.0'
+  compile group: 'io.jsonwebtoken', name: 'jjwt', version: '0.7.0'
+  compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.3'
+
+  functionalTestCompile sourceSets.main.runtimeClasspath
+  functionalTestCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: springBootVersion
+
+  smokeTestCompile sourceSets.main.runtimeClasspath
+  smokeTestCompile group: 'io.rest-assured', name: 'rest-assured', version: '3.0.7'
+  smokeTestCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: springBootVersion
+
+  testCompile(group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: springBootVersion) {
+    exclude(module: 'commons-logging')
+  }
+  testCompile project(':service-token-parser-spring')
+  testCompile project(':service-token-generator-spring')
+}
+
+installDist {
+  applicationDefaultJvmArgs = ["-Djava.security.egd=file:/dev/./urandom"]
+}
+
+run {
+  applicationDefaultJvmArgs = ["-Djava.security.egd=file:/dev/./urandom"]
+  mainClassName = 'uk.gov.hmcts.auth.provider.service.api.ServiceAuthProviderApplication'
+}
+
+jar {
+  archiveName 'service-auth-provider.jar'
+}
+
+task printVersion {
+  doLast {
+    print project.version
+  }
+}
+
+compileSmokeTestJava {
+  options.compilerArgs << "-Xlint:unchecked"
+}
+
+compileFunctionalTestJava {
+  options.compilerArgs << "-Xlint:unchecked"
+}
+
+task smokeTest(type: Test) {
+  description = 'Runs the smoke tests'
+  testClassesDirs = sourceSets.smokeTest.output.classesDirs
+  classpath = sourceSets.smokeTest.runtimeClasspath
+}
+
+task functionalTest(type: Test, group: 'Verification') {
+  description = 'Runs the functional tests'
+  testClassesDirs = sourceSets.functionalTest.output.classesDirs
+  classpath = sourceSets.functionalTest.runtimeClasspath
+}
+
+assemble.doLast {
+  copy {
+    from('build/libs/') {
+      include 'service-auth-provider.jar'
+    }
+    into '../build/libs'
+  }
+}

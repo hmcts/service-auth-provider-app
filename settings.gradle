@@ -1,0 +1,13 @@
+rootProject.name = 'service-auth-provider'
+
+include ':service-auth-provider-api'
+include ':service-token-generator'
+include ':service-token-generator-spring'
+include ':service-token-parser'
+include ':service-token-parser-spring'
+
+project(':service-auth-provider-api').projectDir = "$rootDir/api" as File
+project(':service-token-generator').projectDir = "$rootDir/token-generator" as File
+project(':service-token-generator-spring').projectDir = "$rootDir/token-generator-spring" as File
+project(':service-token-parser').projectDir = "$rootDir/token-parser" as File
+project(':service-token-parser-spring').projectDir = "$rootDir/token-parser-spring" as File

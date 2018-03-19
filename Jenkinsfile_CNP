@@ -1,0 +1,11 @@
+#!groovy
+
+@Library("Infrastructure")
+
+def type = "java"
+def product = "rpe"
+def app = "service-auth-provider"
+
+withPipeline(type, product, app) {
+    enableSlackNotifications('#rpe-build-notices')
+}
