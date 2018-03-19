@@ -1,3 +1,12 @@
+pluginManagement {
+  repositories {
+    maven {
+      url 'http://artifactory.reform.hmcts.net/artifactory/libs-release'
+    }
+    gradlePluginPortal()
+  }
+}
+
 rootProject.name = 'service-auth-provider'
 
 include ':service-auth-provider-api'
