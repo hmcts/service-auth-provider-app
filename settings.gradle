@@ -3,6 +3,7 @@ pluginManagement {
     maven {
       url 'http://artifactory.reform.hmcts.net/artifactory/libs-release'
     }
+    gradlePluginPortal()
   }
 }
 
