@@ -1,7 +1,7 @@
 import io.jsonwebtoken.Jwts;
 import org.junit.Test;
 import uk.gov.hmcts.auth.provider.service.api.auth.AuthService;
-import uk.gov.hmcts.auth.provider.service.api.auth.JwtTool;
+import uk.gov.hmcts.auth.provider.service.api.auth.jwt.JwtHS512Tool;
 import uk.gov.hmcts.auth.provider.service.api.microservice.Microservice;
 import uk.gov.hmcts.auth.totp.TotpAuthenticator;
 
@@ -25,7 +25,7 @@ public class FunctionalTest {
     };
 
     private AuthService authService = new AuthService(
-        new JwtTool(
+        new JwtHS512Tool(
             SOME_JWT_KEY,
             900,
             Clock.systemUTC()
@@ -38,7 +38,7 @@ public class FunctionalTest {
     public void validJwtShouldReturnClaims() {
         String jwt = Jwts.builder()
             .setSubject("divorce")
-            .signWith(JwtTool.SIGNATURE_ALGORITHM, SOME_JWT_KEY)
+            .signWith(JwtHS512Tool.SIGNATURE_ALGORITHM, SOME_JWT_KEY)
             .compact();
 
         assertThat(authService.verify(jwt)).isEqualTo("divorce");
