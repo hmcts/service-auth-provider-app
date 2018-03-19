@@ -57,10 +57,7 @@ public class HttpComponentsBasedServiceTokenGenerator implements ServiceTokenGen
                 checkStatusIs2xx(httpResponse);
                 return "Bearer " + EntityUtils.toString(httpResponse.getEntity());
             });
-        } catch (
-            IOException e)
-
-        {
+        } catch (IOException e) {
             throw new ServiceTokenGenerationException(e);
         }
 
