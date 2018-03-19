@@ -2,13 +2,19 @@ package uk.gov.hmcts.auth.provider.service.api.componenttests.dsl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.CollectionType;
-import java.util.List;
-import java.util.function.Consumer;
+import com.google.common.base.Charsets;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.io.Resources;
 import org.springframework.http.HttpHeaders;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import uk.gov.hmcts.auth.provider.service.api.error.ErrorDto;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Consumer;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -37,7 +43,8 @@ public class ServiceAuthProviderTestDsl {
 
         public ServiceAuthProviderWhenDsl lease(String microservice, String password) throws Exception {
             resultActions = mvc.perform(MockMvcRequestBuilders
-                .post("/lease?microservice={microservice}&oneTimePassword={oneTimePassword}", microservice, password)
+                .post("/lease")
+                .content(createJson(microservice, password))
                 .contentType(APPLICATION_JSON)
                 .accept(APPLICATION_JSON));
             return this;
@@ -109,4 +116,12 @@ public class ServiceAuthProviderTestDsl {
         return objectMapper.readValue(resultActions.andReturn().getResponse().getContentAsByteArray(), valueType);
     }
 
+    private String createJson(final String microservice, final String password) throws IOException {
+        Map<String, String> tokenDetails = ImmutableMap.of(
+            "microservice", microservice,
+            "oneTimePassword", password
+        );
+
+        return new ObjectMapper().writeValueAsString(tokenDetails);
+    }
 }

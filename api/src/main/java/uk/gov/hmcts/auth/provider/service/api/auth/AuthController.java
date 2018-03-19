@@ -5,10 +5,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import uk.gov.hmcts.auth.provider.service.api.model.TokenDetails;
+
+import javax.validation.Valid;
 
 import static org.springframework.http.ResponseEntity.ok;
 
@@ -25,10 +28,9 @@ public class AuthController {
     @PostMapping("/lease")
     @ResponseBody
     public ResponseEntity<?> lease(
-        @RequestParam @NotEmpty String microservice,
-        @RequestParam @NotEmpty String oneTimePassword
+        @Valid @RequestBody TokenDetails tokenDetails
     ) {
-        String token = authService.lease(microservice, oneTimePassword);
+        String token = authService.lease(tokenDetails.microservice, tokenDetails.oneTimePassword);
         return ok(token);
     }
 

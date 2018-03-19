@@ -1,16 +1,19 @@
 package uk.gov.hmcts.auth.provider.service.token;
 
-import java.io.IOException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.common.base.Charsets;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.io.Resources;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.entity.StringEntity;
 import org.apache.http.util.EntityUtils;
 import uk.gov.hmcts.auth.totp.TotpAuthenticator;
 
-import static java.util.Arrays.asList;
+import java.io.IOException;
+import java.util.Map;
 
 public class HttpComponentsBasedServiceTokenGenerator implements ServiceTokenGenerator {
 
@@ -36,19 +39,31 @@ public class HttpComponentsBasedServiceTokenGenerator implements ServiceTokenGen
         try {
             String oneTimePassword = totpAuthenticator.issueOneTimePassword(totpKey);
 
+            Map<String, String> tokenDetails = ImmutableMap.of(
+                "microservice", microservice,
+                "oneTimePassword", oneTimePassword
+            );
+
             HttpPost request = new HttpPost(baseUrl + "/lease");
-            request.setEntity(new UrlEncodedFormEntity(asList(
-                new BasicNameValuePair("microservice", microservice),
-                new BasicNameValuePair("oneTimePassword", oneTimePassword)
-            )));
+            request.setEntity(
+                new StringEntity(
+                    new ObjectMapper()
+                        .writeValueAsString(tokenDetails)
+                ));
+
+            request.addHeader("content-type", "application/json");
 
             return httpClient.execute(request, httpResponse -> {
                 checkStatusIs2xx(httpResponse);
                 return "Bearer " + EntityUtils.toString(httpResponse.getEntity());
             });
-        } catch (IOException e) {
+        } catch (
+            IOException e)
+
+        {
             throw new ServiceTokenGenerationException(e);
         }
+
     }
 
     private void checkStatusIs2xx(HttpResponse httpResponse) throws IOException {
