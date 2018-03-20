@@ -38,7 +38,7 @@ public class ServiceTokenGeneratorConfiguration {
                                                        TotpAuthenticator totpAuthenticator,
                                                        @Value("${auth.provider.service.client.key}") String key) {
 
-        return new HttpComponentsBasedServiceTokenGenerator(serviceTokenGeneratorHttpClient, baseUrl, microservice, totpAuthenticator, key);
+        return new HttpComponentsBasedServiceTokenGenerator(serviceTokenGeneratorHttpClient, baseUrl, microservice, totpAuthenticator, key,"/lease");
     }
 
     @Bean

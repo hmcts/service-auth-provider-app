@@ -2,13 +2,13 @@ package uk.gov.hmcts.auth.provider.service.token;
 
 import com.github.tomakehurst.wiremock.junit.WireMockRule;
 import org.apache.http.impl.client.HttpClients;
-import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import uk.gov.hmcts.auth.totp.TotpAuthenticator;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
 import static com.github.tomakehurst.wiremock.client.WireMock.equalToJson;
+import static com.github.tomakehurst.wiremock.client.WireMock.matching;
 import static com.github.tomakehurst.wiremock.client.WireMock.post;
 import static com.github.tomakehurst.wiremock.client.WireMock.stubFor;
 import static com.github.tomakehurst.wiremock.client.WireMock.urlEqualTo;
@@ -22,8 +22,67 @@ public class HttpComponentsBasedServiceTokenGeneratorTest {
 
     private HttpComponentsBasedServiceTokenGenerator client;
 
-    @Before
-    public void setUp() throws Exception {
+    @Test
+    public void happyPath() {
+        createHttpComponentsBasedServiceTokenGenerator("/lease");
+
+        stubFor(
+            post(urlEqualTo("/lease")).withRequestBody(matching("microservice=microservice&oneTimePassword=oneTimePassword"))
+                .willReturn(aResponse()
+                    .withStatus(200)
+                    .withBody("jwt"))
+        );
+
+        String jwt = client.generate();
+
+        assertThat(jwt).isEqualTo("Bearer jwt");
+    }
+
+    @Test(expected = ServiceTokenGenerationException.class)
+    public void non2xxResponseShouldResultInException() {
+        createHttpComponentsBasedServiceTokenGenerator("/lease");
+
+        stubFor(
+            post(urlEqualTo("/lease")).withRequestBody(matching("microservice=microservice&oneTimePassword=oneTimePassword"))
+                .willReturn(aResponse()
+                    .withStatus(400)
+                    .withBody("jwt"))
+        );
+
+        client.generate();
+    }
+
+    @Test
+    public void happyPathWithVersion1() {
+        createHttpComponentsBasedServiceTokenGenerator("/v1/lease");
+
+        stubFor(
+            post(urlEqualTo("/v1/lease")).withRequestBody(equalToJson("{\"microservice\": \"microservice\",\"oneTimePassword\": \"oneTimePassword\"}"))
+                .willReturn(aResponse()
+                    .withStatus(200)
+                    .withBody("jwt"))
+        );
+
+        String jwt = client.generate();
+
+        assertThat(jwt).isEqualTo("Bearer jwt");
+    }
+
+    @Test(expected = ServiceTokenGenerationException.class)
+    public void non2xxResponseShouldResultInExceptionWithVersion1() {
+        createHttpComponentsBasedServiceTokenGenerator("/v1/lease");
+
+        stubFor(
+            post(urlEqualTo("/v1/lease")).withRequestBody(equalToJson("{\"microservice\": \"microservice\",\"oneTimePassword\": \"oneTimePassword\"}"))
+                .willReturn(aResponse()
+                    .withStatus(400)
+                    .withBody("jwt"))
+        );
+
+        client.generate();
+    }
+
+    private void createHttpComponentsBasedServiceTokenGenerator(String requestPath) {
         client = new HttpComponentsBasedServiceTokenGenerator(
             HttpClients.createMinimal(),
             "http://localhost:" + wireMockRule.port(),
@@ -39,33 +98,9 @@ public class HttpComponentsBasedServiceTokenGeneratorTest {
                     return false;
                 }
             },
-            "key"
+            "key",
+            requestPath
         );
     }
 
-    @Test
-    public void happyPath() {
-        stubFor(
-            post(urlEqualTo("/lease")).withRequestBody(equalToJson("{\"microservice\": \"microservice\",\"oneTimePassword\": \"oneTimePassword\"}"))
-                .willReturn(aResponse()
-                    .withStatus(200)
-                    .withBody("jwt"))
-        );
-
-        String jwt = client.generate();
-
-        assertThat(jwt).isEqualTo("Bearer jwt");
-    }
-
-    @Test(expected = ServiceTokenGenerationException.class)
-    public void non2xxResponseShouldResultInException() {
-        stubFor(
-            post(urlEqualTo("/lease")).withRequestBody(equalToJson("{\"microservice\": \"microservice\",\"oneTimePassword\": \"oneTimePassword\"}"))
-                .willReturn(aResponse()
-                    .withStatus(400)
-                    .withBody("jwt"))
-        );
-
-        client.generate();
-    }
 }
