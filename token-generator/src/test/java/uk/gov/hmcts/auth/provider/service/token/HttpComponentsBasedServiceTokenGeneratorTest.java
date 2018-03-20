@@ -7,7 +7,11 @@ import org.junit.Rule;
 import org.junit.Test;
 import uk.gov.hmcts.auth.totp.TotpAuthenticator;
 
-import static com.github.tomakehurst.wiremock.client.WireMock.*;
+import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
+import static com.github.tomakehurst.wiremock.client.WireMock.equalToJson;
+import static com.github.tomakehurst.wiremock.client.WireMock.post;
+import static com.github.tomakehurst.wiremock.client.WireMock.stubFor;
+import static com.github.tomakehurst.wiremock.client.WireMock.urlEqualTo;
 import static com.github.tomakehurst.wiremock.core.WireMockConfiguration.wireMockConfig;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -42,7 +46,7 @@ public class HttpComponentsBasedServiceTokenGeneratorTest {
     @Test
     public void happyPath() {
         stubFor(
-            post(urlEqualTo("/lease")).withRequestBody(matching("microservice=microservice&oneTimePassword=oneTimePassword"))
+            post(urlEqualTo("/lease")).withRequestBody(equalToJson("{\"microservice\": \"microservice\",\"oneTimePassword\": \"oneTimePassword\"}"))
                 .willReturn(aResponse()
                     .withStatus(200)
                     .withBody("jwt"))
@@ -56,7 +60,7 @@ public class HttpComponentsBasedServiceTokenGeneratorTest {
     @Test(expected = ServiceTokenGenerationException.class)
     public void non2xxResponseShouldResultInException() {
         stubFor(
-            post(urlEqualTo("/lease")).withRequestBody(matching("microservice=microservice&oneTimePassword=oneTimePassword"))
+            post(urlEqualTo("/lease")).withRequestBody(equalToJson("{\"microservice\": \"microservice\",\"oneTimePassword\": \"oneTimePassword\"}"))
                 .willReturn(aResponse()
                     .withStatus(400)
                     .withBody("jwt"))
