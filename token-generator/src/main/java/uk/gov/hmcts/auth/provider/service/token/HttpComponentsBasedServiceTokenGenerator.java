@@ -1,14 +1,14 @@
 package uk.gov.hmcts.auth.provider.service.token;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.common.base.Charsets;
 import com.google.common.collect.ImmutableMap;
-import com.google.common.io.Resources;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
+import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
 import uk.gov.hmcts.auth.totp.TotpAuthenticator;
 
@@ -51,7 +51,7 @@ public class HttpComponentsBasedServiceTokenGenerator implements ServiceTokenGen
                         .writeValueAsString(tokenDetails)
                 ));
 
-            request.addHeader("content-type", "application/json");
+            request.addHeader(HTTP.CONTENT_TYPE, ContentType.APPLICATION_JSON.getMimeType());
 
             return httpClient.execute(request, httpResponse -> {
                 checkStatusIs2xx(httpResponse);

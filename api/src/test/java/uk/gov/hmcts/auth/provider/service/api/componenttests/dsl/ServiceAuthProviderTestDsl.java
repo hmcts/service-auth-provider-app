@@ -2,18 +2,15 @@ package uk.gov.hmcts.auth.provider.service.api.componenttests.dsl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.CollectionType;
-import com.google.common.base.Charsets;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.io.Resources;
 import org.springframework.http.HttpHeaders;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import uk.gov.hmcts.auth.provider.service.api.error.ErrorDto;
+import uk.gov.hmcts.auth.provider.service.api.model.SignIn;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Map;
 import java.util.function.Consumer;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON;
@@ -117,11 +114,7 @@ public class ServiceAuthProviderTestDsl {
     }
 
     private String createJson(final String microservice, final String password) throws IOException {
-        Map<String, String> tokenDetails = ImmutableMap.of(
-            "microservice", microservice,
-            "oneTimePassword", password
-        );
-
-        return new ObjectMapper().writeValueAsString(tokenDetails);
+        SignIn signIn = new SignIn(microservice, password);
+        return new ObjectMapper().writeValueAsString(signIn);
     }
 }

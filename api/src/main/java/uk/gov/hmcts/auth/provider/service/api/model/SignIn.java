@@ -3,7 +3,11 @@ package uk.gov.hmcts.auth.provider.service.api.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.validator.constraints.NotEmpty;
 
-public class TokenDetails {
+import java.io.Serializable;
+
+public class SignIn implements Serializable {
+
+    private static final long serialVersionUID = -8745737989098046658L;
 
     @NotEmpty
     public final String microservice;
@@ -11,9 +15,9 @@ public class TokenDetails {
     @NotEmpty
     public final String oneTimePassword;
 
-    public TokenDetails(
+    public SignIn(
         @JsonProperty("microservice") String microservice,
-        @JsonProperty("oneTimePassword") String oneTimePassword
+        @JsonProperty("one_time_password") String oneTimePassword
     ) {
         this.microservice = microservice;
         this.oneTimePassword = oneTimePassword;

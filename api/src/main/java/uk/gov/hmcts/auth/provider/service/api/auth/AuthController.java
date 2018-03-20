@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-import uk.gov.hmcts.auth.provider.service.api.model.TokenDetails;
+import uk.gov.hmcts.auth.provider.service.api.model.SignIn;
 
 import javax.validation.Valid;
 
@@ -28,9 +28,9 @@ public class AuthController {
     @PostMapping("/lease")
     @ResponseBody
     public ResponseEntity<?> lease(
-        @Valid @RequestBody TokenDetails tokenDetails
+        @Valid @RequestBody SignIn signIn
     ) {
-        String token = authService.lease(tokenDetails.microservice, tokenDetails.oneTimePassword);
+        String token = authService.lease(signIn.microservice, signIn.oneTimePassword);
         return ok(token);
     }
 
