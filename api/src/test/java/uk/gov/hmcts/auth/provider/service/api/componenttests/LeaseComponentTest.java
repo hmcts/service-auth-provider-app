@@ -5,7 +5,7 @@ import io.jsonwebtoken.Jwts;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Value;
 import uk.gov.hmcts.auth.provider.service.api.error.ErrorDto;
-import uk.gov.hmcts.auth.totp.GoogleTotpAuthenticator;
+import uk.gov.hmcts.auth.totp.StrangeTotpAuthenticator;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -42,7 +42,7 @@ public class LeaseComponentTest extends ComponentTestBase {
 
     @Test
     public void validOneTimePasswordShouldReturnJwtToken() throws Exception {
-        String validOneTimePassword = new GoogleTotpAuthenticator().issueOneTimePassword(divorceKey);
+        String validOneTimePassword = new StrangeTotpAuthenticator().issueOneTimePassword(divorceKey);
 
         scenario
             .given()

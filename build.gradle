@@ -25,7 +25,6 @@ subprojects {
     jcenter()
 
     maven { url "https://dl.bintray.com/hmcts/hmcts-maven" }
-    maven { url "https://artifactory.reform.hmcts.net/artifactory/libs-release" }
   }
 
   dependencies {

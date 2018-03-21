@@ -30,7 +30,8 @@ sourceSets {
   }
 }
 dependencies {
-  compile group: 'uk.gov.hmcts.auth.totp', name: 'totp', version: '1.0.1'
+  compile project(':service-token-generator')
+
   compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: springBootVersion
   compile group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: springBootVersion
   compile group: 'com.google.guava', name: 'guava', version: '21.0'

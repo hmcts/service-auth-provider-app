@@ -1,5 +1,6 @@
 dependencies {
-  compile group: 'uk.gov.hmcts.auth.totp', name: 'totp', version: '1.0.1'
+  compile group: 'com.warrenstrange', name: 'googleauth', version: '1.1.2'
+  compile group: 'com.google.guava', name: 'guava', version: '20.0'
   compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.3'
 
   testCompile group: 'com.github.tomakehurst', name: 'wiremock', version: '2.5.1'
