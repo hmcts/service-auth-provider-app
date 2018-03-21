@@ -3,15 +3,15 @@ package uk.gov.hmcts.auth.totp;
 import com.warrenstrange.googleauth.GoogleAuthenticator;
 import com.warrenstrange.googleauth.IGoogleAuthenticator;
 
-public class StrangeTotpAuthenticator implements TotpAuthenticator {
+public class TotpAuthenticatorImpl implements TotpAuthenticator {
 
     private final IGoogleAuthenticator googleAuthenticator;
 
-    public StrangeTotpAuthenticator() {
+    public TotpAuthenticatorImpl() {
         this(new GoogleAuthenticator());
     }
 
-    public StrangeTotpAuthenticator(IGoogleAuthenticator googleAuthenticator) {
+    public TotpAuthenticatorImpl(IGoogleAuthenticator googleAuthenticator) {
         this.googleAuthenticator = googleAuthenticator;
     }
 

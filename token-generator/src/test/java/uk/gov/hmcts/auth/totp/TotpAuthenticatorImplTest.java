@@ -15,7 +15,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
-public class StrangeTotpAuthenticatorTest {
+public class TotpAuthenticatorImplTest {
 
     @Mock
     private IGoogleAuthenticator googleAuthenticator;
@@ -24,7 +24,7 @@ public class StrangeTotpAuthenticatorTest {
 
     @Before
     public void setup() {
-        authenticator = new StrangeTotpAuthenticator(googleAuthenticator);
+        authenticator = new TotpAuthenticatorImpl(googleAuthenticator);
     }
 
     @Test
