@@ -12,3 +12,7 @@ auth.provider.service:
     baseUrl: http://localhost:${server.port}
     microservice: divorce
     key: AAAAAAAAAAAAAAAA
+
+spring:
+  application:
+    name: Service Auth Provider

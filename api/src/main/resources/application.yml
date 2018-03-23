@@ -13,3 +13,7 @@ auth.provider.service:
       enabled: ${AUTH_PROVIDER_SERVICE_SERVER_RS256_ENABLED:false}
       privateKey: ${AUTH_PROVIDER_SERVICE_SERVER_RS256_PRIVATEKEY:}
       publicKey: ${AUTH_PROVIDER_SERVICE_SERVER_RS256_PUBLICKEY:}
+
+spring:
+  application:
+    name: Service Auth Provider
