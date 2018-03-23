@@ -2,6 +2,7 @@ package uk.gov.hmcts.auth.provider.service.api.auth;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,7 +26,7 @@ public class AuthIntegrationTestSupportController {
         this.jwtTool = jwtTool;
     }
 
-    @RequestMapping(value = "/lease", method = POST)
+    @RequestMapping(value = "/lease", method = POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public ResponseEntity<String> lease(@RequestBody SignInWithoutOtp signIn) {
         return ok(jwtTool.issueTokenForSubject(signIn.microservice));
