@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Lazy;
 import uk.gov.hmcts.auth.provider.service.token.CachedServiceTokenGenerator;
 import uk.gov.hmcts.auth.provider.service.token.HttpComponentsBasedServiceTokenGenerator;
 import uk.gov.hmcts.auth.provider.service.token.ServiceTokenGenerator;
-import uk.gov.hmcts.auth.totp.GoogleTotpAuthenticator;
+import uk.gov.hmcts.auth.totp.TotpAuthenticatorImpl;
 import uk.gov.hmcts.auth.totp.TotpAuthenticator;
 
 @Configuration
@@ -22,7 +22,7 @@ public class ServiceTokenGeneratorConfiguration {
     @Bean
     @ConditionalOnMissingBean(TotpAuthenticator.class)
     public TotpAuthenticator totpAuthenticator() {
-        return new GoogleTotpAuthenticator();
+        return new TotpAuthenticatorImpl();
     }
 
     @Bean
