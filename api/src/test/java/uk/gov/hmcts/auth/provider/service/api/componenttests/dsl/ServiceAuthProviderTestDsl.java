@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.function.Consumer;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 public class ServiceAuthProviderTestDsl {
@@ -37,6 +38,12 @@ public class ServiceAuthProviderTestDsl {
     }
 
     public class ServiceAuthProviderWhenDsl {
+
+        public ServiceAuthProviderWhenDsl root() throws Exception {
+            resultActions = mvc.perform(MockMvcRequestBuilders.get("/"));
+
+            return this;
+        }
 
         public ServiceAuthProviderWhenDsl lease(String microservice, String password) throws Exception {
             resultActions = mvc.perform(MockMvcRequestBuilders
@@ -69,6 +76,12 @@ public class ServiceAuthProviderTestDsl {
     }
 
     public class ServiceAuthProviderThenDsl {
+        public ServiceAuthProviderThenDsl isOk(String expectedContent) throws Exception {
+            resultActions.andExpect(status().isOk()).andExpect(content().string(expectedContent));
+
+            return this;
+        }
+
         public ServiceAuthProviderThenDsl unauthorized(Consumer<ErrorDto> consumer) throws Exception {
             resultActions.andExpect(status().isUnauthorized());
             consumer.accept(bodyAs(ErrorDto.class));
