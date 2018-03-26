@@ -33,5 +33,6 @@ variable "subscription" {
 }
 
 variable "testing_support" {
+  default = "false"
   type = "string"
 }
