@@ -34,8 +34,6 @@ subprojects {
 
   dependencies {
     compile group: 'uk.gov.hmcts.reform', name: 'java-logging-appinsights', version: versions.reformLogging
-    compile group: 'uk.gov.hmcts.reform', name: 'java-logging-httpcomponents', version: versions.reformLogging
-    compile group: 'uk.gov.hmcts.reform', name: 'java-logging-spring', version: versions.reformLogging
     compile group: 'ch.qos.logback', name: 'logback-classic', version: versions.logback
     compile group: 'ch.qos.logback', name: 'logback-core', version: versions.logback
 
