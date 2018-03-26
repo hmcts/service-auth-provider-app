@@ -7,7 +7,7 @@ ext {
 }
 
 def versions = [
-  reformLogging: '1.6.1',
+  reformLogging: '2.0.2',
   logback: '1.2.3'
 ]
 
