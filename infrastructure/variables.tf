@@ -31,3 +31,7 @@ variable "ilbIp" {}
 variable "subscription" {
   type = "string"
 }
+
+variable "testing_support" {
+  type = "string"
+}
