@@ -18,7 +18,7 @@ allprojects {
   apply plugin: 'java'
 
   repositories {
-    mavenCentral()
+    jcenter()
   }
 }
 
@@ -43,7 +43,9 @@ subprojects {
   }
 
   repositories {
+    mavenLocal()
     jcenter()
+
     maven { url "https://dl.bintray.com/hmcts/hmcts-maven" }
   }
 
