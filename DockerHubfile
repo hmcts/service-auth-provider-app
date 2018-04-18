@@ -27,6 +27,6 @@ COPY --from=builder /home/gradle/app/api/build/install/service-auth-provider-api
 
 HEALTHCHECK --interval=10s --timeout=10s --retries=10 CMD http_proxy="" curl --silent --fail http://localhost:8080/health 
  
-EXPOSE 8080
+EXPOSE 8489
  
 ENTRYPOINT [ "/opt/app/bin/service-auth-provider-api" ]
