@@ -4,7 +4,7 @@ FROM gradle:jdk8 as builder
 COPY --chown=gradle:gradle . /home/gradle/app 
 WORKDIR /home/gradle/app 
  
-RUN mkdir -p src/main/resources/META-INF 
+RUN mkdir -p api/src/main/resources/META-INF 
 RUN echo "build.version=$(gradle -q printVersion)" > api/src/main/resources/META-INF/build-info.properties 
 RUN echo "build.number=${BUILD_NUMBER:=docker}" >> api/src/main/resources/META-INF/build-info.properties 
 RUN echo "build.commit=$(git rev-parse HEAD)" >> api/src/main/resources/META-INF/build-info.properties 
