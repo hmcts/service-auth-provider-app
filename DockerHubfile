@@ -1,7 +1,11 @@
 #### Create Jar 
 FROM gradle:jdk8 as builder 
  
-COPY --chown=gradle:gradle . /home/gradle/app 
+COPY . /home/gradle/app 
+USER root
+RUN chown -R gradle:gradle /home/gradle/app
+
+USER gradle
 WORKDIR /home/gradle/app 
  
 RUN mkdir -p api/src/main/resources/META-INF 
@@ -20,7 +24,6 @@ LABEL maintainer = "HMCTS <https://github.com/hmcts>"
  
 WORKDIR /opt/app 
 COPY --from=builder /home/gradle/app/api/build/install/service-auth-provider-api /opt/app . 
-COPY 
 
 HEALTHCHECK --interval=10s --timeout=10s --retries=10 CMD http_proxy="" curl --silent --fail http://localhost:8080/health 
  
