@@ -4,6 +4,6 @@ RUN mkdir -p /opt/app
 
 COPY api/build/install/service-auth-provider-api /opt/app
 
-EXPOSE 8080
+EXPOSE 8489
 
 ENTRYPOINT [ "/opt/app/bin/service-auth-provider-api" ]

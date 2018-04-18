@@ -14,4 +14,4 @@ services:
         - auth_provider_service_server_jwtKey=wThK0f0/lh3FlxFcL4xUWDMI5C1J9KyQBgXV4wseh1e5J1uYJIjvTvArHxQDrYoHJ23xFxjHkOnvNbR5dXRoxA==
         - auth_provider_service_server_microserviceKeys_divorce=AAAAAAAAAAAAAAAA
     ports:
-     - 8080:8080
+     - 8489:8489
