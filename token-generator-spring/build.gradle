@@ -1,5 +1,0 @@
-dependencies {
-  compile project(':service-token-generator')
-
-  compile group: 'org.springframework.boot', name: 'spring-boot-autoconfigure', version: springBootVersion
-}
