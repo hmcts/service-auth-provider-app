@@ -96,7 +96,7 @@ data "vault_generic_secret" "emGw" {
 
 module "s2s-api" {
   source       = "git@github.com:contino/moj-module-webapp.git?ref=master"
-  product      = "${var.product}-${var.microservice}"
+  product      = "${var.product}-${var.component}"
   location     = "${var.location}"
   env          = "${var.env}"
   ilbIp        = "${var.ilbIp}"

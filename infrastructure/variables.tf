@@ -3,9 +3,8 @@ variable "product" {
   default = "rpe"
 }
 
-variable "microservice" {
+variable "component" {
   type    = "string"
-  default = "service-auth-provider"
 }
 
 variable "location" {
