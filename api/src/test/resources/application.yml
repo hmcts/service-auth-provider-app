@@ -7,6 +7,9 @@ auth.provider.service:
       divorce: AAAAAAAAAAAAAAAA
       cmc: BBBBBBBBBBBBBBBB
 
+  testing-support:
+    enabled: true
+
   # as part of API build we perform spring client component test too
   client:
     baseUrl: http://localhost:${server.port}
