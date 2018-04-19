@@ -58,6 +58,10 @@ data "vault_generic_secret" "divorceDocumentGenerator" {
   path = "secret/${var.vault_section}/ccidam/service-auth-provider/api/microservice-keys/divorceDocumentGenerator"
 }
 
+data "vault_generic_secret" "draftStoreTests" {
+  path = "secret/${var.vault_section}/ccidam/service-auth-provider/api/microservice-keys/draftStoreTests"
+}
+
 data "vault_generic_secret" "jobscheduler" {
   path = "secret/${var.vault_section}/ccidam/service-auth-provider/api/microservice-keys/platformJobScheduler"
 }
@@ -115,6 +119,7 @@ module "s2s-api" {
     AUTH_PROVIDER_SERVICE_SERVER_MICROSERVICE_KEYS_DIVORCE_CCD_VALIDATION     = "${data.vault_generic_secret.divorceCcdValidation.data["value"]}"
     AUTH_PROVIDER_SERVICE_SERVER_MICROSERVICE_KEYS_DIVORCE_DOCUMENT_UPLOAD    = "${data.vault_generic_secret.divorceDocumentUpload.data["value"]}"
     AUTH_PROVIDER_SERVICE_SERVER_MICROSERVICE_KEYS_DIVORCE_DOCUMENT_GENERATOR = "${data.vault_generic_secret.divorceDocumentGenerator.data["value"]}"
+    AUTH_PROVIDER_SERVICE_SERVER_MICROSERVICE_KEYS_DRAFT_STORE_TESTS          = "${data.vault_generic_secret.draftStoreTests.data["value"]}"
     AUTH_PROVIDER_SERVICE_SERVER_MICROSERVICE_KEYS_JOBSCHEDULER               = "${data.vault_generic_secret.jobscheduler.data["value"]}"
     AUTH_PROVIDER_SERVICE_SERVER_MICROSERVICE_KEYS_SSCS                       = "${data.vault_generic_secret.sscs.data["value"]}"
     AUTH_PROVIDER_SERVICE_SERVER_MICROSERVICE_KEYS_SSCS_TRIBUNALS_CASE        = "${data.vault_generic_secret.sscsTribunalsCase.data["value"]}"
