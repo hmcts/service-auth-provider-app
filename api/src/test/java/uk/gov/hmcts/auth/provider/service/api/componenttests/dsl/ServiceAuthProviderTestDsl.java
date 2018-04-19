@@ -4,10 +4,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.CollectionType;
 import org.springframework.http.HttpHeaders;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import uk.gov.hmcts.auth.provider.service.api.error.ErrorDto;
 import uk.gov.hmcts.auth.provider.service.api.model.SignIn;
+import uk.gov.hmcts.auth.provider.service.api.model.SignInWithoutOtp;
 
 import java.io.IOException;
 import java.util.List;
@@ -48,7 +50,7 @@ public class ServiceAuthProviderTestDsl {
         public ServiceAuthProviderWhenDsl lease(String microservice, String password) throws Exception {
             resultActions = mvc.perform(MockMvcRequestBuilders
                 .post("/lease")
-                .content(createJson(microservice, password))
+                .content(json(new SignIn(microservice, password)))
                 .contentType(APPLICATION_JSON)
                 .accept(APPLICATION_JSON));
             return this;
@@ -61,6 +63,15 @@ public class ServiceAuthProviderTestDsl {
             resultActions = mvc.perform(MockMvcRequestBuilders
                 .get("/details")
                 .headers(httpHeaders)
+                .contentType(APPLICATION_JSON)
+                .accept(APPLICATION_JSON));
+            return this;
+        }
+
+        public ServiceAuthProviderWhenDsl testSupportLease(String microservice) throws Exception {
+            resultActions = mvc.perform(MockMvcRequestBuilders
+                .post("/testing-support/lease")
+                .content(json(new SignInWithoutOtp(microservice)))
                 .contentType(APPLICATION_JSON)
                 .accept(APPLICATION_JSON));
             return this;
@@ -112,6 +123,10 @@ public class ServiceAuthProviderTestDsl {
             return this;
         }
 
+        public MvcResult andReturn() {
+            return resultActions.andReturn();
+        }
+
         public ServiceAuthProviderThenDsl and() {
             return this;
         }
@@ -126,8 +141,7 @@ public class ServiceAuthProviderTestDsl {
         return objectMapper.readValue(resultActions.andReturn().getResponse().getContentAsByteArray(), valueType);
     }
 
-    private String createJson(final String microservice, final String password) throws IOException {
-        SignIn signIn = new SignIn(microservice, password);
-        return new ObjectMapper().writeValueAsString(signIn);
+    private String json(Object obj) throws IOException {
+        return new ObjectMapper().writeValueAsString(obj);
     }
 }
