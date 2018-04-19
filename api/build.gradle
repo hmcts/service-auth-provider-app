@@ -30,13 +30,13 @@ sourceSets {
   }
 }
 dependencies {
-  compile project(':service-token-generator')
 
   compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: springBootVersion
   compile group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: springBootVersion
   compile group: 'com.google.guava', name: 'guava', version: '21.0'
   compile group: 'io.jsonwebtoken', name: 'jjwt', version: '0.7.0'
   compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.3'
+  compile group: 'com.warrenstrange', name: 'googleauth', version: '1.1.2'
 
   functionalTestCompile sourceSets.main.runtimeClasspath
   functionalTestCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: springBootVersion
@@ -48,7 +48,7 @@ dependencies {
   testCompile(group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: springBootVersion) {
     exclude(module: 'commons-logging')
   }
-  testCompile project(':service-token-generator-spring')
+
 }
 
 installDist {

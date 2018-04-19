@@ -8,8 +8,6 @@ import org.springframework.context.annotation.Bean;
 import uk.gov.hmcts.auth.provider.service.api.auth.jwt.JwtHS512Tool;
 import uk.gov.hmcts.auth.provider.service.api.auth.jwt.JwtRS256Tool;
 import uk.gov.hmcts.auth.provider.service.api.auth.jwt.JwtTool;
-import uk.gov.hmcts.auth.totp.TotpAuthenticatorImpl;
-import uk.gov.hmcts.auth.totp.TotpAuthenticator;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
@@ -20,11 +18,6 @@ import java.time.Clock;
 @EnableAutoConfiguration
 @EnableConfigurationProperties
 public class ServiceAuthProviderApplication {
-
-    @Bean
-    public TotpAuthenticator totpAuthenticator() {
-        return new TotpAuthenticatorImpl();
-    }
 
     @Bean
     public JwtTool jwtTool(ServiceAuthProviderApplicationConfig config) throws InvalidKeySpecException, NoSuchAlgorithmException {

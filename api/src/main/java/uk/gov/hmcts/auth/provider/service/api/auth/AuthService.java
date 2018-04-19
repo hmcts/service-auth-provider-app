@@ -5,9 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import uk.gov.hmcts.auth.provider.service.api.auth.exceptions.InvalidOneTimePasswordException;
 import uk.gov.hmcts.auth.provider.service.api.auth.jwt.JwtTool;
+import uk.gov.hmcts.auth.provider.service.api.auth.totp.TotpAuthenticator;
 import uk.gov.hmcts.auth.provider.service.api.microservice.FindOne;
 import uk.gov.hmcts.auth.provider.service.api.microservice.Microservice;
-import uk.gov.hmcts.auth.totp.TotpAuthenticator;
 
 @Slf4j
 @Component

@@ -11,8 +11,8 @@ import uk.gov.hmcts.auth.provider.service.api.auth.exceptions.InvalidOneTimePass
 import uk.gov.hmcts.auth.provider.service.api.auth.exceptions.TokenSignatureException;
 import uk.gov.hmcts.auth.provider.service.api.auth.exceptions.UnmappedTokenException;
 import uk.gov.hmcts.auth.provider.service.api.auth.jwt.JwtHS512Tool;
+import uk.gov.hmcts.auth.provider.service.api.auth.totp.TotpAuthenticator;
 import uk.gov.hmcts.auth.provider.service.api.microservice.Microservice;
-import uk.gov.hmcts.auth.totp.TotpAuthenticator;
 
 import java.time.Clock;
 
