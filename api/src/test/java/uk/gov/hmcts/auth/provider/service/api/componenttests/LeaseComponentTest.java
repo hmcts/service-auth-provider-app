@@ -21,7 +21,7 @@ public class LeaseComponentTest extends ComponentTestBase {
         scenario
             .given()
             .when().lease("unknownMicroservice", "anyPassword")
-            .then().unauthorized(actual -> assertThat(actual).isEqualTo(new ErrorDto("Unknown microservice")));
+            .then().unauthorized(actual -> assertThat(actual).isEqualToComparingFieldByField(new ErrorDto("Unknown microservice")));
     }
 
     @Test
@@ -29,7 +29,7 @@ public class LeaseComponentTest extends ComponentTestBase {
         scenario
             .given()
             .when().lease("divorce", "invalid")
-            .then().unauthorized(actual -> assertThat(actual).isEqualTo(new ErrorDto("Invalid one-time password")));
+            .then().unauthorized(actual -> assertThat(actual).isEqualToComparingFieldByField(new ErrorDto("Invalid one-time password")));
     }
 
     @Test
@@ -37,7 +37,7 @@ public class LeaseComponentTest extends ComponentTestBase {
         scenario
             .given()
             .when().lease("DIvorCE", "invalid")
-            .then().unauthorized(actual -> assertThat(actual).isEqualTo(new ErrorDto("Invalid one-time password")));
+            .then().unauthorized(actual -> assertThat(actual).isEqualToComparingFieldByField(new ErrorDto("Invalid one-time password")));
     }
 
     @Test

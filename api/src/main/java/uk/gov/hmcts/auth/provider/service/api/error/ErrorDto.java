@@ -1,12 +1,12 @@
 package uk.gov.hmcts.auth.provider.service.api.error;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 public class ErrorDto {
-    private String message;
+
+    public final String message;
+
+    public ErrorDto(@JsonProperty("message") String message) {
+        this.message = message;
+    }
 }

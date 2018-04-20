@@ -22,7 +22,7 @@ public class DetailsComponentTest extends ComponentTestBase {
         scenario
             .given()
             .when().details("Bearer-invalid")
-            .then().unauthorized(actual -> assertThat(actual).isEqualTo(new ErrorDto("Invalid authorization header")));
+            .then().unauthorized(actual -> assertThat(actual).isEqualToComparingFieldByField(new ErrorDto("Invalid authorization header")));
     }
 
     @Test
@@ -33,7 +33,7 @@ public class DetailsComponentTest extends ComponentTestBase {
         scenario
             .given()
             .when().details("Bearer " + jwt)
-            .then().unauthorized(actual -> assertThat(actual).isEqualTo(new ErrorDto("Invalid token signature")));
+            .then().unauthorized(actual -> assertThat(actual).isEqualToComparingFieldByField(new ErrorDto("Invalid token signature")));
     }
 
     @Test
@@ -43,7 +43,7 @@ public class DetailsComponentTest extends ComponentTestBase {
         scenario
             .given()
             .when().details("Bearer " + jwt)
-            .then().unauthorized(actual -> assertThat(actual).isEqualTo(new ErrorDto("Token expired")));
+            .then().unauthorized(actual -> assertThat(actual).isEqualToComparingFieldByField(new ErrorDto("Token expired")));
     }
 
     @Test
@@ -51,7 +51,7 @@ public class DetailsComponentTest extends ComponentTestBase {
         scenario
             .given()
             .when().details("Bearer malformed")
-            .then().unauthorized(actual -> assertThat(actual).isEqualTo(new ErrorDto("Error verifying token")));
+            .then().unauthorized(actual -> assertThat(actual).isEqualToComparingFieldByField(new ErrorDto("Error verifying token")));
     }
 
     @Test

@@ -1,9 +1,11 @@
 package uk.gov.hmcts.auth.provider.service.api.microservice;
 
-import lombok.Data;
-
-@Data
 public class Microservice {
-    private final String id;
-    private final String key;
+    public final String id;
+    public final String key;
+
+    public Microservice(String id, String key) {
+        this.id = id;
+        this.key = key;
+    }
 }

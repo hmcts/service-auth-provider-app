@@ -16,12 +16,12 @@ public class MicroserviceRepositoryTest {
 
     @Test
     public void returnsMicroservice() {
-        assertThat(repository.findOne("id")).isEqualTo(new Microservice("id", "key"));
+        assertThat(repository.findOne("id")).isEqualToComparingFieldByField(new Microservice("id", "key"));
     }
 
     @Test
     public void returnsMicroserviceCaseInsensitive() {
-        assertThat(repository.findOne("iD")).isEqualTo(new Microservice("id", "key"));
+        assertThat(repository.findOne("iD")).isEqualToComparingFieldByField(new Microservice("id", "key"));
     }
 
 }
