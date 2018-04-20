@@ -1,4 +1,4 @@
-package uk.gov.hmcts.auth.provider.service.api;
+package uk.gov.hmcts.auth.provider.service.api.config;
 
 import java.util.Map;
 import lombok.AllArgsConstructor;

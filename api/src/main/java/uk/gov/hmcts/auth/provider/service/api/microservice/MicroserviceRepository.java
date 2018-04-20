@@ -2,7 +2,7 @@ package uk.gov.hmcts.auth.provider.service.api.microservice;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import uk.gov.hmcts.auth.provider.service.api.ServiceAuthProviderApplicationConfig;
+import uk.gov.hmcts.auth.provider.service.api.config.ServiceAuthProviderApplicationConfig;
 
 import java.util.Map;
 
