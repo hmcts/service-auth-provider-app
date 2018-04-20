@@ -34,6 +34,13 @@ dependencyCheck {
   }
 }
 
+sonarqube {
+  properties {
+    property "sonar.projectName", "Reform :: Service Auth Provider"
+    property 'sonar.coverage.exclusions', "**/config/**"
+  }
+}
+
 subprojects {
   sourceCompatibility = 1.8
   targetCompatibility = 1.8
