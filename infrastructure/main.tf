@@ -109,7 +109,7 @@ data "vault_generic_secret" "test_s2s_secret" {
 }
 
 resource "azurerm_key_vault_secret" "test-s2s-name" {
-  name      = "test-s2s-name"
+  name      = "test-service-name"
   value     = "send_letter_tests"
   vault_uri = "${module.key-vault.key_vault_uri}"
 }
