@@ -113,6 +113,12 @@ resource "azurerm_key_vault_secret" "test-s2s-name" {
   value     = "send_letter_tests"
   vault_uri = "${module.key-vault.key_vault_uri}"
 }
+
+resource "azurerm_key_vault_secret" "test-s2s-secret" {
+  name      = "test-service-secret"
+  value     = "${data.vault_generic_secret.test_s2s_secret.data["value"]}"
+  vault_uri = "${module.key-vault.key_vault_uri}"
+}
 # endregion
 
 module "s2s-api" {
