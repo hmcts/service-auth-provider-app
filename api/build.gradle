@@ -64,10 +64,6 @@ task printVersion {
   }
 }
 
-compileSmokeTestJava {
-  options.compilerArgs << "-Xlint:unchecked"
-}
-
 compileFunctionalTestJava {
   options.compilerArgs << "-Xlint:unchecked"
 }
