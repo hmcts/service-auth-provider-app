@@ -96,7 +96,7 @@ codeCoverageReport.dependsOn {
 task smoke(type: GradleBuild) {
   description = "Runs Smoke Tests"
   buildFile = './api/build.gradle'
-  tasks = ['smokeTest']
+  tasks = ['functionalTest'] // the service is stateless, we may as well reuse functional tests
 }
 
 task functional(type: GradleBuild) {
