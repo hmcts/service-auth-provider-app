@@ -21,8 +21,8 @@ public class SignInTest {
         Config conf = ConfigFactory.load();
 
         this.testUrl = conf.getString("test-url");
-        this.serviceName = conf.getString("service-name");
-        this.serviceSecret = conf.getString("service-secret");
+        this.serviceName = conf.getString("test-service-name");
+        this.serviceSecret = conf.getString("test-service-secret");
     }
 
     @Test
