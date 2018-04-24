@@ -94,6 +94,25 @@ data "vault_generic_secret" "emGw" {
   path = "secret/${var.vault_section}/ccidam/service-auth-provider/api/microservice-keys/em-gw"
 }
 
+# region: for functional/smoke tests
+# todo: create a separate test service just for this app
+data "vault_generic_secret" "test_s2s_secret" {
+  path = "secret/${var.vault_section}/ccidam/service-auth-provider/api/microservice-keys/send-letter-tests"
+}
+
+resource "azurerm_key_vault_secret" "test-s2s-name" {
+  name      = "test-service-name"
+  value     = "send_letter_tests"
+  vault_uri = "${module.key-vault.key_vault_uri}"
+}
+
+resource "azurerm_key_vault_secret" "test-s2s-secret" {
+  name      = "test-service-secret"
+  value     = "${data.vault_generic_secret.test_s2s_secret.data["value"]}"
+  vault_uri = "${module.key-vault.key_vault_uri}"
+}
+# endregion
+
 module "s2s-api" {
   source       = "git@github.com:contino/moj-module-webapp.git?ref=master"
   product      = "${var.product}-${var.component}"
@@ -128,4 +147,15 @@ module "s2s-api" {
     AUTH_PROVIDER_SERVICE_SERVER_MICROSERVICE_KEYS_CCD_PS                     = "${data.vault_generic_secret.ccdPs.data["value"]}"
     AUTH_PROVIDER_SERVICE_TESTING_SUPPORT_ENABLED                             = "${var.testing_support}"
   }
+}
+
+module "key-vault" {
+  source              = "git@github.com:hmcts/moj-module-key-vault?ref=master"
+  product             = "${var.product}"
+  env                 = "${var.env}"
+  tenant_id           = "${var.tenant_id}"
+  object_id           = "${var.jenkins_AAD_objectId}"
+  resource_group_name = "${module.s2s-api.resource_group_name}"
+  # dcd_cc-dev group object ID
+  product_group_object_id = "38f9dea6-e861-4a50-9e73-21e64f563537"
 }

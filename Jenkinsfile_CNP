@@ -1,5 +1,19 @@
 #!groovy
 
+List<LinkedHashMap<String, Object>> secrets = [
+  secret('test-service-name', 'TEST_SERVICE_NAME'),
+  secret('test-service-secret', 'TEST_SERVICE_SECRET')
+]
+
+static LinkedHashMap<String, Object> secret(String secretName, String envVar) {
+  [ $class: 'AzureKeyVaultSecret',
+    secretType: 'Secret',
+    name: secretName,
+    version: '',
+    envVariable: envVar
+  ]
+}
+
 @Library("Infrastructure")
 
 def type = "java"
@@ -8,4 +22,5 @@ def app = "service-auth-provider"
 
 withPipeline(type, product, app) {
     enableSlackNotifications('#rpe-build-notices')
+    loadVaultSecrets(secrets)
 }
