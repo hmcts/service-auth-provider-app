@@ -4,7 +4,7 @@ plugins {
 }
 
 ext {
-  springBootVersion = '1.5.6.RELEASE'
+  springBootVersion = '1.5.10.RELEASE'
 }
 
 def versions = [
