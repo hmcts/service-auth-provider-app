@@ -6,15 +6,17 @@ import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.JwtParser;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureException;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import uk.gov.hmcts.auth.provider.service.api.auth.exceptions.TokenExpiredException;
 import uk.gov.hmcts.auth.provider.service.api.auth.exceptions.TokenSignatureException;
 import uk.gov.hmcts.auth.provider.service.api.auth.exceptions.UnmappedTokenException;
 
 import java.security.Key;
 
-@Slf4j
 public abstract class JwtVerifier {
+
+    private static final Logger log = LoggerFactory.getLogger(JwtVerifier.class);
 
     public static String verifyAndExtractSubject(String jwt, Clock clock, String signatureVerificationKey) {
         return verifyAndExtractSubject(jwt, Jwts.parser().setClock(clock).setSigningKey(signatureVerificationKey));

@@ -1,14 +1,12 @@
 package uk.gov.hmcts.auth.provider.service.api.auth.jwt;
 
 import io.jsonwebtoken.SignatureAlgorithm;
-import lombok.extern.slf4j.Slf4j;
 import uk.gov.hmcts.auth.provider.service.api.auth.jwt.helpers.JwtIssuer;
 import uk.gov.hmcts.auth.provider.service.api.auth.jwt.helpers.JwtVerifier;
 
 import java.time.Clock;
 import java.util.Date;
 
-@Slf4j
 public class JwtHS512Tool implements JwtTool {
 
     public static final SignatureAlgorithm SIGNATURE_ALGORITHM = SignatureAlgorithm.HS512;
