@@ -13,11 +13,11 @@ import java.security.spec.InvalidKeySpecException;
 import java.time.Clock;
 
 @Configuration
-@EnableConfigurationProperties(ServiceAuthProviderApplicationConfig.class)
+@EnableConfigurationProperties(AuthProviderProperties.class)
 public class JwtConfiguration {
 
     @Autowired
-    private ServiceAuthProviderApplicationConfig providerProperties;
+    private AuthProviderProperties providerProperties;
 
     @Bean
     public JwtTool jwtTool() throws InvalidKeySpecException, NoSuchAlgorithmException {
