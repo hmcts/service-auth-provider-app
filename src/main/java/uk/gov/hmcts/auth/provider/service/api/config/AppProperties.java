@@ -6,7 +6,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import static java.util.concurrent.TimeUnit.HOURS;
 
 @ConfigurationProperties(prefix = "auth.provider.service.server")
-public class AuthProviderProperties {
+public class AppProperties {
 
     private String jwtKey;
 

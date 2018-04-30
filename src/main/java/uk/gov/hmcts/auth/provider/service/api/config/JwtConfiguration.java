@@ -13,24 +13,24 @@ import java.security.spec.InvalidKeySpecException;
 import java.time.Clock;
 
 @Configuration
-@EnableConfigurationProperties(AuthProviderProperties.class)
+@EnableConfigurationProperties(AppProperties.class)
 public class JwtConfiguration {
 
     @Autowired
-    private AuthProviderProperties providerProperties;
+    private AppProperties appProperties;
 
     @Bean
     public JwtTool jwtTool() throws InvalidKeySpecException, NoSuchAlgorithmException {
-        if (providerProperties.getRs256().isEnabled()) {
+        if (appProperties.getRs256().isEnabled()) {
             return new JwtRS256Tool(
-                providerProperties.getRs256().getPrivateKey(),
-                providerProperties.getRs256().getPublicKey(),
-                providerProperties.getTtlInSeconds()
+                appProperties.getRs256().getPrivateKey(),
+                appProperties.getRs256().getPublicKey(),
+                appProperties.getTtlInSeconds()
             );
         } else {
             return new JwtHS512Tool(
-                providerProperties.getJwtKey(),
-                providerProperties.getTtlInSeconds(),
+                appProperties.getJwtKey(),
+                appProperties.getTtlInSeconds(),
                 Clock.systemDefaultZone()
             );
         }

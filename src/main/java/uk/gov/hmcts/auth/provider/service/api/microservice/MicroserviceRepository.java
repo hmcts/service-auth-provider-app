@@ -3,7 +3,7 @@ package uk.gov.hmcts.auth.provider.service.api.microservice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.stereotype.Component;
-import uk.gov.hmcts.auth.provider.service.api.config.AuthProviderProperties;
+import uk.gov.hmcts.auth.provider.service.api.config.AppProperties;
 
 import java.util.Map;
 
@@ -11,14 +11,14 @@ import static java.util.Collections.emptyMap;
 import static java.util.stream.Collectors.toMap;
 
 @Component
-@EnableConfigurationProperties(AuthProviderProperties.class)
+@EnableConfigurationProperties(AppProperties.class)
 public class MicroserviceRepository implements FindOne<Microservice> {
 
     private final Map<String, String> keys;
 
     @Autowired
-    public MicroserviceRepository(AuthProviderProperties providerProperties) {
-        this(providerProperties.getMicroserviceKeys());
+    public MicroserviceRepository(AppProperties appProperties) {
+        this(appProperties.getMicroserviceKeys());
     }
 
     public MicroserviceRepository(Map<String, String> microserviceKeys) {
