@@ -1,6 +1,5 @@
 variable "product" {
   type    = "string"
-  default = "rpe"
 }
 
 variable "component" {
