@@ -29,7 +29,7 @@ public class AuthIntegrationTestSupportController {
         this.jwtTool = jwtTool;
     }
 
-    @ApiOperation("Generates a JWT token for arbitrary microservice")
+    @ApiOperation("Generate a JWT token for arbitrary microservice")
     @ApiResponses({
         @ApiResponse(code = 200, message = "JWT token"),
     })
