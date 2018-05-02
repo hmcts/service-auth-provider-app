@@ -40,6 +40,10 @@ $ docker-compose up
 ```
 Dockerized app comes with preconfigured sample service. See [docker-compose.yml](docker-compose.yml) for details.
 
+## API documentation
+API documentation is provided with Swagger.  
+Json spec is available under standard `/v2/api-docs` route.
+
 ## Developing
 
 ### Unit tests
