@@ -82,6 +82,7 @@ sonarqube {
 
 def versions = [
   springBoot: plugins.getPlugin('org.springframework.boot').class.package.implementationVersion,
+  springfoxSwagger: '2.9.0',
   reformLogging: '2.2.1',
   logback: '1.2.3'
 ]
@@ -97,6 +98,9 @@ dependencies {
   compile group: 'uk.gov.hmcts.reform', name: 'java-logging', version: versions.reformLogging
   compile group: 'ch.qos.logback', name: 'logback-classic', version: versions.logback
   compile group: 'ch.qos.logback', name: 'logback-core', version: versions.logback
+
+  compile group: 'io.springfox', name: 'springfox-swagger2', version: versions.springfoxSwagger
+  compile group: 'io.springfox', name: 'springfox-swagger-ui', version: versions.springfoxSwagger
 
   compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.16.10'
   compileOnly group: 'net.sourceforge.findbugs', name: 'annotations', version: '1.3.2'
