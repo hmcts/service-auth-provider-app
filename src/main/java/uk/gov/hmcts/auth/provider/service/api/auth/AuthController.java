@@ -32,7 +32,7 @@ public class AuthController {
     @ApiOperation("Sign in, lease auth token")
     @ApiResponses({
         @ApiResponse(code = 200, message = "JWT token"),
-        @ApiResponse(code = 401, message = "Invalid service & otp pair")
+        @ApiResponse(code = 401, message = "Unauthorised. Returns error message.")
     })
     @ResponseBody
     public ResponseEntity<?> lease(
