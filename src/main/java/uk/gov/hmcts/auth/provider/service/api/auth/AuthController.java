@@ -1,5 +1,8 @@
 package uk.gov.hmcts.auth.provider.service.api.auth;
 
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -26,6 +29,11 @@ public class AuthController {
     }
 
     @PostMapping("/lease")
+    @ApiOperation("Sign in, lease auth token")
+    @ApiResponses({
+        @ApiResponse(code = 200, message = "JWT token"),
+        @ApiResponse(code = 401, message = "Unauthorised. Returns error message.")
+    })
     @ResponseBody
     public ResponseEntity<?> lease(
         @Valid @RequestBody SignIn signIn
@@ -35,6 +43,11 @@ public class AuthController {
     }
 
     @GetMapping("/details")
+    @ApiOperation("Validate service's token")
+    @ApiResponses({
+        @ApiResponse(code = 200, message = "Token valid. Returns service name"),
+        @ApiResponse(code = 401, message = "Token invalid.")
+    })
     @ResponseBody
     public ResponseEntity<?> authCheck(@RequestHeader(name = "Authorization") @NotEmpty String bearerToken) {
         String jwt = TokenExtractor.fromBearerToken(bearerToken);
