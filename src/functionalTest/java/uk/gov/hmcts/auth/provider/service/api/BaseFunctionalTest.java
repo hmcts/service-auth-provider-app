@@ -8,6 +8,7 @@ import io.restassured.response.Response;
 import org.junit.Before;
 import uk.gov.hmcts.auth.provider.service.api.auth.totp.TotpAuthenticator;
 import uk.gov.hmcts.auth.provider.service.api.model.SignIn;
+import uk.gov.hmcts.reform.logging.appinsights.SyntheticHeaders;
 
 public abstract class BaseFunctionalTest {
 
@@ -30,6 +31,7 @@ public abstract class BaseFunctionalTest {
             .relaxedHTTPSValidation()
             .baseUri(this.testUrl)
             .contentType(ContentType.JSON)
+            .header(SyntheticHeaders.SYNTHETIC_TEST_SOURCE, "S2S test request")
             .body(creds)
             .when()
             .post("/lease")
