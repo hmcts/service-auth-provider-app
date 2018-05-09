@@ -6,6 +6,10 @@ data "vault_generic_secret" "jwtKey" {
   path = "secret/${var.vault_section}/ccidam/service-auth-provider/api/jwt-key"
 }
 
+data "vault_generic_secret" "ccdAdmin" {
+  path = "secret/${var.vault_section}/ccidam/service-auth-provider/api/microservice-keys/ccd-admin"
+}
+
 data "vault_generic_secret" "ccdData" {
   path = "secret/${var.vault_section}/ccidam/service-auth-provider/api/microservice-keys/ccd-data"
 }
@@ -94,6 +98,14 @@ data "vault_generic_secret" "emGw" {
   path = "secret/${var.vault_section}/ccidam/service-auth-provider/api/microservice-keys/em-gw"
 }
 
+data "vault_generic_secret" "finRem" {
+  path = "secret/${var.vault_section}/ccidam/service-auth-provider/api/microservice-keys/finrem"
+}
+
+data "vault_generic_secret" "finRemDraftStore" {
+  path = "secret/${var.vault_section}/ccidam/service-auth-provider/api/microservice-keys/finrem-draft-store"
+}
+
 # region: for functional/smoke tests
 # todo: create a separate test service just for this app
 data "vault_generic_secret" "test_s2s_secret" {
@@ -123,6 +135,7 @@ module "s2s-api" {
 
   app_settings = {
     AUTH_PROVIDER_SERVICE_SERVER_JWT_KEY                                      = "${data.vault_generic_secret.jwtKey.data["value"]}"
+    AUTH_PROVIDER_SERVICE_SERVER_MICROSERVICE_KEYS_CCD_ADMIN                  = "${data.vault_generic_secret.ccdAdmin.data["value"]}"
     AUTH_PROVIDER_SERVICE_SERVER_MICROSERVICE_KEYS_CCD_DATA                   = "${data.vault_generic_secret.ccdData.data["value"]}"
     AUTH_PROVIDER_SERVICE_SERVER_MICROSERVICE_KEYS_CCD_DEFINITION             = "${data.vault_generic_secret.ccdDefinition.data["value"]}"
     AUTH_PROVIDER_SERVICE_SERVER_MICROSERVICE_KEYS_CCD_GW                     = "${data.vault_generic_secret.ccdGw.data["value"]}"
@@ -144,6 +157,8 @@ module "s2s-api" {
     AUTH_PROVIDER_SERVICE_SERVER_MICROSERVICE_KEYS_REFERENCE                  = "${data.vault_generic_secret.reference.data["value"]}"
     AUTH_PROVIDER_SERVICE_SERVER_MICROSERVICE_KEYS_EM_GW                      = "${data.vault_generic_secret.emGw.data["value"]}"
     AUTH_PROVIDER_SERVICE_SERVER_MICROSERVICE_KEYS_CMC_CLAIM_STORE            = "${data.vault_generic_secret.cmcClaimStore.data["value"]}"
+    AUTH_PROVIDER_SERVICE_SERVER_MICROSERVICE_KEYS_FINREM                     = "${data.vault_generic_secret.finRem.data["value"]}"
+    AUTH_PROVIDER_SERVICE_SERVER_MICROSERVICE_KEYS_FINREM_DRAFT_STORE         = "${data.vault_generic_secret.finRemDraftStore.data["value"]}"
     AUTH_PROVIDER_SERVICE_SERVER_MICROSERVICE_KEYS_CCD_PS                     = "${data.vault_generic_secret.ccdPs.data["value"]}"
     AUTH_PROVIDER_SERVICE_TESTING_SUPPORT_ENABLED                             = "${var.testing_support}"
   }
