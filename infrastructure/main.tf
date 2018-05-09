@@ -6,6 +6,10 @@ data "vault_generic_secret" "jwtKey" {
   path = "secret/${var.vault_section}/ccidam/service-auth-provider/api/jwt-key"
 }
 
+data "vault_generic_secret" "ccdAdmin" {
+  path = "secret/${var.vault_section}/ccidam/service-auth-provider/api/microservice-keys/ccd-admin"
+}
+
 data "vault_generic_secret" "ccdData" {
   path = "secret/${var.vault_section}/ccidam/service-auth-provider/api/microservice-keys/ccd-data"
 }
@@ -131,6 +135,7 @@ module "s2s-api" {
 
   app_settings = {
     AUTH_PROVIDER_SERVICE_SERVER_JWT_KEY                                       = "${data.vault_generic_secret.jwtKey.data["value"]}"
+    AUTH_PROVIDER_SERVICE_SERVER_MICROSERVICE_KEYS_CCD_ADMIN                  = "${data.vault_generic_secret.ccdAdmin.data["value"]}"
     AUTH_PROVIDER_SERVICE_SERVER_MICROSERVICE_KEYS_CCD_DATA                   = "${data.vault_generic_secret.ccdData.data["value"]}"
     AUTH_PROVIDER_SERVICE_SERVER_MICROSERVICE_KEYS_CCD_DEFINITION             = "${data.vault_generic_secret.ccdDefinition.data["value"]}"
     AUTH_PROVIDER_SERVICE_SERVER_MICROSERVICE_KEYS_CCD_GW                     = "${data.vault_generic_secret.ccdGw.data["value"]}"
