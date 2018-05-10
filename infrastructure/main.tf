@@ -157,6 +157,8 @@ module "s2s-api" {
     AUTH_PROVIDER_SERVICE_SERVER_MICROSERVICE_KEYS_REFERENCE                  = "${data.vault_generic_secret.reference.data["value"]}"
     AUTH_PROVIDER_SERVICE_SERVER_MICROSERVICE_KEYS_EM_GW                      = "${data.vault_generic_secret.emGw.data["value"]}"
     AUTH_PROVIDER_SERVICE_SERVER_MICROSERVICE_KEYS_CMC_CLAIM_STORE            = "${data.vault_generic_secret.cmcClaimStore.data["value"]}"
+    AUTH_PROVIDER_SERVICE_SERVER_MICROSERVICE_KEYS_FINREM                     = "${data.vault_generic_secret.finRem.data["value"]}"
+    AUTH_PROVIDER_SERVICE_SERVER_MICROSERVICE_KEYS_FINREM_DRAFT_STORE         = "${data.vault_generic_secret.finRemDraftStore.data["value"]}"
     AUTH_PROVIDER_SERVICE_SERVER_MICROSERVICE_KEYS_CCD_PS                     = "${data.vault_generic_secret.ccdPs.data["value"]}"
     AUTH_PROVIDER_SERVICE_SERVER_MICROSERVICE_KEYS_FINREM                     = "${data.vault_generic_secret.finRem.data["value"]}"
     AUTH_PROVIDER_SERVICE_SERVER_MICROSERVICE_KEYS_FINREM_DRAFT_STORE         = "${data.vault_generic_secret.finRemDraftStore.data["value"]}"
