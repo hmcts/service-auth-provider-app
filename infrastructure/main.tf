@@ -110,6 +110,14 @@ data "vault_generic_secret" "finRemDraftStore" {
   path = "secret/${var.vault_section}/ccidam/service-auth-provider/api/microservice-keys/finrem-draft-store"
 }
 
+data "vault_generic_secret" "juiWebapp" {
+  path = "secret/${var.vault_section}/ccidam/service-auth-provider/api/microservice-keys/jui-webapp"
+}
+
+data "vault_generic_secret" "puiWebapp" {
+  path = "secret/${var.vault_section}/ccidam/service-auth-provider/api/microservice-keys/pui-webapp"
+}
+
 # region: for functional/smoke tests
 # todo: create a separate test service just for this app
 data "vault_generic_secret" "test_s2s_secret" {
@@ -165,6 +173,8 @@ module "s2s-api" {
     AUTH_PROVIDER_SERVICE_SERVER_MICROSERVICE_KEYS_CCD_PS                     = "${data.vault_generic_secret.ccdPs.data["value"]}"
     AUTH_PROVIDER_SERVICE_SERVER_MICROSERVICE_KEYS_FINREM                     = "${data.vault_generic_secret.finRem.data["value"]}"
     AUTH_PROVIDER_SERVICE_SERVER_MICROSERVICE_KEYS_FINREM_DRAFT_STORE         = "${data.vault_generic_secret.finRemDraftStore.data["value"]}"
+    AUTH_PROVIDER_SERVICE_SERVER_MICROSERVICE_KEYS_JUI_WEBAPP                 = "${data.vault_generic_secret.juiWebapp.data["value"]}"
+    AUTH_PROVIDER_SERVICE_SERVER_MICROSERVICE_KEYS_PUI_WEBAPP                 = "${data.vault_generic_secret.puiWebapp.data["value"]}"
     AUTH_PROVIDER_SERVICE_TESTING_SUPPORT_ENABLED                             = "${var.testing_support}"
   }
 }
