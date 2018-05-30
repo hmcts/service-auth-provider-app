@@ -1,7 +1,6 @@
 package uk.gov.hmcts.auth.provider.service.api.componenttests.dsl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.type.CollectionType;
 import org.springframework.http.HttpHeaders;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
@@ -12,7 +11,6 @@ import uk.gov.hmcts.auth.provider.service.api.model.SignIn;
 import uk.gov.hmcts.auth.provider.service.api.model.SignInWithoutOtp;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.function.Consumer;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON;
@@ -77,10 +75,6 @@ public class ServiceAuthProviderTestDsl {
             return this;
         }
 
-        public ServiceAuthProviderWhenDsl and() {
-            return this;
-        }
-
         public ServiceAuthProviderThenDsl then() {
             return new ServiceAuthProviderThenDsl();
         }
@@ -95,18 +89,6 @@ public class ServiceAuthProviderTestDsl {
 
         public ServiceAuthProviderThenDsl unauthorized(Consumer<ErrorDto> consumer) throws Exception {
             resultActions.andExpect(status().isUnauthorized());
-            consumer.accept(bodyAs(ErrorDto.class));
-            return this;
-        }
-
-        public ServiceAuthProviderThenDsl forbidden(Consumer<ErrorDto> consumer) throws Exception {
-            resultActions.andExpect(status().isForbidden());
-            consumer.accept(bodyAs(ErrorDto.class));
-            return this;
-        }
-
-        public ServiceAuthProviderThenDsl notFound(Consumer<ErrorDto> consumer) throws Exception {
-            resultActions.andExpect(status().isNotFound());
             consumer.accept(bodyAs(ErrorDto.class));
             return this;
         }
@@ -127,14 +109,6 @@ public class ServiceAuthProviderTestDsl {
             return resultActions.andReturn();
         }
 
-        public ServiceAuthProviderThenDsl and() {
-            return this;
-        }
-    }
-
-    private <T> List<T> bodyAsList(Class<T> valueType) throws java.io.IOException {
-        CollectionType collectionType = objectMapper.getTypeFactory().constructCollectionType(List.class, valueType);
-        return objectMapper.readValue(resultActions.andReturn().getResponse().getContentAsByteArray(), collectionType);
     }
 
     private <T> T bodyAs(Class<T> valueType) throws java.io.IOException {
