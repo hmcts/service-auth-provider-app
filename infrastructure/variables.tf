@@ -20,6 +20,10 @@ variable "env" {
   type = "string"
 }
 
+variable "capacity" {
+  default = "1"
+}
+
 variable "vault_section" {
   default     = "test"
 }
