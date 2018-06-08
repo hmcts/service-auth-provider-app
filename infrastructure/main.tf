@@ -144,6 +144,7 @@ module "s2s-api" {
   env          = "${var.env}"
   ilbIp        = "${var.ilbIp}"
   subscription = "${var.subscription}"
+  capacity     = "${var.capacity}"
 
   app_settings = {
     AUTH_PROVIDER_SERVICE_SERVER_JWT_KEY                                      = "${data.vault_generic_secret.jwtKey.data["value"]}"
