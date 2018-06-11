@@ -13,7 +13,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class DetailsComponentTest extends ComponentTestBase {
 
-    @Value("${auth.provider.service.server.jwtKey}")
+    @Value("${jwtKey}")
     private String jwtKey;
 
 

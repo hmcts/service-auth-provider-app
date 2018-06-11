@@ -19,7 +19,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 @RestController
 @RequestMapping("/testing-support")
-@ConditionalOnProperty("auth.provider.service.testing-support.enabled")
+@ConditionalOnProperty("testing-support.enabled")
 public class AuthIntegrationTestSupportController {
 
     private final JwtTool jwtTool;

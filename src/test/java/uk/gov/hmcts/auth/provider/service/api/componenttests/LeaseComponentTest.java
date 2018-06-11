@@ -11,9 +11,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class LeaseComponentTest extends ComponentTestBase {
 
-    @Value("${auth.provider.service.server.jwtKey}")
+    @Value("${jwtKey}")
     private String jwtKey;
-    @Value("${auth.provider.service.server.microserviceKeys.divorce}")
+    @Value("${microserviceKeys.divorce}")
     private String divorceKey;
 
     @Test
