@@ -118,6 +118,10 @@ data "vault_generic_secret" "puiWebapp" {
   path = "secret/${var.vault_section}/ccidam/service-auth-provider/api/microservice-keys/pui-webapp"
 }
 
+data "vault_generic_secret" "cohcor" {
+  path = "secret/${var.vault_section}/ccidam/service-auth-provider/api/microservice-keys/coh-cor"
+}
+
 # region: for functional/smoke tests
 # todo: create a separate test service just for this app
 data "vault_generic_secret" "test_s2s_secret" {
@@ -176,6 +180,7 @@ module "s2s-api" {
     MICROSERVICE_KEYS_FINREM_DRAFT_STORE         = "${data.vault_generic_secret.finRemDraftStore.data["value"]}"
     MICROSERVICE_KEYS_JUI_WEBAPP                 = "${data.vault_generic_secret.juiWebapp.data["value"]}"
     MICROSERVICE_KEYS_PUI_WEBAPP                 = "${data.vault_generic_secret.puiWebapp.data["value"]}"
+    MICROSERVICE_KEYS_COH_COR                    = "${data.vault_generic_secret.cohcor.data["value"]}"
     TESTING_SUPPORT_ENABLED                      = "${var.testing_support}"
   }
 }
