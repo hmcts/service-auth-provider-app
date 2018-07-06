@@ -20,7 +20,7 @@ $ ./gradlew build
 ### Configuration
 Services to authenticate are retrieved from environment variables in the following format:
 ```
-MICROSERVICEKEYS_{service}={secret}
+MICROSERVICE_KEYS_{service}={secret}
 ```
 where `{service}` is the name of the service and `{secret}` is a base32 encoded secret used for generating and validating OTP.
 
