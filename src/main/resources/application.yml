@@ -1,10 +1,6 @@
 server:
   port: 8489
 
-management:
-  security:
-    enabled: ${MANAGEMENT_SECURITY_ENABLED:true}
-
 testing-support.enabled: ${TESTING_SUPPORT_ENABLED:}
 
 jwtKey: ${JWTKEY:wThK0f0/lh3FlxFcL4xUWDMI5C1J9KyQBgXV4wseh1e5J1uYJIjvTvArHxQDrYoHJ23xFxjHkOnvNbR5dXRoxA==}
