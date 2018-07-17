@@ -153,6 +153,7 @@ module "s2s-api" {
   ilbIp        = "${var.ilbIp}"
   subscription = "${var.subscription}"
   capacity     = "${var.capacity}"
+  common_tags  = "${var.common_tags}"
 
   app_settings = {
     JWT_KEY                                      = "${data.vault_generic_secret.jwtKey.data["value"]}"
