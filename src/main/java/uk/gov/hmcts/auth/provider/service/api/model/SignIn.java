@@ -2,9 +2,9 @@ package uk.gov.hmcts.auth.provider.service.api.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModelProperty;
-import org.hibernate.validator.constraints.NotEmpty;
 
 import java.io.Serializable;
+import javax.validation.constraints.NotEmpty;
 
 public class SignIn implements Serializable {
 
@@ -12,10 +12,12 @@ public class SignIn implements Serializable {
 
     @ApiModelProperty("Name of the microservice")
     @NotEmpty
+    @JsonProperty("microservice")
     public final String microservice;
 
     @ApiModelProperty("Google Authenticator OTP")
     @NotEmpty
+    @JsonProperty("one_time_password")
     public final String oneTimePassword;
 
     public SignIn(
