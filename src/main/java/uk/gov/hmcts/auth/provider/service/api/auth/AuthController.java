@@ -35,7 +35,7 @@ public class AuthController {
         @ApiResponse(code = 401, message = "Unauthorised. Returns error message.")
     })
     @ResponseBody
-    public ResponseEntity<?> lease(
+    public ResponseEntity<String> lease(
         @Valid @RequestBody SignIn signIn
     ) {
         String token = authService.lease(signIn.microservice, signIn.oneTimePassword);
@@ -49,7 +49,7 @@ public class AuthController {
         @ApiResponse(code = 401, message = "Token invalid.")
     })
     @ResponseBody
-    public ResponseEntity<?> authCheck(@RequestHeader(name = "Authorization") @NotEmpty String bearerToken) {
+    public ResponseEntity<String> authCheck(@RequestHeader(name = "Authorization") @NotEmpty String bearerToken) {
         String jwt = TokenExtractor.fromBearerToken(bearerToken);
         String serviceName = authService.verify(jwt);
 
