@@ -3,7 +3,6 @@ package uk.gov.hmcts.auth.provider.service.api.auth;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import uk.gov.hmcts.auth.provider.service.api.model.SignIn;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotEmpty;
 
 import static org.springframework.http.ResponseEntity.ok;
 
