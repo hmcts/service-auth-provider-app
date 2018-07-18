@@ -1,31 +1,26 @@
 #!groovy
-@Library("Infrastructure") _
 
 List<LinkedHashMap<String, Object>> secrets = [
-    secret('test-service-name', 'TEST_SERVICE_NAME'),
-    secret('test-service-secret', 'TEST_SERVICE_SECRET')
+  secret('test-service-name', 'TEST_SERVICE_NAME'),
+  secret('test-service-secret', 'TEST_SERVICE_SECRET')
 ]
 
 static LinkedHashMap<String, Object> secret(String secretName, String envVar) {
-    [ $class: 'AzureKeyVaultSecret',
-      secretType: 'Secret',
-      name: secretName,
-      version: '',
-      envVariable: envVar
-    ]
+  [ $class: 'AzureKeyVaultSecret',
+    secretType: 'Secret',
+    name: secretName,
+    version: '',
+    envVariable: envVar
+  ]
 }
 
-properties([
-  parameters([
-    string(name: 'PRODUCT_NAME', defaultValue: 'rpe', description: ''),
-    string(name: 'APP', defaultValue: 'service-auth-provider', description: ''),
-    string(name: 'TYPE', defaultValue: 'java', description: ''),
-    string(name: 'ENVIRONMENT', defaultValue: 'sandbox', description: 'Environment where code should be built and deployed'),
-    choice(name: 'SUBSCRIPTION', choices: 'sandbox\nnonprod\nprod', description: 'Azure subscriptions available to build in')
-  ])
-])
+@Library("Infrastructure")
 
-withParameterizedPipeline(params.TYPE, params.PRODUCT_NAME, params.APP, params.ENVIRONMENT, params.SUBSCRIPTION) {
-  enableSlackNotifications('#rpe-build-notices')
-  loadVaultSecrets(secrets)
+def type = "java"
+def product = "rpe"
+def app = "service-auth-provider"
+
+withPipeline(type, product, app) {
+    enableSlackNotifications('#rpe-build-notices')
+    loadVaultSecrets(secrets)
 }
