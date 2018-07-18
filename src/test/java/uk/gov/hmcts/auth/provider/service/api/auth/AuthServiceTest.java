@@ -6,7 +6,7 @@ import io.jsonwebtoken.impl.crypto.MacProvider;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 import uk.gov.hmcts.auth.provider.service.api.auth.exceptions.InvalidOneTimePasswordException;
 import uk.gov.hmcts.auth.provider.service.api.auth.exceptions.TokenSignatureException;
 import uk.gov.hmcts.auth.provider.service.api.auth.exceptions.UnmappedTokenException;
@@ -19,8 +19,8 @@ import java.time.Clock;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.assertj.core.api.Assertions.catchThrowable;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.BDDMockito.given;
-import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.mock;
 
 @RunWith(MockitoJUnitRunner.class)
