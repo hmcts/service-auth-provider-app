@@ -26,7 +26,7 @@ public class MicroserviceRepositoryTest {
     }
 
     @Test
-    public void getNames_should_names_of_configured_services() {
+    public void getNames_should_return_names_of_configured_services() {
 
         MicroserviceRepository repo =
             new MicroserviceRepository(ImmutableMap.of(

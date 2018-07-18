@@ -10,7 +10,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class InfoEndpointTest extends ComponentTestBase {
 
     @Test
-    public void should_return_number_of_configured_services() throws Exception {
+    public void should_return_names_of_configured_services() throws Exception {
         mvc
             .perform(get("/info"))
             .andExpect(status().isOk())
