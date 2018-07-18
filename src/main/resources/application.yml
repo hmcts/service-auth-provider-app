@@ -2,9 +2,8 @@ server:
   port: 8489
 
 management:
-  endpoints:
-    web:
-      base-path: /
+  security:
+    enabled: ${MANAGEMENT_SECURITY_ENABLED:true}
 
 testing-support.enabled: ${TESTING_SUPPORT_ENABLED:}
 
