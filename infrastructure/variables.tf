@@ -24,10 +24,6 @@ variable "capacity" {
   default = "1"
 }
 
-variable "common_tags" {
-  type = "map"
-}
-
 variable "vault_section" {
   default     = "test"
 }

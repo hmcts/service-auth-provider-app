@@ -29,7 +29,7 @@ public class MicroserviceRepository implements FindOne<Microservice> {
                 .entrySet()
                 .stream()
                 .collect(toMap(
-                    entry -> entry.getKey().toLowerCase().replace(".", "_"),
+                    entry -> entry.getKey().toLowerCase(),
                     entry -> entry.getValue()
                 ));
         }
