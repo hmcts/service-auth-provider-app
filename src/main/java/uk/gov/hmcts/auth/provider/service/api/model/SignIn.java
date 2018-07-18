@@ -12,17 +12,15 @@ public class SignIn implements Serializable {
 
     @ApiModelProperty("Name of the microservice")
     @NotEmpty
-    @JsonProperty("microservice")
     public final String microservice;
 
     @ApiModelProperty("Google Authenticator OTP")
     @NotEmpty
-    @JsonProperty("one_time_password")
     public final String oneTimePassword;
 
     public SignIn(
         @JsonProperty("microservice") String microservice,
-        @JsonProperty("one_time_password") String oneTimePassword
+        @JsonProperty("oneTimePassword") String oneTimePassword
     ) {
         this.microservice = microservice;
         this.oneTimePassword = oneTimePassword;
