@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 import uk.gov.hmcts.auth.provider.service.api.config.AppProperties;
 
 import java.util.Map;
+import java.util.Set;
 
 import static java.util.Collections.emptyMap;
 import static java.util.stream.Collectors.toMap;
@@ -44,5 +45,9 @@ public class MicroserviceRepository implements FindOne<Microservice> {
         }
 
         return new Microservice(microserviceLowercase, keys.get(microserviceLowercase));
+    }
+
+    public Set<String> getNames() {
+        return keys.keySet();
     }
 }

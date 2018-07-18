@@ -28,10 +28,11 @@ public abstract class ComponentTestBase {
     private ConfigurableListableBeanFactory configurableListableBeanFactory;
 
     ServiceAuthProviderTestDsl scenario;
+    MockMvc mvc;
 
     @Before
     public void setUp() {
-        MockMvc mvc = webAppContextSetup(webApplicationContext).build();
+        mvc = webAppContextSetup(webApplicationContext).build();
         this.scenario = new ServiceAuthProviderTestDsl(mvc, objectMapper);
     }
 }
