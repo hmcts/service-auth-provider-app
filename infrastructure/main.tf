@@ -126,6 +126,10 @@ data "vault_generic_secret" "bulkScanProcessor" {
   path = "secret/${var.vault_section}/ccidam/service-auth-provider/api/microservice-keys/bulk-scan-processor"
 }
 
+data "vault_generic_secret" "bulkScanProcessorTests" {
+  path = "secret/${var.vault_section}/ccidam/service-auth-provider/api/microservice-keys/bulk-scan-processor-tests"
+}
+
 # region: for functional/smoke tests
 # todo: create a separate test service just for this app
 data "vault_generic_secret" "test_s2s_secret" {
@@ -187,6 +191,7 @@ module "s2s-api" {
     MICROSERVICEKEYS_PUI_WEBAPP                 = "${data.vault_generic_secret.puiWebapp.data["value"]}"
     MICROSERVICEKEYS_COH_COR                    = "${data.vault_generic_secret.cohcor.data["value"]}"
     MICROSERVICEKEYS_BULK_SCAN_PROCESSOR        = "${data.vault_generic_secret.bulkScanProcessor.data["value"]}"
+    MICROSERVICEKEYS_BULK_SCAN_PROCESSOR_TESTS  = "${data.vault_generic_secret.bulkScanProcessorTests.data["value"]}"
     TESTING_SUPPORT_ENABLED                      = "${var.testing_support}"
   }
 }
