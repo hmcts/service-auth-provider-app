@@ -130,6 +130,7 @@ data "vault_generic_secret" "bulkScanProcessorTests" {
   path = "secret/${var.vault_section}/ccidam/service-auth-provider/api/microservice-keys/bulk-scan-processor-tests"
 }
 
+
 # region: for functional/smoke tests
 # todo: create a separate test service just for this app
 data "vault_generic_secret" "test_s2s_secret" {
