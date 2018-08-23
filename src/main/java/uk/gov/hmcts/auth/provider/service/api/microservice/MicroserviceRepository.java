@@ -5,10 +5,11 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.stereotype.Component;
 import uk.gov.hmcts.auth.provider.service.api.config.AppProperties;
 
+import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import static java.util.Collections.emptyMap;
+import static java.util.stream.Collectors.toList;
 import static java.util.stream.Collectors.toMap;
 
 @Component
@@ -47,7 +48,7 @@ public class MicroserviceRepository implements FindOne<Microservice> {
         return new Microservice(microserviceLowercase, keys.get(microserviceLowercase));
     }
 
-    public Set<String> getNames() {
-        return keys.keySet();
+    public List<String> getNames() {
+        return keys.keySet().stream().sorted().collect(toList());
     }
 }
