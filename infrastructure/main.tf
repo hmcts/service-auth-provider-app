@@ -203,7 +203,7 @@ module "s2s-api" {
 
 module "key-vault" {
   source              = "git@github.com:hmcts/moj-module-key-vault?ref=master"
-  product             = "${var.product}"
+  product             = "${var.product}-s2s"
   env                 = "${var.env}"
   tenant_id           = "${var.tenant_id}"
   object_id           = "${var.jenkins_AAD_objectId}"
