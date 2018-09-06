@@ -26,7 +26,7 @@ data "vault_generic_secret" "ccdDefinition" {
 }
 
 data "vault_generic_secret" "ccdGw" {
-  path = "secret/${var.vault_section}/ccidam/service-auth-provigitder/api/microservice-keys/ccd-gw"
+  path = "secret/${var.vault_section}/ccidam/service-auth-provider/api/microservice-keys/ccd-gw"
 }
 
 data "vault_generic_secret" "ccdPs" {
