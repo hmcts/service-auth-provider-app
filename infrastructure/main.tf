@@ -147,37 +147,60 @@ data "vault_generic_secret" "barApi" {
   path = "secret/${var.vault_section}/ccidam/service-auth-provider/api/microservice-keys/bar-api"
 }
 
-# region: for functional/smoke tests
-# todo: create a separate test service just for this app
-data "vault_generic_secret" "test_s2s_secret" {
-  path = "secret/${var.vault_section}/ccidam/service-auth-provider/api/microservice-keys/send-letter-tests"
-}
-
-resource "azurerm_key_vault_secret" "test-s2s-name" {
-  name      = "test-service-name"
-  value     = "send_letter_tests"
+data "azurerm_key_vault_secret" "microservice_keys" {
+  name      = "${local.microservice_secret_names[count.index]}"
   vault_uri = "${local.vault_uri}"
+  count     = "${length(local.microservice_key_names)}"
 }
 
-resource "azurerm_key_vault_secret" "test-s2s-secret" {
-  name      = "test-service-secret"
-  value     = "${data.vault_generic_secret.test_s2s_secret.data["value"]}"
-  vault_uri = "${local.vault_uri}"
-}
-# endregion
+locals {
+  # name of the service -> name of the vault secret holding the key
+  microservice_key_names = {
+    "CCD_ADMIN"                   = "microservicekey-ccd-admin"
+    "CCD_DATA"                    = "microservicekey-ccd-data"
+    "CCD_DEFINITION"              = "microservicekey-ccd-definition"
+    "CCD_GW"                      = "microservicekey-ccd-gw"
+    "CCD_PS"                      = "microservicekey-ccd-ps"
+    "CMC"                         = "microservicekey-cmc"
+    "CMC_LEGAL_FRONTEND"          = "microservicekey-cmcLegalFrontend"
+    "CMC_CLAIM_STORE"             = "microservicekey-cmcClaimStore"
+    "DIVORCE"                     = "microservicekey-divorce"
+    "DIVORCE_FRONTEND"            = "microservicekey-divorce-frontend"
+    "DIVORCE_CCD_SUBMISSION"      = "microservicekey-divorceCcdSubmission"
+    "DIVORCE_CCD_VALIDATION"      = "microservicekey-divorceCcdValidation"
+    "DIVORCE_DOCUMENT_UPLOAD"     = "microservicekey-divorceDocumentUpload"
+    "DIVORCE_DOCUMENT_GENERATOR"  = "microservicekey-divorceDocumentGenerator"
+    "DRAFT_STORE_TESTS"           = "microservicekey-draftStoreTests"
+    "JOBSCHEDULER"                = "microservicekey-platformJobScheduler"
+    "REFERENCE"                   = "microservicekey-reference"
+    "SSCS"                        = "microservicekey-sscs"
+    "SSCS_TRIBUNALS_CASE"         = "microservicekey-sscs-tribunals-case"
+    "PROBATE_FRONTEND"            = "microservicekey-probate-frontend"
+    "PROBATE_BACKEND"             = "microservicekey-probate-backend"
+    "SEND_LETTER_CONSUMER"        = "microservicekey-send-letter-consumer"
+    "SEND_LETTER_TESTS"           = "microservicekey-send-letter-tests"
+    "EM_GW"                       = "microservicekey-em-gw"
+    "FINREM"                      = "microservicekey-finrem"
+    "FINREM_DRAFT_STORE"          = "microservicekey-finrem-draft-store"
+    "JUI_WEBAPP"                  = "microservicekey-jui-webapp"
+    "PUI_WEBAPP"                  = "microservicekey-pui-webapp"
+    "COH_COR"                     = "microservicekey-coh-cor"
+    "BULK_SCAN_PROCESSOR"         = "microservicekey-bulk-scan-processor"
+    "BULK_SCAN_PROCESSOR_TESTS"   = "microservicekey-bulk-scan-processor-tests"
+    "BAR_API"                     = "microservicekey-bar-api"
+  }
 
-module "s2s-api" {
-  source       = "git@github.com:hmcts/moj-module-webapp.git?ref=master"
-  product      = "${var.product}-${var.component}"
-  location     = "${var.location}"
-  env          = "${var.env}"
-  ilbIp        = "${var.ilbIp}"
-  subscription = "${var.subscription}"
-  capacity     = "${var.capacity}"
-  common_tags  = "${var.common_tags}"
+  microservice_secret_names = "${values(local.microservice_key_names)}"
 
-  app_settings = {
-    JWT_KEY                                      = "${data.vault_generic_secret.jwtKey.data["value"]}"
+  microservice_key_settings = "${zipmap(
+                                    formatlist("MICROSERVICEKEY_%s", keys(local.microservice_key_names)),
+                                    data.azurerm_key_vault_secret.microservice_keys.*.value
+                                )}"
+
+  core_app_settings = {
+    JWT_KEY                                     = "${data.vault_generic_secret.jwtKey.data["value"]}"
+    TESTING_SUPPORT_ENABLED                     = "${var.testing_support}"
+
     MICROSERVICEKEYS_CCD_ADMIN                  = "${data.vault_generic_secret.ccdAdmin.data["value"]}"
     MICROSERVICEKEYS_CCD_DATA                   = "${data.vault_generic_secret.ccdData.data["value"]}"
     MICROSERVICEKEYS_CCD_DEFINITION             = "${data.vault_generic_secret.ccdDefinition.data["value"]}"
@@ -210,8 +233,39 @@ module "s2s-api" {
     MICROSERVICEKEYS_BULK_SCAN_PROCESSOR        = "${data.vault_generic_secret.bulkScanProcessor.data["value"]}"
     MICROSERVICEKEYS_BULK_SCAN_PROCESSOR_TESTS  = "${data.vault_generic_secret.bulkScanProcessorTests.data["value"]}"
     MICROSERVICEKEYS_BAR_API                    = "${data.vault_generic_secret.barApi.data["value"]}"
-    TESTING_SUPPORT_ENABLED                      = "${var.testing_support}"
   }
+}
+
+# region: for functional/smoke tests
+# todo: create a separate test service just for this app
+data "vault_generic_secret" "test_s2s_secret" {
+  path = "secret/${var.vault_section}/ccidam/service-auth-provider/api/microservice-keys/send-letter-tests"
+}
+
+resource "azurerm_key_vault_secret" "test-s2s-name" {
+  name      = "test-service-name"
+  value     = "send_letter_tests"
+  vault_uri = "${module.key-vault.key_vault_uri}"
+}
+
+resource "azurerm_key_vault_secret" "test-s2s-secret" {
+  name      = "test-service-secret"
+  value     = "${data.vault_generic_secret.test_s2s_secret.data["value"]}"
+  vault_uri = "${local.vault_uri}"
+}
+# endregion
+
+module "s2s-api" {
+  source       = "git@github.com:hmcts/moj-module-webapp.git?ref=master"
+  product      = "${var.product}-${var.component}"
+  location     = "${var.location}"
+  env          = "${var.env}"
+  ilbIp        = "${var.ilbIp}"
+  subscription = "${var.subscription}"
+  capacity     = "${var.capacity}"
+  common_tags  = "${var.common_tags}"
+
+  app_settings = "${merge(local.core_app_settings, local.microservice_key_settings)}"
 }
 
 module "key-vault" {
