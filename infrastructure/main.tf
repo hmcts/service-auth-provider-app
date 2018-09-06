@@ -3,10 +3,10 @@ provider "vault" {
 }
 
 locals {
+  vault_env       = "${var.env == "preview" ? "aat" : var.env}"
   rg_name         = "rpe-service-auth-provider-${var.env}"
-  vault_env = "${var.env == "preview" ? "aat" : var.env}"
   preview_rg_name = "rpe-service-auth-provider-${local.vault_env}"
-  vault_rg_name = "${var.env == "preview" ? local.preview_rg_name : local.rg_name}"
+  vault_rg_name   = "${var.env == "preview" ? local.preview_rg_name : local.rg_name}"
 }
 
 data "vault_generic_secret" "jwtKey" {
