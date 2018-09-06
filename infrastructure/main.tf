@@ -2,6 +2,10 @@ provider "vault" {
   address = "https://vault.reform.hmcts.net:6200"
 }
 
+locals {
+  vault_env = "${var.env == "preview" ? "aat" : var.env}"
+}
+
 data "vault_generic_secret" "jwtKey" {
   path = "secret/${var.vault_section}/ccidam/service-auth-provider/api/jwt-key"
 }
@@ -209,8 +213,8 @@ module "s2s-api" {
 
 module "key-vault" {
   source              = "git@github.com:hmcts/moj-module-key-vault?ref=master"
-  product             = "${var.product}-s2s"
-  env                 = "${var.env}"
+  product             = "s2s"
+  env                 = "${local.vault_env}"
   tenant_id           = "${var.tenant_id}"
   object_id           = "${var.jenkins_AAD_objectId}"
   resource_group_name = "${module.s2s-api.resource_group_name}"
