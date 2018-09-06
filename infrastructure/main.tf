@@ -3,7 +3,10 @@ provider "vault" {
 }
 
 locals {
-  vault_env = "${var.env == "preview" ? "aat" : var.env}"
+  vault_env       = "${var.env == "preview" ? "aat" : var.env}"
+  rg_name         = "rpe-service-auth-provider-${var.env}"
+  preview_rg_name = "rpe-service-auth-provider-${local.vault_env}"
+  vault_rg_name   = "${var.env == "preview" ? local.preview_rg_name : local.rg_name}"
 }
 
 data "vault_generic_secret" "jwtKey" {
@@ -163,6 +166,7 @@ module "s2s-api" {
   location     = "${var.location}"
   env          = "${var.env}"
   ilbIp        = "${var.ilbIp}"
+  resource_group_name = "${local.rg_name}"
   subscription = "${var.subscription}"
   capacity     = "${var.capacity}"
   common_tags  = "${var.common_tags}"
@@ -211,7 +215,7 @@ module "key-vault" {
   env                 = "${local.vault_env}"
   tenant_id           = "${var.tenant_id}"
   object_id           = "${var.jenkins_AAD_objectId}"
-  resource_group_name = "${module.s2s-api.resource_group_name}"
+  resource_group_name = "${local.vault_rg_name}"
   # dcd_cc-dev group object ID
   product_group_object_id = "38f9dea6-e861-4a50-9e73-21e64f563537"
 }
