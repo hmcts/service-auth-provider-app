@@ -212,6 +212,6 @@ module "key-vault" {
   tenant_id           = "${var.tenant_id}"
   object_id           = "${var.jenkins_AAD_objectId}"
   resource_group_name = "${module.s2s-api.resource_group_name}"
-  # dcd_cc-dev group object ID
-  product_group_object_id = "38f9dea6-e861-4a50-9e73-21e64f563537"
+  # dcd_reform_dev_logs group object ID
+  product_group_object_id = "70de400b-4f47-4f25-a4f0-45e1ee4e4ae3"
 }
