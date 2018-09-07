@@ -187,6 +187,7 @@ locals {
     "COH_COR"                     = "microservicekey-coh-cor"
     "BULK_SCAN_PROCESSOR"         = "microservicekey-bulk-scan-processor"
     "BULK_SCAN_PROCESSOR_TESTS"   = "microservicekey-bulk-scan-processor-tests"
+    "BULK_SCAN_ORCHESTRATOR"      = "microservicekey-bulk-scan-orchestrator"
     "BAR_API"                     = "microservicekey-bar-api"
   }
 
@@ -232,6 +233,7 @@ locals {
     MICROSERVICEKEYS_COH_COR                    = "${data.vault_generic_secret.cohcor.data["value"]}"
     MICROSERVICEKEYS_BULK_SCAN_PROCESSOR        = "${data.vault_generic_secret.bulkScanProcessor.data["value"]}"
     MICROSERVICEKEYS_BULK_SCAN_PROCESSOR_TESTS  = "${data.vault_generic_secret.bulkScanProcessorTests.data["value"]}"
+    MICROSERVICEKEYS_BULK_SCAN_ORCHESTRATOR     = "${local.microservice_key_settings["MICROSERVICEKEY_BULK_SCAN_ORCHESTRATOR"]}"
     MICROSERVICEKEYS_BAR_API                    = "${data.vault_generic_secret.barApi.data["value"]}"
   }
 }
