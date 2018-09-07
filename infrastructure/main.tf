@@ -153,6 +153,11 @@ data "azurerm_key_vault_secret" "microservice_keys" {
   count     = "${length(local.microservice_key_names)}"
 }
 
+data "azurerm_key_vault_secret" "jwt_key" {
+  name      = "jwt-key"
+  vault_uri = "${local.vault_uri}"
+}
+
 locals {
   # name of the service -> name of the vault secret holding the key
   microservice_key_names = {
@@ -199,7 +204,7 @@ locals {
                                 )}"
 
   core_app_settings = {
-    JWT_KEY                                     = "${data.vault_generic_secret.jwtKey.data["value"]}"
+    JWT_KEY                                     = "${data.azurerm_key_vault_secret.jwt_key.value}"
     TESTING_SUPPORT_ENABLED                     = "${var.testing_support}"
   }
 }
