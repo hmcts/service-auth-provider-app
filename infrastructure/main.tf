@@ -157,12 +157,14 @@ resource "azurerm_key_vault_secret" "test-s2s-name" {
   name      = "test-service-name"
   value     = "send_letter_tests"
   vault_uri = "${local.vault_uri}"
+  count     = "${local.is_preview ? 0 : 1}"
 }
 
 resource "azurerm_key_vault_secret" "test-s2s-secret" {
   name      = "test-service-secret"
   value     = "${data.vault_generic_secret.test_s2s_secret.data["value"]}"
   vault_uri = "${local.vault_uri}"
+  count     = "${local.is_preview ? 0 : 1}"
 }
 # endregion
 
@@ -215,7 +217,7 @@ module "s2s-api" {
 }
 
 module "key-vault" {
-  source              = "git@github.com:hmcts/moj-module-key-vault?ref=master"
+  source              = "git@github.com:hmcts/moj-module-key-vault?ref=feature/add-count-input-variable"
   product             = "s2s"
   env                 = "${var.env}"
   tenant_id           = "${var.tenant_id}"
@@ -223,4 +225,5 @@ module "key-vault" {
   resource_group_name = "${module.s2s-api.resource_group_name}"
   # dcd_reform_dev_logs group object ID
   product_group_object_id = "70de400b-4f47-4f25-a4f0-45e1ee4e4ae3"
+  count               = "${local.is_preview ? 0 : 1}"
 }
