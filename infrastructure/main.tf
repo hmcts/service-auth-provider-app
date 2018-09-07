@@ -194,47 +194,13 @@ locals {
   microservice_secret_names = "${values(local.microservice_key_names)}"
 
   microservice_key_settings = "${zipmap(
-                                    formatlist("MICROSERVICEKEY_%s", keys(local.microservice_key_names)),
+                                    formatlist("MICROSERVICEKEYS_%s", keys(local.microservice_key_names)),
                                     data.azurerm_key_vault_secret.microservice_keys.*.value
                                 )}"
 
   core_app_settings = {
     JWT_KEY                                     = "${data.vault_generic_secret.jwtKey.data["value"]}"
     TESTING_SUPPORT_ENABLED                     = "${var.testing_support}"
-
-    MICROSERVICEKEYS_CCD_ADMIN                  = "${data.vault_generic_secret.ccdAdmin.data["value"]}"
-    MICROSERVICEKEYS_CCD_DATA                   = "${data.vault_generic_secret.ccdData.data["value"]}"
-    MICROSERVICEKEYS_CCD_DEFINITION             = "${data.vault_generic_secret.ccdDefinition.data["value"]}"
-    MICROSERVICEKEYS_CCD_GW                     = "${data.vault_generic_secret.ccdGw.data["value"]}"
-    MICROSERVICEKEYS_CMC                        = "${data.vault_generic_secret.cmc.data["value"]}"
-    MICROSERVICEKEYS_CMC_LEGAL_FRONTEND         = "${data.vault_generic_secret.cmcLegalFrontend.data["value"]}"
-    MICROSERVICEKEYS_DIVORCE                    = "${data.vault_generic_secret.divorce.data["value"]}"
-    MICROSERVICEKEYS_DIVORCE_CCD_SUBMISSION     = "${data.vault_generic_secret.divorceCcdSubmission.data["value"]}"
-    MICROSERVICEKEYS_DIVORCE_FRONTEND           = "${data.vault_generic_secret.divorceFrontend.data["value"]}"
-    MICROSERVICEKEYS_DIVORCE_CCD_VALIDATION     = "${data.vault_generic_secret.divorceCcdValidation.data["value"]}"
-    MICROSERVICEKEYS_DIVORCE_DOCUMENT_UPLOAD    = "${data.vault_generic_secret.divorceDocumentUpload.data["value"]}"
-    MICROSERVICEKEYS_DIVORCE_DOCUMENT_GENERATOR = "${data.vault_generic_secret.divorceDocumentGenerator.data["value"]}"
-    MICROSERVICEKEYS_DRAFT_STORE_TESTS          = "${data.vault_generic_secret.draftStoreTests.data["value"]}"
-    MICROSERVICEKEYS_JOBSCHEDULER               = "${data.vault_generic_secret.jobscheduler.data["value"]}"
-    MICROSERVICEKEYS_SSCS                       = "${data.vault_generic_secret.sscs.data["value"]}"
-    MICROSERVICEKEYS_SSCS_TRIBUNALS_CASE        = "${data.vault_generic_secret.sscsTribunalsCase.data["value"]}"
-    MICROSERVICEKEYS_PROBATE_FRONTEND           = "${data.vault_generic_secret.probateFrontend.data["value"]}"
-    MICROSERVICEKEYS_PROBATE_BACKEND            = "${data.vault_generic_secret.probateBackend.data["value"]}"
-    MICROSERVICEKEYS_SEND_LETTER_CONSUMER       = "${data.vault_generic_secret.sendLetterConsumer.data["value"]}"
-    MICROSERVICEKEYS_SEND_LETTER_TESTS          = "${data.vault_generic_secret.sendLetterTests.data["value"]}"
-    MICROSERVICEKEYS_REFERENCE                  = "${data.vault_generic_secret.reference.data["value"]}"
-    MICROSERVICEKEYS_EM_GW                      = "${data.vault_generic_secret.emGw.data["value"]}"
-    MICROSERVICEKEYS_CMC_CLAIM_STORE            = "${data.vault_generic_secret.cmcClaimStore.data["value"]}"
-    MICROSERVICEKEYS_CCD_PS                     = "${data.vault_generic_secret.ccdPs.data["value"]}"
-    MICROSERVICEKEYS_FINREM                     = "${data.vault_generic_secret.finRem.data["value"]}"
-    MICROSERVICEKEYS_FINREM_DRAFT_STORE         = "${data.vault_generic_secret.finRemDraftStore.data["value"]}"
-    MICROSERVICEKEYS_JUI_WEBAPP                 = "${data.vault_generic_secret.juiWebapp.data["value"]}"
-    MICROSERVICEKEYS_PUI_WEBAPP                 = "${data.vault_generic_secret.puiWebapp.data["value"]}"
-    MICROSERVICEKEYS_COH_COR                    = "${data.vault_generic_secret.cohcor.data["value"]}"
-    MICROSERVICEKEYS_BULK_SCAN_PROCESSOR        = "${data.vault_generic_secret.bulkScanProcessor.data["value"]}"
-    MICROSERVICEKEYS_BULK_SCAN_PROCESSOR_TESTS  = "${data.vault_generic_secret.bulkScanProcessorTests.data["value"]}"
-    MICROSERVICEKEYS_BULK_SCAN_ORCHESTRATOR     = "${local.microservice_key_settings["MICROSERVICEKEY_BULK_SCAN_ORCHESTRATOR"]}"
-    MICROSERVICEKEYS_BAR_API                    = "${data.vault_generic_secret.barApi.data["value"]}"
   }
 }
 
