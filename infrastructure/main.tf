@@ -3,7 +3,16 @@ provider "vault" {
 }
 
 locals {
-  vault_env = "${var.env == "preview" ? "aat" : var.env}"
+  is_preview          = "${var.env == "preview" || var.env == "spreview"}"
+
+  # environment whose vault should be used by preview
+  vault_env           = "${var.env == "preview" ? "aat" : var.env == "spreview" ? "saat" : var.env }"
+
+  preview_vault_uri   = "https://s2s-${local.vault_env}.vault.azure.net/"
+  vault_uri           = "${local.is_preview ? local.preview_vault_uri : module.key-vault.key_vault_uri}"
+
+  preview_vault_name  = "s2s-${local.vault_env}"
+  vault_name          = "${local.is_preview ? local.preview_vault_name : module.key-vault.key_vault_name}"
 }
 
 data "vault_generic_secret" "jwtKey" {
@@ -152,13 +161,13 @@ data "vault_generic_secret" "test_s2s_secret" {
 resource "azurerm_key_vault_secret" "test-s2s-name" {
   name      = "test-service-name"
   value     = "send_letter_tests"
-  vault_uri = "${module.key-vault.key_vault_uri}"
+  vault_uri = "${local.vault_uri}"
 }
 
 resource "azurerm_key_vault_secret" "test-s2s-secret" {
   name      = "test-service-secret"
   value     = "${data.vault_generic_secret.test_s2s_secret.data["value"]}"
-  vault_uri = "${module.key-vault.key_vault_uri}"
+  vault_uri = "${local.vault_uri}"
 }
 # endregion
 
@@ -212,12 +221,13 @@ module "s2s-api" {
 }
 
 module "key-vault" {
-  source              = "git@github.com:hmcts/moj-module-key-vault?ref=master"
+  source              = "git@github.com:hmcts/moj-module-key-vault?ref=feature/add-count-input-variable"
   product             = "s2s"
-  env                 = "${local.vault_env}"
+  env                 = "${var.env}"
   tenant_id           = "${var.tenant_id}"
   object_id           = "${var.jenkins_AAD_objectId}"
   resource_group_name = "${module.s2s-api.resource_group_name}"
-  # dcd_cc-dev group object ID
-  product_group_object_id = "38f9dea6-e861-4a50-9e73-21e64f563537"
+  # dcd_reform_dev_logs group object ID
+  product_group_object_id = "70de400b-4f47-4f25-a4f0-45e1ee4e4ae3"
+  count               = "${local.is_preview ? 0 : 1}"
 }
