@@ -236,25 +236,6 @@ locals {
   }
 }
 
-# region: for functional/smoke tests
-# todo: create a separate test service just for this app
-data "vault_generic_secret" "test_s2s_secret" {
-  path = "secret/${var.vault_section}/ccidam/service-auth-provider/api/microservice-keys/send-letter-tests"
-}
-
-resource "azurerm_key_vault_secret" "test-s2s-name" {
-  name      = "test-service-name"
-  value     = "send_letter_tests"
-  vault_uri = "${module.key-vault.key_vault_uri}"
-}
-
-resource "azurerm_key_vault_secret" "test-s2s-secret" {
-  name      = "test-service-secret"
-  value     = "${data.vault_generic_secret.test_s2s_secret.data["value"]}"
-  vault_uri = "${local.vault_uri}"
-}
-# endregion
-
 module "s2s-api" {
   source       = "git@github.com:hmcts/moj-module-webapp.git?ref=master"
   product      = "${var.product}-${var.component}"

@@ -9,3 +9,7 @@ output "vaultName" {
 output "microserviceName" {
   value = "${var.component}"
 }
+
+output "test_service_name" {
+  value = "send_letter_tests"
+}
