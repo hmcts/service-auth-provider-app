@@ -233,7 +233,7 @@ locals {
     MICROSERVICEKEYS_COH_COR                    = "${data.vault_generic_secret.cohcor.data["value"]}"
     MICROSERVICEKEYS_BULK_SCAN_PROCESSOR        = "${data.vault_generic_secret.bulkScanProcessor.data["value"]}"
     MICROSERVICEKEYS_BULK_SCAN_PROCESSOR_TESTS  = "${data.vault_generic_secret.bulkScanProcessorTests.data["value"]}"
-    MICROSERVICEKEYS_BULK_SCAN_ORCHESTRATOR     = "${local.microservice_key_settings["BULK_SCAN_ORCHESTRATOR"]}"
+    MICROSERVICEKEYS_BULK_SCAN_ORCHESTRATOR     = "${local.microservice_key_names["BULK_SCAN_ORCHESTRATOR"]}"
     MICROSERVICEKEYS_BAR_API                    = "${data.vault_generic_secret.barApi.data["value"]}"
   }
 }
