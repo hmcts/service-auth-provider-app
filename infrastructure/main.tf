@@ -157,14 +157,12 @@ resource "azurerm_key_vault_secret" "test-s2s-name" {
   name      = "test-service-name"
   value     = "send_letter_tests"
   vault_uri = "${local.vault_uri}"
-  count     = "${local.is_preview ? 0 : 1}"
 }
 
 resource "azurerm_key_vault_secret" "test-s2s-secret" {
   name      = "test-service-secret"
   value     = "${data.vault_generic_secret.test_s2s_secret.data["value"]}"
   vault_uri = "${local.vault_uri}"
-  count     = "${local.is_preview ? 0 : 1}"
 }
 # endregion
 
