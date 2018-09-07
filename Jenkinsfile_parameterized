@@ -2,8 +2,7 @@
 @Library("Infrastructure") _
 
 List<LinkedHashMap<String, Object>> secrets = [
-    secret('test-service-name', 'TEST_SERVICE_NAME'),
-    secret('test-service-secret', 'TEST_SERVICE_SECRET')
+    secret('microservicekey-send-letter-tests', 'TEST_SERVICE_SECRET')
 ]
 
 static LinkedHashMap<String, Object> secret(String secretName, String envVar) {
