@@ -24,7 +24,7 @@ In order to setup Service Auth Provider to work with a client service, you need 
 * In the Azure Key Vault named `s2s-{environment}` add the service's secret used for generating OTPs (one-time passwords).
 This has to be done in each environment the service is going to be deployed to. Service Auth Provider will use that secret
 for validating OTPs. It has to be a BASE32-encoded sequence of ten random bytes (16 characters after encoding). By convention,
-the Azure Key Vault secret's name should follow this format: `microservicekey-{service-name}`.
+the Azure Key Vault secret's name should follow this format: `microservicekey-{service-name}`. [Here's](#generating-secret) how to generate it.
 * Add the client service to `local.microservice_key_names` map in [main.tf](infrastructure/main.tf). The key has to be
 the service name (as in HTTP requests) and the value must be the name of the Azure Key Vault secret created in the previous step.
 For example, service named `test_service` would be configured like this:
@@ -35,6 +35,24 @@ For example, service named `test_service` would be configured like this:
     "TEST_SERVICE" = "microservicekey-test-service"
     ...
   }
+```
+
+#### <a name="generating-secret"></a>Generating the microservice secret
+
+Here's a sample Java snippet to generate a microservice secret:
+
+```
+byte[] bytes = new byte[10];
+SecureRandom.getInstanceStrong().nextBytes(bytes);
+String secret = new Base32().encodeAsString(bytes);
+```
+
+Sample Python code to generate that secret:
+
+```
+import os
+import base64
+base64.b32encode(os.urandom(10))
 ```
 
 ### Running
