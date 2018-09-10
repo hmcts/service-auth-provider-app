@@ -1,7 +1,3 @@
-provider "vault" {
-  address = "https://vault.reform.hmcts.net:6200"
-}
-
 locals {
   is_preview          = "${var.env == "preview" || var.env == "spreview"}"
 
