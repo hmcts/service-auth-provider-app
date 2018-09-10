@@ -13,20 +13,7 @@ locals {
 
   preview_vault_name  = "s2s-${local.vault_env}"
   vault_name          = "${local.is_preview ? local.preview_vault_name : module.key-vault.key_vault_name}"
-}
 
-data "azurerm_key_vault_secret" "microservice_keys" {
-  name      = "${local.microservice_secret_names[count.index]}"
-  vault_uri = "${local.vault_uri}"
-  count     = "${length(local.microservice_key_names)}"
-}
-
-data "azurerm_key_vault_secret" "jwt_key" {
-  name      = "jwt-key"
-  vault_uri = "${local.vault_uri}"
-}
-
-locals {
   # name of the service -> name of the vault secret holding the key
   microservice_key_names = {
     "CCD_ADMIN"                   = "microservicekey-ccd-admin"
@@ -76,6 +63,17 @@ locals {
     JWT_KEY                                     = "${data.azurerm_key_vault_secret.jwt_key.value}"
     TESTING_SUPPORT_ENABLED                     = "${var.testing_support}"
   }
+}
+
+data "azurerm_key_vault_secret" "microservice_keys" {
+  name      = "${local.microservice_secret_names[count.index]}"
+  vault_uri = "${local.vault_uri}"
+  count     = "${length(local.microservice_key_names)}"
+}
+
+data "azurerm_key_vault_secret" "jwt_key" {
+  name      = "jwt-key"
+  vault_uri = "${local.vault_uri}"
 }
 
 module "s2s-api" {
