@@ -18,11 +18,24 @@ $ ./gradlew build
 ```
 
 ### Configuration
-Services to authenticate are retrieved from environment variables in the following format:
+
+In order to setup Service Auth Provider to work with a client service, you need to do the following:
+
+* In the Azure Key Vault named `s2s-{environment}` add the service's secret used for generating OTPs (one-time passwords).
+This has to be done in each environment the service is going to be deployed to. Service Auth Provider will use that secret
+for validating OTPs. It has to be a BASE32-encoded sequence of ten random bytes (16 characters after encoding). By convention,
+the Azure Key Vault secret's name should follow this format: `microservicekey-{service-name}`.
+* Add the client service to `local.microservice_key_names` map in [main.tf](infrastructure/main.tf). The key has to be
+the service name (as in HTTP requests) and the value must be the name of the Azure Key Vault secret created in the previous step.
+For example, service named `test_service` would be configured like this:
+
 ```
-MICROSERVICEKEYS_{service}={secret}
+  microservice_key_names = {
+    ...
+    "TEST_SERVICE" = "microservicekey-test-service"
+    ...
+  }
 ```
-where `{service}` is the name of the service and `{secret}` is a base32 encoded secret used for generating and validating OTP.
 
 ### Running
 To run the app execute:
