@@ -63,7 +63,7 @@ we recommend that the infrastructure definition of the client service also reads
 this secret. Here's some Terraform code that does it:
 
 ```
-data "azurerm_key_vault_secret" "microservice_key" {
+data "azurerm_key_vault_secret" "s2s_key" {
   name      = "{name of the secret, e.g. microservicekey-draft-store}"
   vault_uri = "https://s2s-${var.env}.vault.azure.net/"
 }
@@ -72,7 +72,7 @@ data "azurerm_key_vault_secret" "microservice_key" {
 
     app_settings = {
         ...
-        MICROSERVICE_KEY = "${data.azurerm_key_vault_secret.microservice_key.value}"
+        MICROSERVICE_KEY = "${data.azurerm_key_vault_secret.s2s_key.value}"
         ...
     }
 
