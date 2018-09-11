@@ -55,6 +55,30 @@ import base64
 base64.b32encode(os.urandom(10))
 ```
 
+#### Reading the secret in client service's infrastructure code
+
+Once the service's secret is stored in Azure Key Vault, it can be retrieved
+from there in S2S infrastructure (Terraform) code. In order to avoid duplication,
+we recommend that the infrastructure definition of the client service also reads
+this secret. Here's some Terraform code that does it:
+
+```
+data "azurerm_key_vault_secret" "s2s_key" {
+  name      = "{name of the secret, e.g. microservicekey-draft-store}"
+  vault_uri = "https://s2s-${var.env}.vault.azure.net/"
+}
+
+...
+
+    app_settings = {
+        ...
+        S2S_KEY = "${data.azurerm_key_vault_secret.s2s_key.value}"
+        ...
+    }
+
+...
+```
+
 ### Running
 To run the app execute:
 ```bash
