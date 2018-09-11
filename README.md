@@ -55,7 +55,7 @@ import base64
 base64.b32encode(os.urandom(10))
 ```
 
-#### Reading the secret from client service's infrastructure code
+#### Reading the secret in client service's infrastructure code
 
 Once the service's secret is stored in Azure Key Vault, it can be retrieved
 from there in S2S infrastructure (Terraform) code. In order to avoid duplication,
