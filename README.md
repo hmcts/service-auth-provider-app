@@ -72,7 +72,7 @@ data "azurerm_key_vault_secret" "s2s_key" {
 
     app_settings = {
         ...
-        MICROSERVICE_KEY = "${data.azurerm_key_vault_secret.s2s_key.value}"
+        S2S_KEY = "${data.azurerm_key_vault_secret.s2s_key.value}"
         ...
     }
 
