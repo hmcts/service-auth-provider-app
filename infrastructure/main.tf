@@ -59,6 +59,8 @@ locals {
     JWT_KEY                                     = "${data.azurerm_key_vault_secret.jwt_key.value}"
     TESTING_SUPPORT_ENABLED                     = "${var.testing_support}"
   }
+
+  sku_size = "${var.env == "prod" || var.env == "sprod" || var.env == "aat" ? "I2" : "I1"}"
 }
 
 data "azurerm_key_vault_secret" "microservice_keys" {
@@ -83,6 +85,10 @@ module "s2s-api" {
   common_tags  = "${var.common_tags}"
 
   app_settings = "${merge(local.core_app_settings, local.microservice_key_settings)}"
+
+  asp_name      = "${var.product}-${var.component}-${var.env}"
+  asp_rg        = "${var.product}-${var.component}-${var.env}"
+  instance_size = "${local.sku_size}"
 }
 
 module "key-vault" {
