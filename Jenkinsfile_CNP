@@ -22,4 +22,5 @@ def app = "service-auth-provider"
 withPipeline(type, product, app) {
     enableSlackNotifications('#rpe-build-notices')
     loadVaultSecrets(secrets)
+    enableDockerBuild()
 }
