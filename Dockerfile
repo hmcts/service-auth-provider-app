@@ -7,8 +7,8 @@ ENV APPLICATION_SIZE_ON_DISK_IN_MB 66
 
 RUN mkdir -p /opt/app
 
-COPY build/install/service-auth-provider /opt/app
+COPY build/libs/$APP /opt/app/
 
 EXPOSE 8489
 
-ENTRYPOINT [ "/opt/app/bin/service-auth-provider" ]
+ENTRYPOINT exec java ${JAVA_OPTS} -jar "/opt/app/service-auth-provider.jar"
