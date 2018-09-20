@@ -1,4 +1,4 @@
-FROM openjdk:8-jre
+FROM hmcts/cnp-java-base:openjdk-jre-8-alpine-1.4
 
 RUN mkdir -p /opt/app
 
