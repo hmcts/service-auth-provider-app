@@ -10,5 +10,3 @@ RUN mkdir -p /opt/app
 COPY build/libs/$APP /opt/app/
 
 EXPOSE 8489
-
-ENTRYPOINT exec java ${JAVA_OPTS} -jar "/opt/app/service-auth-provider.jar"
