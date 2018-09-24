@@ -45,7 +45,10 @@ locals {
     "BULK_SCAN_PROCESSOR_TESTS"   = "microservicekey-bulk-scan-processor-tests"
     "BULK_SCAN_ORCHESTRATOR"      = "microservicekey-bulk-scan-orchestrator"
     "BAR_API"                     = "microservicekey-bar-api"
+    "BAR_API"                     = "microservicekey-bar-api"
     "API_GW"                      = "microservicekey-api-gw"
+    "EM_ANNOTATION_APP"           = "microservicekey-em-annotation-app"
+    "EM_NPA_APP"                  = "microservicekey-em-npa-app"
   }
 
   microservice_secret_names = "${values(local.microservice_key_names)}"
