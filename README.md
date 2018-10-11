@@ -54,6 +54,12 @@ import os
 import base64
 base64.b32encode(os.urandom(10))
 ```
+#### Writing a secret into all the needed vaults
+
+There's a script provided `./bin/set-secret-in-all-vaults <microservice-name> <secret-value>`
+This will write the secret into all the vaults and then it will run the check script to check it can find the secret
+
+You need to have the `azure-cli` installed and be logged in (`az login`) for it to work, also ensure you are in the `dcd_reform_dev_logs` group in AAD.
 
 #### Reading the secret in client service's infrastructure code
 
