@@ -48,6 +48,7 @@ locals {
     "API_GW"                      = "microservicekey-api-gw"
     "EM_ANNOTATION_APP"           = "microservicekey-em-annotation-app"
     "EM_NPA_APP"                  = "microservicekey-em-npa-app"
+    "CET_ONLINEAPP"               = "microservicekey-cet-onlineapp"
   }
 
   microservice_secret_names = "${values(local.microservice_key_names)}"
