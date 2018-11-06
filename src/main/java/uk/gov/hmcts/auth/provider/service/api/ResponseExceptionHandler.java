@@ -1,5 +1,7 @@
 package uk.gov.hmcts.auth.provider.service.api;
 
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -12,6 +14,8 @@ import uk.gov.hmcts.auth.provider.service.api.auth.exceptions.UnmappedTokenExcep
 import uk.gov.hmcts.auth.provider.service.api.error.ErrorDto;
 import uk.gov.hmcts.auth.provider.service.api.microservice.UnknownMicroserviceException;
 
+import javax.servlet.http.HttpServletRequest;
+
 import static org.springframework.http.HttpStatus.UNAUTHORIZED;
 import static org.springframework.http.ResponseEntity.status;
 
@@ -19,36 +23,41 @@ import static org.springframework.http.ResponseEntity.status;
 public class ResponseExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(UnknownMicroserviceException.class)
-    protected ResponseEntity<ErrorDto> handleUnknownMicroserviceException() {
-        return unauthorized("Unknown microservice");
+    protected ResponseEntity handleUnknownMicroserviceException(HttpServletRequest req) {
+        return unauthorized("Unknown microservice", req);
     }
 
     @ExceptionHandler(InvalidOneTimePasswordException.class)
-    protected ResponseEntity<ErrorDto> handleInvalidOneTimePasswordException() {
-        return unauthorized("Invalid one-time password");
+    protected ResponseEntity handleInvalidOneTimePasswordException(HttpServletRequest req) {
+        return unauthorized("Invalid one-time password", req);
     }
 
     @ExceptionHandler(TokenSignatureException.class)
-    protected ResponseEntity<ErrorDto> handleTokenSignatureException() {
-        return unauthorized("Invalid token signature");
+    protected ResponseEntity handleTokenSignatureException(HttpServletRequest req) {
+        return unauthorized("Invalid token signature", req);
     }
 
     @ExceptionHandler(TokenExpiredException.class)
-    protected ResponseEntity<ErrorDto> handleTokenExpiredException() {
-        return unauthorized("Token expired");
+    protected ResponseEntity handleTokenExpiredException(HttpServletRequest req) {
+        return unauthorized("Token expired", req);
     }
 
     @ExceptionHandler(UnmappedTokenException.class)
-    protected ResponseEntity<ErrorDto> handleUnmappedTokenException() {
-        return unauthorized("Error verifying token");
+    protected ResponseEntity handleUnmappedTokenException(HttpServletRequest req) {
+        return unauthorized("Error verifying token", req);
     }
 
     @ExceptionHandler(InvalidAuthHeaderException.class)
-    protected ResponseEntity<ErrorDto> handleInvalidAuthHeaderException() {
-        return unauthorized("Invalid authorization header");
+    protected ResponseEntity handleInvalidAuthHeaderException(HttpServletRequest req) {
+        return unauthorized("Invalid authorization header", req);
     }
 
-    private ResponseEntity<ErrorDto> unauthorized(String message) {
-        return status(UNAUTHORIZED).body(new ErrorDto(message));
+    private ResponseEntity unauthorized(String msg, HttpServletRequest req) {
+        if (req.getHeader(HttpHeaders.ACCEPT).equals(MediaType.TEXT_PLAIN_VALUE)) {
+            return status(UNAUTHORIZED).body(msg);
+        } else {
+            // use json by default
+            return status(UNAUTHORIZED).body(new ErrorDto(msg));
+        }
     }
 }
