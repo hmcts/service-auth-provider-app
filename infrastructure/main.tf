@@ -37,6 +37,8 @@ locals {
     "SEND_LETTER_TESTS"           = "microservicekey-send-letter-tests"
     "EM_GW"                       = "microservicekey-em-gw"
     "FINREM"                      = "microservicekey-finrem"
+    "FINREM_DOCUMENT_GENERATOR"   = "microservicekey-finremDocumentGenerator"
+    "FINREM_NOTIFICATION_SERVICE" = "microservicekey-finrem-notification-service"
     "FINREM_DRAFT_STORE"          = "microservicekey-finrem-draft-store"
     "JUI_WEBAPP"                  = "microservicekey-jui-webapp"
     "PUI_WEBAPP"                  = "microservicekey-pui-webapp"
