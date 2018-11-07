@@ -39,6 +39,7 @@ locals {
     "FINREM"                      = "microservicekey-finrem"
     "FINREM_DOCUMENT_GENERATOR"   = "microservicekey-finremDocumentGenerator"
     "FINREM_NOTIFICATION_SERVICE" = "microservicekey-finrem-notification-service"
+    "FINREM_CASE_ORCHESTRATION"   = "microservicekey-finrem-case-orchestration"
     "FINREM_DRAFT_STORE"          = "microservicekey-finrem-draft-store"
     "JUI_WEBAPP"                  = "microservicekey-jui-webapp"
     "PUI_WEBAPP"                  = "microservicekey-pui-webapp"
