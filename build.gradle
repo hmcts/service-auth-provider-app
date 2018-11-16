@@ -3,9 +3,9 @@ plugins {
   id 'application'
   id 'jacoco'
   id 'com.github.ben-manes.versions' version '0.17.0'
-  id 'org.owasp.dependencycheck' version '3.2.1'
+  id 'org.owasp.dependencycheck' version '3.3.4'
   id 'org.sonarqube' version '2.6.1'
-  id 'org.springframework.boot' version '2.0.3.RELEASE'
+  id 'org.springframework.boot' version '2.1.0.RELEASE'
 }
 
 group = 'uk.gov.hmcts.auth.provider.service'
@@ -63,7 +63,7 @@ sonarqube {
 
 def versions = [
   springBoot: plugins.getPlugin('org.springframework.boot').class.package.implementationVersion,
-  springfoxSwagger: '2.9.0',
+  springfoxSwagger: '2.9.2',
   reformLogging: '3.0.1',
   logback: '1.2.3'
 ]
@@ -71,7 +71,7 @@ def versions = [
 dependencies {
   compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: versions.springBoot
   compile group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: versions.springBoot
-  compile group: 'com.google.guava', name: 'guava', version: '21.0'
+  compile group: 'com.google.guava', name: 'guava', version: '27.0-jre'
   compile group: 'io.jsonwebtoken', name: 'jjwt', version: '0.7.0'
   compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.3'
   compile group: 'com.warrenstrange', name: 'googleauth', version: '1.1.2'
