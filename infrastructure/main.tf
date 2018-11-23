@@ -51,6 +51,7 @@ locals {
     "EM_ANNOTATION_APP"           = "microservicekey-em-annotation-app"
     "EM_NPA_APP"                  = "microservicekey-em-npa-app"
     "CET"                         = "microservicekey-cet"
+    "FPL_CASE_SERVICE"            = "microservicekey-fpl-case-service"
   }
 
   microservice_secret_names = "${values(local.microservice_key_names)}"
