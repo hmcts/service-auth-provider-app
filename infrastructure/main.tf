@@ -31,6 +31,7 @@ locals {
     "REFERENCE"                   = "microservicekey-reference"
     "SSCS"                        = "microservicekey-sscs"
     "SSCS_TRIBUNALS_CASE"         = "microservicekey-sscs-tribunals-case"
+    "SSCS_BULK_SCAN"              = "microservicekey-sscs-bulk-scan"
     "PROBATE_FRONTEND"            = "microservicekey-probate-frontend"
     "PROBATE_BACKEND"             = "microservicekey-probate-backend"
     "SEND_LETTER_CONSUMER"        = "microservicekey-send-letter-consumer"
