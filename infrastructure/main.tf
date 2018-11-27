@@ -30,6 +30,7 @@ locals {
     "JOBSCHEDULER"                = "microservicekey-platformJobScheduler"
     "REFERENCE"                   = "microservicekey-reference"
     "SSCS"                        = "microservicekey-sscs"
+    "SSCS_BULKSCAN"               = "microservicekey-sscs-bulkscan"
     "SSCS_TRIBUNALS_CASE"         = "microservicekey-sscs-tribunals-case"
     "PROBATE_FRONTEND"            = "microservicekey-probate-frontend"
     "PROBATE_BACKEND"             = "microservicekey-probate-backend"
