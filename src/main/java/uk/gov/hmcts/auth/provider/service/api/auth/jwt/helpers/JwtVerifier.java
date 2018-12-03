@@ -40,7 +40,7 @@ public abstract class JwtVerifier {
             log.info("Token expired", e);
             throw new TokenExpiredException(e);
         } catch (JwtException e) {
-            log.error("Unmapped token exception", e);
+            log.error("Invalid token: " + jwt, e);
             throw new UnmappedTokenException(e);
         }
     }
