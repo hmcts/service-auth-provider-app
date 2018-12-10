@@ -52,6 +52,7 @@ locals {
     "EM_ANNOTATION_APP"           = "microservicekey-em-annotation-app"
     "EM_NPA_APP"                  = "microservicekey-em-npa-app"
     "CET"                         = "microservicekey-cet"
+    "CET_FRONTEND"                = "microservicekey-cet-frontend"
     "FPL_CASE_SERVICE"            = "microservicekey-fpl-case-service"
   }
 
