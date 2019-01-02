@@ -45,6 +45,7 @@ locals {
     "FINREM_NOTIFICATION_SERVICE" = "microservicekey-finrem-notification-service"
     "FINREM_CASE_ORCHESTRATION"   = "microservicekey-finrem-case-orchestration"
     "FINREM_PAYMENT_SERVICE"      = "microservicekey-finrem-payment-service"
+    "FINREM_CCD_DATA_MIGRATOR"    = "microservicekey-finrem-ccd-data-migrator"
     "JUI_WEBAPP"                  = "microservicekey-jui-webapp"
     "PUI_WEBAPP"                  = "microservicekey-pui-webapp"
     "COH_COR"                     = "microservicekey-coh-cor"
