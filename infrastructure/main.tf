@@ -59,6 +59,7 @@ locals {
     "CET"                         = "microservicekey-cet"
     "CET_FRONTEND"                = "microservicekey-cet-frontend"
     "FPL_CASE_SERVICE"            = "microservicekey-fpl-case-service"
+    "IAC"                         = "microservicekey-iac"
   }
 
   microservice_secret_names = "${values(local.microservice_key_names)}"
