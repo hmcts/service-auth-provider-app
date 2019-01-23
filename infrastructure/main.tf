@@ -19,7 +19,7 @@ locals {
     "CCD_ADMIN"                   = "microservicekey-ccd-admin"
     "CCD_DATA"                    = "microservicekey-ccd-data"
     "CCD_DEFINITION"              = "microservicekey-ccd-definition"
-    "CCD_DEFINITION-DESIGNER"     = "microservicekey-ccd-definition-designer"
+    "CCD_DEFINITION_DESIGNER"     = "microservicekey-ccd-definition-designer"
     "CCD_GW"                      = "microservicekey-ccd-gw"
     "CCD_PS"                      = "microservicekey-ccd-ps"
     "CMC"                         = "microservicekey-cmc"
