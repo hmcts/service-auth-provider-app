@@ -62,6 +62,7 @@ locals {
     "FPL_CASE_SERVICE"            = "microservicekey-fpl-case-service"
     "IAC"                         = "microservicekey-iac"
     "EM_STITCHING_API"            = "microservicekey-em-stitching-api"
+    "EM_CCD_ORCHESTRATOR"         = "microservicekey-em-ccd-orchestrator"
   }
 
   microservice_secret_names = "${values(local.microservice_key_names)}"
