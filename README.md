@@ -63,6 +63,7 @@ You need to have the `azure-cli` installed and be logged in (`az login`) for it 
 
 #### Getting the change to production
 Create a pull request after you've set the secret in all vaults, once your build is green you can request a review by posting on the #rpe Slack channel.
+If the build is green, and the PR template was filled out correctly showing that the secret has been entereed in all vaults then the change will be merged and a build automatically triggered. Once the build is finished and passed it will be automatically deployed to the AAT and production environments. If you need it in demo you can merge the code to demo and `git push`.
 
 #### Reading the secret in client service's infrastructure code
 
