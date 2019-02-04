@@ -61,6 +61,9 @@ This will write the secret into all the vaults and then it will run the check sc
 
 You need to have the `azure-cli` installed and be logged in (`az login`) for it to work, also ensure you are in the `dcd_reform_dev_logs` group in AAD.
 
+#### Getting the change to production
+Create a pull request after you've set the secret in all vaults, once your build is green you can request a review by posting on the #rpe Slack channel.
+
 #### Reading the secret in client service's infrastructure code
 
 Once the service's secret is stored in Azure Key Vault, it can be retrieved
@@ -114,10 +117,6 @@ To run all unit tests execute the following command:
 ```bash
 $ ./gradlew test
 ```
-
-## Developing
-
-When your pull request is ready, you can request a review by posting on the #rpe Slack channel.
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE.md) file for details.
