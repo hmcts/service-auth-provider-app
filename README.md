@@ -115,5 +115,9 @@ To run all unit tests execute the following command:
 $ ./gradlew test
 ```
 
+## Developing
+
+When your pull request is ready, you can request a review by posting on the #rpe Slack channel.
+
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE.md) file for details.
