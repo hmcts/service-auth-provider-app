@@ -63,6 +63,7 @@ locals {
     "IAC"                         = "microservicekey-iac"
     "EM_STITCHING_API"            = "microservicekey-em-stitching-api"
     "EM_CCD_ORCHESTRATOR"         = "microservicekey-em-ccd-orchestrator"
+    "CCPAY_BUBBLE"                = "microservicekey-ccpay-bubble"
   }
 
   microservice_secret_names = "${values(local.microservice_key_names)}"
