@@ -64,6 +64,8 @@ locals {
     "EM_STITCHING_API"            = "microservicekey-em-stitching-api"
     "EM_CCD_ORCHESTRATOR"         = "microservicekey-em-ccd-orchestrator"
     "CCPAY_BUBBLE"                = "microservicekey-ccpay-bubble"
+    "DG_TEMPLATE_MANAGEMENT_API"  = "microservicekey-dg-template-management-api"
+    "DG_DOCASSEMBLY_API"          = "microservicekey-dg-docassembly-api"
   }
 
   microservice_secret_names = "${values(local.microservice_key_names)}"
