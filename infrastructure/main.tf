@@ -64,7 +64,7 @@ locals {
     "EM_STITCHING_API"            = "microservicekey-em-stitching-api"
     "EM_CCD_ORCHESTRATOR"         = "microservicekey-em-ccd-orchestrator"
     "CCPAY_BUBBLE"                = "microservicekey-ccpay-bubble"
-    "DG_TEMPLATE_MANAGEMENT_API"  = "microservicekey-dg-template-management-api"
+    "DG_TEMPLATE_MANAGEMENT_API"  = "microservicekey-dg-template-management"
     "DG_DOCASSEMBLY_API"          = "microservicekey-dg-docassembly-api"
   }
 
