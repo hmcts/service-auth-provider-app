@@ -3,7 +3,7 @@
 def secrets = [
     's2s-${env}':
         [
-            secret('jwt-key', 'JWTKEY'),
+            secret('jwt-key', 'JWT-KEY'),
             secret('microservicekey-send-letter-tests', 'TEST_SERVICE_SECRET')
         ]
 ]
