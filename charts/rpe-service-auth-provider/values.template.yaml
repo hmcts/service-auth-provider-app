@@ -1,7 +1,7 @@
 java:
   applicationPort: 8489
   environment:
-    JWTKEY: ${JWT_KEY}
+
   # Don't modify below here
   image: ${IMAGE_NAME}
   ingressHost: ${SERVICE_FQDN}
