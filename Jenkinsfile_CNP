@@ -23,4 +23,5 @@ withPipeline(type, product, app) {
     enableSlackNotifications('#rpe-build-notices')
     loadVaultSecrets(secrets)
     enableDockerBuild()
+    installCharts()
 }
