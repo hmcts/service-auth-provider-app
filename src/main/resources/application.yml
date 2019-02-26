@@ -8,8 +8,6 @@ management:
 
 testing-support.enabled: ${TESTING_SUPPORT_ENABLED:}
 
-jwtKey: ${JWTKEY:}
-
 ttlInSeconds: ${TTLINSECONDS:14400}
 
 rs256:
