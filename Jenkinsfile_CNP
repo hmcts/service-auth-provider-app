@@ -4,6 +4,13 @@ List<LinkedHashMap<String, Object>> secrets = [
   secret('microservicekey-send-letter-tests', 'TEST_SERVICE_SECRET')
 ]
 
+def secrets = [
+    's2s-${env}':
+        [
+            secret('jwt-key', 'JWTKEY')
+        ]
+]
+
 static LinkedHashMap<String, Object> secret(String secretName, String envVar) {
   [ $class: 'AzureKeyVaultSecret',
     secretType: 'Secret',
