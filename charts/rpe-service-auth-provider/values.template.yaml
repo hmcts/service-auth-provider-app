@@ -1,6 +1,8 @@
 java:
   applicationPort: 8489
   environment:
+    TEST_SERVICE_SECRET : ${TEST_SERVICE_SECRET}
+    JWT-KEY : ${JWT-KEY}
 
   # Don't modify below here
   image: ${IMAGE_NAME}
