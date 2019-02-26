@@ -1,13 +1,10 @@
 #!groovy
 
-List<LinkedHashMap<String, Object>> secrets = [
-  secret('microservicekey-send-letter-tests', 'TEST_SERVICE_SECRET')
-]
-
 def secrets = [
     's2s-${env}':
         [
-            secret('jwt-key', 'JWTKEY')
+            secret('jwt-key', 'JWTKEY'),
+            secret('microservicekey-send-letter-tests', 'TEST_SERVICE_SECRET')
         ]
 ]
 
