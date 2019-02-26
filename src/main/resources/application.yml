@@ -2,10 +2,12 @@ server:
   port: 8489
 
 management:
+  endpoint:
+    health:
+      show-details: "always"
   endpoints:
     web:
       base-path: /
-
 testing-support.enabled: ${TESTING_SUPPORT_ENABLED:}
 
 ttlInSeconds: ${TTLINSECONDS:14400}
