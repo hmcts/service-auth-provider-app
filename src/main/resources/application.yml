@@ -9,6 +9,7 @@ management:
     web:
       base-path: /
 testing-support.enabled: ${TESTING_SUPPORT_ENABLED:}
+jwtKey: ${JWTKEY:wThK0f0/lh3FlxFcL4xUWDMI5C1J9KyQBgXV4wseh1e5J1uYJIjvTvArHxQDrYoHJ23xFxjHkOnvNbR5dXRoxA==}
 
 ttlInSeconds: ${TTLINSECONDS:14400}
 
