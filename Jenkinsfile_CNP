@@ -5,7 +5,7 @@ def secrets = [
         [
             secret('jwt-key', 'JWT_KEY'),
             secret('microservicekey-send-letter-tests', 'TEST_SERVICE_SECRET'),
-            secret("microservicekey-send-letter-tests",'MICROSERVICE_KEYS_SEND_LETTER_TESTS'),
+            secret("microservicekey-send-letter-tests",'MICROSERVICEKEYS_SEND_LETTER_TESTS'),
         ]
 ]
 
