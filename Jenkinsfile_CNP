@@ -68,6 +68,7 @@ def product = "rpe"
 def app = "service-auth-provider"
 
 withPipeline(type, product, app) {
+    env.TEST_SERVICE_NAME =  "send_letter_tests"
     enableSlackNotifications('#rpe-build-notices')
     loadVaultSecrets(secrets)
     enableDockerBuild()
