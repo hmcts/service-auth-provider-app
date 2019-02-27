@@ -9,7 +9,6 @@ management:
     web:
       base-path: /
 testing-support.enabled: ${TESTING_SUPPORT_ENABLED:}
-jwtKey: ${JWTKEY:}
 
 ttlInSeconds: ${TTLINSECONDS:14400}
 
