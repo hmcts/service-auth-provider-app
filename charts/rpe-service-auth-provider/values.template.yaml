@@ -1,53 +1,54 @@
 java:
   applicationPort: 8489
+  keyVaults:
+    "s2s":
+      resourceGroup: rpe-service-auth-provider
+      secrets:
+        - microservicekey-cmcLegalFrontend
+        - microservicekey-cmcClaimStore
+        - microservicekey-divorce
+        - microservicekey-divorce-frontend
+        - microservicekey-divorceCcdSubmission
+        - microservicekey-divorceCcdValidation
+        - microservicekey-divorceDocumentUpload
+        - microservicekey-divorceDocumentGenerator
+        - microservicekey-draftStoreTests
+        - microservicekey-platformJobScheduler
+        - microservicekey-reference
+        - microservicekey-sscs
+        - microservicekey-sscs-bulkscan
+        - microservicekey-sscs-tribunals-case
+        - microservicekey-probate-frontend
+        - microservicekey-probate-backend
+        - microservicekey-send-letter-consumer
+        - microservicekey-send-letter-tests
+        - microservicekey-em-gw
+        - microservicekey-finrem-document-generator
+        - microservicekey-finrem-notification-service
+        - microservicekey-finrem-case-orchestration
+        - microservicekey-finrem-payment-service
+        - microservicekey-finrem-ccd-data-migrator
+        - microservicekey-jui-webapp
+        - microservicekey-pui-webapp
+        - microservicekey-coh-cor
+        - microservicekey-bulk-scan-processor
+        - microservicekey-bulk-scan-processor-tests
+        - microservicekey-bulk-scan-orchestrator
+        - microservicekey-bar-api
+        - microservicekey-api-gw
+        - microservicekey-em-annotation-app
+        - microservicekey-em-npa-app
+        - microservicekey-cet
+        - microservicekey-cet-frontend
+        - microservicekey-fpl-case-service
+        - microservicekey-iac
+        - microservicekey-em-stitching-api
+        - microservicekey-em-ccd-orchestrator
+        - microservicekey-ccpay-bubble
+        - microservicekey-dg-template-management
+        - microservicekey-dg-docassembly-api
   environment:
-    TEST_SERVICE_SECRET : ${TEST_SERVICE_SECRET}
     #JWTKEY : ${JWTKEY}
-    MICROSERVICEKEYS_CMC_LEGAL_FRONTEND: ${MICROSERVICEKEYS_CMC_LEGAL_FRONTEND}
-    MICROSERVICEKEYS_CMC_CLAIM_STORE: ${MICROSERVICEKEYS_CMC_CLAIM_STORE}
-    MICROSERVICEKEYS_DIVORCE: ${MICROSERVICEKEYS_DIVORCE}
-    MICROSERVICEKEYS_DIVORCE_FRONTEND: ${MICROSERVICEKEYS_DIVORCE_FRONTEND}
-    MICROSERVICEKEYS_DIVORCE_CCD_SUBMISSION: ${MICROSERVICEKEYS_DIVORCE_CCD_SUBMISSION}
-    MICROSERVICEKEYS_DIVORCE_CCD_VALIDATION: ${MICROSERVICEKEYS_DIVORCE_CCD_VALIDATION}
-    MICROSERVICEKEYS_DIVORCE_DOCUMENT_UPLOAD: ${MICROSERVICEKEYS_DIVORCE_DOCUMENT_UPLOAD}
-    MICROSERVICEKEYS_DIVORCE_DOCUMENT_GENERATOR: ${MICROSERVICEKEYS_DIVORCE_DOCUMENT_GENERATOR}
-    MICROSERVICEKEYS_DRAFT_STORE_TESTS: ${MICROSERVICEKEYS_DRAFT_STORE_TESTS}
-    MICROSERVICEKEYS_JOBSCHEDULER: ${MICROSERVICEKEYS_JOBSCHEDULER}
-    MICROSERVICEKEYS_REFERENCE: ${MICROSERVICEKEYS_REFERENCE}
-    MICROSERVICEKEYS_SSCS: ${MICROSERVICEKEYS_SSCS}
-    MICROSERVICEKEYS_SSCS_BULKSCAN: ${MICROSERVICEKEYS_SSCS_BULKSCAN}
-    MICROSERVICEKEYS_SSCS_TRIBUNALS_CASE: ${MICROSERVICEKEYS_SSCS_TRIBUNALS_CASE}
-    MICROSERVICEKEYS_PROBATE_FRONTEND: ${MICROSERVICEKEYS_PROBATE_FRONTEND}
-    MICROSERVICEKEYS_PROBATE_BACKEND: ${MICROSERVICEKEYS_PROBATE_BACKEND}
-    MICROSERVICEKEYS_SEND_LETTER_CONSUMER: ${MICROSERVICEKEYS_SEND_LETTER_CONSUMER}
-    MICROSERVICEKEYS_SEND_LETTER_TESTS: ${MICROSERVICEKEYS_SEND_LETTER_TESTS}
-    MICROSERVICEKEYS_EM_GW: ${MICROSERVICEKEYS_EM_GW}
-    MICROSERVICEKEYS_FINREM_DOCUMENT_GENERATOR: ${MICROSERVICEKEYS_FINREM_DOCUMENT_GENERATOR}
-    MICROSERVICEKEYS_FINREM_NOTIFICATION_SERVICE: ${MICROSERVICEKEYS_FINREM_NOTIFICATION_SERVICE}
-    MICROSERVICEKEYS_FINREM_CASE_ORCHESTRATION: ${MICROSERVICEKEYS_FINREM_CASE_ORCHESTRATION}
-    MICROSERVICEKEYS_FINREM_PAYMENT_SERVICE: ${MICROSERVICEKEYS_FINREM_PAYMENT_SERVICE}
-    MICROSERVICEKEYS_FINREM_CCD_DATA_MIGRATOR: ${MICROSERVICEKEYS_FINREM_CCD_DATA_MIGRATOR}
-    MICROSERVICEKEYS_JUI_WEBAPP: ${MICROSERVICEKEYS_JUI_WEBAPP}
-    MICROSERVICEKEYS_PUI_WEBAPP: ${MICROSERVICEKEYS_PUI_WEBAPP}
-    MICROSERVICEKEYS_COH_COR: ${MICROSERVICEKEYS_COH_COR}
-    MICROSERVICEKEYS_BULK_SCAN_PROCESSOR: ${MICROSERVICEKEYS_BULK_SCAN_PROCESSOR}
-    MICROSERVICEKEYS_BULK_SCAN_PROCESSOR_TESTS: ${MICROSERVICEKEYS_BULK_SCAN_PROCESSOR_TESTS}
-    MICROSERVICEKEYS_BULK_SCAN_ORCHESTRATOR: ${MICROSERVICEKEYS_BULK_SCAN_ORCHESTRATOR}
-    MICROSERVICEKEYS_BAR_API: ${MICROSERVICEKEYS_BAR_API}
-    MICROSERVICEKEYS_API_GW: ${MICROSERVICEKEYS_API_GW}
-    MICROSERVICEKEYS_EM_ANNOTATION_APP: ${MICROSERVICEKEYS_EM_ANNOTATION_APP}
-    MICROSERVICEKEYS_EM_NPA_APP: ${MICROSERVICEKEYS_EM_NPA_APP}
-    MICROSERVICEKEYS_CET: ${MICROSERVICEKEYS_CET}
-    MICROSERVICEKEYS_CET_FRONTEND: ${MICROSERVICEKEYS_CET_FRONTEND}
-    MICROSERVICEKEYS_FPL_CASE_SERVICE: ${MICROSERVICEKEYS_FPL_CASE_SERVICE}
-    MICROSERVICEKEYS_IAC: ${MICROSERVICEKEYS_IAC}
-    MICROSERVICEKEYS_EM_STITCHING_API: ${MICROSERVICEKEYS_EM_STITCHING_API}
-    MICROSERVICEKEYS_EM_CCD_ORCHESTRATOR: ${MICROSERVICEKEYS_EM_CCD_ORCHESTRATOR}
-    MICROSERVICEKEYS_CCPAY_BUBBLE: ${MICROSERVICEKEYS_CCPAY_BUBBLE}
-    MICROSERVICEKEYS_DG_TEMPLATE_MANAGEMENT_API: ${MICROSERVICEKEYS_DG_TEMPLATE_MANAGEMENT_API}
-    MICROSERVICEKEYS_DG_DOCASSEMBLY_API: ${MICROSERVICEKEYS_DG_DOCASSEMBLY_API}
-    TEST_SERVICE_NAME : 'send_letter_tests'
-
   # Don't modify below here
   image: ${IMAGE_NAME}
   ingressHost: ${SERVICE_FQDN}

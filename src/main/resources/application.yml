@@ -21,3 +21,92 @@ rs256:
 spring:
   application:
     name: Service Auth Provider
+  cloud:
+    propertiesvolume:
+      paths: /mnt/secrets/microservicekey-cmcLegalFrontend,
+        /mnt/secrets/microservicekey-cmcClaimStore,
+        /mnt/secrets/microservicekey-divorce,
+        /mnt/secrets/microservicekey-divorce-frontend,
+        /mnt/secrets/microservicekey-divorceCcdSubmission,
+        /mnt/secrets/microservicekey-divorceCcdValidation,
+        /mnt/secrets/microservicekey-divorceDocumentUpload,
+        /mnt/secrets/microservicekey-divorceDocumentGenerator,
+        /mnt/secrets/microservicekey-draftStoreTests,
+        /mnt/secrets/microservicekey-platformJobScheduler,
+        /mnt/secrets/microservicekey-reference,
+        /mnt/secrets/microservicekey-sscs,
+        /mnt/secrets/microservicekey-sscs-bulkscan,
+        /mnt/secrets/microservicekey-sscs-tribunals-case,
+        /mnt/secrets/microservicekey-probate-frontend,
+        /mnt/secrets/microservicekey-probate-backend,
+        /mnt/secrets/microservicekey-send-letter-consumer,
+        /mnt/secrets/microservicekey-send-letter-tests,
+        /mnt/secrets/microservicekey-em-gw,
+        /mnt/secrets/microservicekey-finrem-document-generator,
+        /mnt/secrets/microservicekey-finrem-notification-service,
+        /mnt/secrets/microservicekey-finrem-case-orchestration,
+        /mnt/secrets/microservicekey-finrem-payment-service,
+        /mnt/secrets/microservicekey-finrem-ccd-data-migrator,
+        /mnt/secrets/microservicekey-jui-webapp,
+        /mnt/secrets/microservicekey-pui-webapp,
+        /mnt/secrets/microservicekey-coh-cor,
+        /mnt/secrets/microservicekey-bulk-scan-processor,
+        /mnt/secrets/microservicekey-bulk-scan-processor-tests,
+        /mnt/secrets/microservicekey-bulk-scan-orchestrator,
+        /mnt/secrets/microservicekey-bar-api,
+        /mnt/secrets/microservicekey-api-gw,
+        /mnt/secrets/microservicekey-em-annotation-app,
+        /mnt/secrets/microservicekey-em-npa-app,
+        /mnt/secrets/microservicekey-cet,
+        /mnt/secrets/microservicekey-cet-frontend,
+        /mnt/secrets/microservicekey-fpl-case-service,
+        /mnt/secrets/microservicekey-iac,
+        /mnt/secrets/microservicekey-em-stitching-api,
+        /mnt/secrets/microservicekey-em-ccd-orchestrator,
+        /mnt/secrets/microservicekey-ccpay-bubble,
+        /mnt/secrets/microservicekey-dg-template-management,
+        /mnt/secrets/microservicekey-dg-docassembly-api,
+      aliases:
+        microservicekey-cmcLegalFrontend: MICROSERVICEKEYS_CMC_LEGAL_FRONTEND
+        microservicekey-cmcClaimStore: MICROSERVICEKEYS_CMC_CLAIM_STORE
+        microservicekey-divorce: MICROSERVICEKEYS_DIVORCE
+        microservicekey-divorce-frontend: MICROSERVICEKEYS_DIVORCE_FRONTEND
+        microservicekey-divorceCcdSubmission: MICROSERVICEKEYS_DIVORCE_CCD_SUBMISSION
+        microservicekey-divorceCcdValidation: MICROSERVICEKEYS_DIVORCE_CCD_VALIDATION
+        microservicekey-divorceDocumentUpload: MICROSERVICEKEYS_DIVORCE_DOCUMENT_UPLOAD
+        microservicekey-divorceDocumentGenerator: MICROSERVICEKEYS_DIVORCE_DOCUMENT_GENERATOR
+        microservicekey-draftStoreTests: MICROSERVICEKEYS_DRAFT_STORE_TESTS
+        microservicekey-platformJobScheduler: MICROSERVICEKEYS_JOBSCHEDULER
+        microservicekey-reference: MICROSERVICEKEYS_REFERENCE
+        microservicekey-sscs: MICROSERVICEKEYS_SSCS
+        microservicekey-sscs-bulkscan: MICROSERVICEKEYS_SSCS_BULKSCAN
+        microservicekey-sscs-tribunals-case: MICROSERVICEKEYS_SSCS_TRIBUNALS_CASE
+        microservicekey-probate-frontend: MICROSERVICEKEYS_PROBATE_FRONTEND
+        microservicekey-probate-backend: MICROSERVICEKEYS_PROBATE_BACKEND
+        microservicekey-send-letter-consumer: MICROSERVICEKEYS_SEND_LETTER_CONSUMER
+        microservicekey-send-letter-tests: MICROSERVICEKEYS_SEND_LETTER_TESTS
+        microservicekey-em-gw: MICROSERVICEKEYS_EM_GW
+        microservicekey-finrem-document-generator: MICROSERVICEKEYS_FINREM_DOCUMENT_GENERATOR
+        microservicekey-finrem-notification-service: MICROSERVICEKEYS_FINREM_NOTIFICATION_SERVICE
+        microservicekey-finrem-case-orchestration: MICROSERVICEKEYS_FINREM_CASE_ORCHESTRATION
+        microservicekey-finrem-payment-service: MICROSERVICEKEYS_FINREM_PAYMENT_SERVICE
+        microservicekey-finrem-ccd-data-migrator: MICROSERVICEKEYS_FINREM_CCD_DATA_MIGRATOR
+        microservicekey-jui-webapp: MICROSERVICEKEYS_JUI_WEBAPP
+        microservicekey-pui-webapp: MICROSERVICEKEYS_PUI_WEBAPP
+        microservicekey-coh-cor: MICROSERVICEKEYS_COH_COR
+        microservicekey-bulk-scan-processor: MICROSERVICEKEYS_BULK_SCAN_PROCESSOR
+        microservicekey-bulk-scan-processor-tests: MICROSERVICEKEYS_BULK_SCAN_PROCESSOR_TESTS
+        microservicekey-bulk-scan-orchestrator: MICROSERVICEKEYS_BULK_SCAN_ORCHESTRATOR
+        microservicekey-bar-api: MICROSERVICEKEYS_BAR_API
+        microservicekey-api-gw: MICROSERVICEKEYS_API_GW
+        microservicekey-em-annotation-app: MICROSERVICEKEYS_EM_ANNOTATION_APP
+        microservicekey-em-npa-app: MICROSERVICEKEYS_EM_NPA_APP
+        microservicekey-cet: MICROSERVICEKEYS_CET
+        microservicekey-cet-frontend: MICROSERVICEKEYS_CET_FRONTEND
+        microservicekey-fpl-case-service: MICROSERVICEKEYS_FPL_CASE_SERVICE
+        microservicekey-iac: MICROSERVICEKEYS_IAC
+        microservicekey-em-stitching-api: MICROSERVICEKEYS_EM_STITCHING_API
+        microservicekey-em-ccd-orchestrator: MICROSERVICEKEYS_EM_CCD_ORCHESTRATOR
+        microservicekey-ccpay-bubble: MICROSERVICEKEYS_CCPAY_BUBBLE
+        microservicekey-dg-template-management: MICROSERVICEKEYS_DG_TEMPLATE_MANAGEMENT_API
+        microservicekey-dg-docassembly-api: MICROSERVICEKEYS_DG_DOCASSEMBLY_API
