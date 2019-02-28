@@ -36,7 +36,27 @@ For example, service named `test_service` would be configured like this:
     ...
   }
 ```
-
+* To make it work on AKS , Add the client service name (as in HTTP requests ) and Azure Key Vault secret created in the previous steps to [bootstrap.yaml](src/main/resources/bootstrap.yaml) . 
+A service **TEST_SERVICE** with secret key **microservicekey-test-service**  needs to be configured as below :
+    
+    ```
+    spring:
+      cloud:
+        propertiesvolume:
+          aliases:
+            s2s.microservicekey-test-service: microserviceKeys.test_service     
+    ```  
+    Note: **test_service** is lower cased in alias mapping, though its not mandatory. 
+    
+    Also, Add secret key to [values.template.yaml](charts/rpe-service-auth-provider/values.template.yaml) 
+    
+    ```
+          java:
+            keyVaults:
+              "s2s":
+                secrets:
+                  - microservicekey-test-service 
+    ```
 #### <a name="generating-secret"></a>Generating the microservice secret
 
 Here's a sample Java snippet to generate a microservice secret:
