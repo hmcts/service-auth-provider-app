@@ -4,13 +4,13 @@ java:
     "s2s":
       resourceGroup: rpe-service-auth-provider
       secrets:
-        - s2s.microservicekey-ccd-admin
-        - s2s.microservicekey-ccd-data
-        - s2s.microservicekey-ccd-definition
-        - s2s.microservicekey-ccd-definition-designer
-        - s2s.microservicekey-ccd-gw
-        - s2s.microservicekey-ccd-ps
-        - s2s.microservicekey-cmc
+        - microservicekey-ccd-admin
+        - microservicekey-ccd-data
+        - microservicekey-ccd-definition
+        - microservicekey-ccd-definition-designer
+        - microservicekey-ccd-gw
+        - microservicekey-ccd-ps
+        - microservicekey-cmc
         - microservicekey-cmcLegalFrontend
         - microservicekey-cmcClaimStore
         - microservicekey-divorce
