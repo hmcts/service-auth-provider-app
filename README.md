@@ -6,7 +6,7 @@
 
 This microservice is used to authenticate services across HMCTS.
 
-## Getting Started
+## Getting Started  
 
 ### Prerequisites
 - [JDK 8](https://java.com)
