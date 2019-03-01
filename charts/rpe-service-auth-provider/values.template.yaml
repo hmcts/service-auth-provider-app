@@ -1,0 +1,62 @@
+java:
+  applicationPort: 8489
+  keyVaults:
+    "s2s":
+      resourceGroup: rpe-service-auth-provider
+      secrets:
+        - microservicekey-ccd-admin
+        - microservicekey-ccd-data
+        - microservicekey-ccd-definition
+        - microservicekey-ccd-definition-designer
+        - microservicekey-ccd-gw
+        - microservicekey-ccd-ps
+        - microservicekey-cmc
+        - microservicekey-cmcLegalFrontend
+        - microservicekey-cmcClaimStore
+        - microservicekey-divorce
+        - microservicekey-divorce-frontend
+        - microservicekey-divorceCcdSubmission
+        - microservicekey-divorceCcdValidation
+        - microservicekey-divorceDocumentUpload
+        - microservicekey-divorceDocumentGenerator
+        - microservicekey-draftStoreTests
+        - microservicekey-platformJobScheduler
+        - microservicekey-reference
+        - microservicekey-sscs
+        - microservicekey-sscs-bulkscan
+        - microservicekey-sscs-tribunals-case
+        - microservicekey-probate-frontend
+        - microservicekey-probate-backend
+        - microservicekey-send-letter-consumer
+        - microservicekey-send-letter-tests
+        - microservicekey-em-gw
+        - microservicekey-finrem-document-generator
+        - microservicekey-finrem-notification-service
+        - microservicekey-finrem-case-orchestration
+        - microservicekey-finrem-payment-service
+        - microservicekey-finrem-ccd-data-migrator
+        - microservicekey-jui-webapp
+        - microservicekey-pui-webapp
+        - microservicekey-coh-cor
+        - microservicekey-bulk-scan-processor
+        - microservicekey-bulk-scan-processor-tests
+        - microservicekey-bulk-scan-orchestrator
+        - microservicekey-bar-api
+        - microservicekey-api-gw
+        - microservicekey-em-annotation-app
+        - microservicekey-em-npa-app
+        - microservicekey-cet
+        - microservicekey-cet-frontend
+        - microservicekey-fpl-case-service
+        - microservicekey-iac
+        - microservicekey-em-stitching-api
+        - microservicekey-em-ccd-orchestrator
+        - microservicekey-ccpay-bubble
+        - microservicekey-dg-template-management
+        - microservicekey-dg-docassembly-api
+  environment:
+    #JWTKEY : ${JWTKEY}
+  # Don't modify below here
+  image: ${IMAGE_NAME}
+  ingressHost: ${SERVICE_FQDN}
+

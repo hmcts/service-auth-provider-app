@@ -1,7 +1,11 @@
 #!groovy
 
-List<LinkedHashMap<String, Object>> secrets = [
-  secret('microservicekey-send-letter-tests', 'TEST_SERVICE_SECRET')
+def secrets = [
+    's2s-${env}':
+        [
+            secret('jwt-key', 'JWTKEY'),
+            secret('microservicekey-send-letter-tests', 'TEST_SERVICE_SECRET')
+        ]
 ]
 
 static LinkedHashMap<String, Object> secret(String secretName, String envVar) {
@@ -20,7 +24,9 @@ def product = "rpe"
 def app = "service-auth-provider"
 
 withPipeline(type, product, app) {
+    env.TEST_SERVICE_NAME =  "send_letter_tests"
     enableSlackNotifications('#rpe-build-notices')
     loadVaultSecrets(secrets)
     enableDockerBuild()
+    installCharts()
 }
