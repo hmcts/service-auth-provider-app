@@ -54,6 +54,7 @@ java:
         - microservicekey-ccpay-bubble
         - microservicekey-dg-template-management
         - microservicekey-dg-docassembly-api
+        - microservicekey-ethos-repl-service
   environment:
     #JWTKEY : ${JWTKEY}
   # Don't modify below here

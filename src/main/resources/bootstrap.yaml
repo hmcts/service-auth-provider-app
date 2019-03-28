@@ -53,3 +53,4 @@ spring:
         s2s.microservicekey-ccpay-bubble: microserviceKeys.ccpay_bubble
         s2s.microservicekey-dg-template-management: microserviceKeys.dg_template_management_api
         s2s.microservicekey-dg-docassembly-api: microserviceKeys.dg_docassembly_api
+        s2s.microservicekey-ethos-repl-service: microserviceKeys.ethos_repl_service

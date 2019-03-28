@@ -66,6 +66,7 @@ locals {
     "CCPAY_BUBBLE"                = "microservicekey-ccpay-bubble"
     "DG_TEMPLATE_MANAGEMENT_API"  = "microservicekey-dg-template-management"
     "DG_DOCASSEMBLY_API"          = "microservicekey-dg-docassembly-api"
+    "ETHOS_REPL_SERVICE"          = "microservicekey-ethos-repl-service"
   }
 
   microservice_secret_names = "${values(local.microservice_key_names)}"
