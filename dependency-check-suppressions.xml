@@ -41,4 +41,10 @@
         <cve>CVE-2015-2156</cve>
     </suppress>
 
+    <suppress>
+        <notes><![CDATA[ https://github.com/jeremylong/DependencyCheck/issues/1827 ]]></notes>
+        <gav regex="true">^org\.springframework.*:*:.*$</gav>
+        <cve>CVE-2018-1258</cve>
+    </suppress>
+
 </suppressions>
