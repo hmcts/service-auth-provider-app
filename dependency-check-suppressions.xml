@@ -39,6 +39,7 @@
         <gav regex="true">^io\.netty:netty-tcnative-boringssl-static:.*</gav>
         <cve>CVE-2014-3488</cve>
         <cve>CVE-2015-2156</cve>
+        <cve>CVE-2018-1258</cve>
     </suppress>
 
 </suppressions>
