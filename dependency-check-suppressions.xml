@@ -39,6 +39,15 @@
         <gav regex="true">^io\.netty:netty-tcnative-boringssl-static:.*</gav>
         <cve>CVE-2014-3488</cve>
         <cve>CVE-2015-2156</cve>
+        <cve>CVE-2018-1258</cve>
+    </suppress>
+    <suppress>
+        <notes><![CDATA[
+     Suppressing as it seems a false positive
+   ]]></notes>
+        <gav regex="true">^org\.springframework\.security:spring-security-crypto:5.1.3.RELEASE</gav>
+        <cpe>cpe:/a:pivotal_software:spring_security</cpe>
+        <cve>CVE-2018-1258</cve>
     </suppress>
 
 </suppressions>
