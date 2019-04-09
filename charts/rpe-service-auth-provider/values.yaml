@@ -54,9 +54,4 @@ java:
         - microservicekey-ccpay-bubble
         - microservicekey-dg-template-management
         - microservicekey-dg-docassembly-api
-  environment:
-    #JWTKEY : ${JWTKEY}
-  # Don't modify below here
-  image: ${IMAGE_NAME}
-  ingressHost: ${SERVICE_FQDN}
-
+  image: 'https://hmcts.azurecr.io/hmcts/service-auth-provider-app:latest'
