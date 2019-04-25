@@ -47,7 +47,7 @@ A service **TEST_SERVICE** with secret key **microservicekey-test-service**  nee
             s2s.microservicekey-test-service: microserviceKeys.test_service     
     ```  
     Note: **test_service** is lower cased in alias mapping, though its not mandatory. 
-    Also, Add secret key to [values.template.yaml](charts/rpe-service-auth-provider/values.template.yaml) 
+    Also, Add secret key to [values.yaml](charts/rpe-service-auth-provider/values.yaml) 
     ```
     java:
       keyVaults:
