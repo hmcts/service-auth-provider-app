@@ -54,4 +54,6 @@ java:
         - microservicekey-ccpay-bubble
         - microservicekey-dg-template-management
         - microservicekey-dg-docassembly-api
+        - microservicekey-rd-professional-api
+        - microservicekey-rd-user-profile-api
   image: 'https://hmcts.azurecr.io/hmcts/service-auth-provider-app:latest'
