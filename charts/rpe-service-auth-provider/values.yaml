@@ -4,6 +4,7 @@ java:
     "s2s":
       resourceGroup: rpe-service-auth-provider
       secrets:
+        - jwt-key
         - microservicekey-ccd-admin
         - microservicekey-ccd-data
         - microservicekey-ccd-definition
