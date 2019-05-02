@@ -12,6 +12,7 @@ spring:
         s2s.microservicekey-cmc: microserviceKeys.cmc
         s2s.microservicekey-cmcLegalFrontend: microserviceKeys.cmc_legal_frontend
         s2s.microservicekey-cmcClaimStore: microserviceKeys.cmc_claim_store
+        s2s.microservicekey-cmc-claim-external-api: microserviceKeys.cmc_claim_external_api
         s2s.microservicekey-divorce: microserviceKeys.drivorce
         s2s.microservicekey-divorce-frontend: microserviceKeys.divorce_frontend
         s2s.microservicekey-divorceCcdSubmission: microserviceKeys.divorce_ccd_submission

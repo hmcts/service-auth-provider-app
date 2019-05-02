@@ -25,6 +25,7 @@ locals {
     "CMC"                         = "microservicekey-cmc"
     "CMC_LEGAL_FRONTEND"          = "microservicekey-cmcLegalFrontend"
     "CMC_CLAIM_STORE"             = "microservicekey-cmcClaimStore"
+    "CMC_CLAIM_EXTERNAL_API"      = "microservicekey-cmc-claim-external-api"
     "DIVORCE"                     = "microservicekey-divorce"
     "DIVORCE_FRONTEND"            = "microservicekey-divorce-frontend"
     "DIVORCE_CCD_SUBMISSION"      = "microservicekey-divorceCcdSubmission"

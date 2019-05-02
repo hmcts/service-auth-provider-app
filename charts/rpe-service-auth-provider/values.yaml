@@ -13,6 +13,7 @@ java:
         - microservicekey-cmc
         - microservicekey-cmcLegalFrontend
         - microservicekey-cmcClaimStore
+        - microservicekey-cmc-claim-external-api
         - microservicekey-divorce
         - microservicekey-divorce-frontend
         - microservicekey-divorceCcdSubmission
