@@ -3,6 +3,7 @@ spring:
     propertiesvolume:
       paths: /mnt/secrets/s2s
       aliases:
+        s2s.jwt-key: JWTKEY
         s2s.microservicekey-ccd-admin: microserviceKeys.ccd_admin
         s2s.microservicekey-ccd-data: microserviceKeys.ccd_data
         s2s.microservicekey-ccd-definition: microserviceKeys.ccd_definition
