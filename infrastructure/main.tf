@@ -81,7 +81,6 @@ locals {
   core_app_settings = {
     JWT_KEY                                     = "${data.azurerm_key_vault_secret.jwt_key.value}"
     TESTING_SUPPORT_ENABLED                     = "${var.testing_support}"
-    TMP_DUMMY_VAR                               = "remove me"
   }
 
   sku_size = "${var.env == "prod" || var.env == "sprod" || var.env == "aat" ? "I2" : "I1"}"
