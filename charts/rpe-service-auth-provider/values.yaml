@@ -58,4 +58,5 @@ java:
         - microservicekey-dg-docassembly-api
         - microservicekey-rd-professional-api
         - microservicekey-rd-user-profile-api
+        - microservicekey-ethos-repl-service
   image: 'https://hmcts.azurecr.io/hmcts/service-auth-provider-app:latest'
