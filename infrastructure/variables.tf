@@ -28,10 +28,6 @@ variable "common_tags" {
   type = "map"
 }
 
-variable "vault_section" {
-  default     = "test"
-}
-
 variable "ilbIp" {}
 
 variable "tenant_id" {}
