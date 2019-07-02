@@ -70,6 +70,7 @@ locals {
     "RD_PROFESSIONAL_API"         = "microservicekey-rd-professional-api"
     "RD_USER_PROFILE_API"         = "microservicekey-rd-user-profile-api"
     "ETHOS_REPL_SERVICE"          = "microservicekey-ethos-repl-service"
+    "EMPLOYMENT_TRIBUNALS"        = "microservice-employment-tribunals"
   }
 
   microservice_secret_names = "${values(local.microservice_key_names)}"

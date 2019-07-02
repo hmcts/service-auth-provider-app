@@ -58,3 +58,4 @@ spring:
         s2s.microservicekey-rd-professional-api: microserviceKeys.rd_professional_api
         s2s.microservicekey-rd-user-profile-api: microserviceKeys.rd_user_profile_api
         s2s.microservicekey-ethos-repl-service: microserviceKeys.ethos_repl_service
+        s2s.microservicekey-employment-tribunals: microserviceKeys.employment_tribunals
