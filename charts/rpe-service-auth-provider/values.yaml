@@ -43,6 +43,7 @@ java:
         - microservicekey-bulk-scan-processor
         - microservicekey-bulk-scan-processor-tests
         - microservicekey-bulk-scan-orchestrator
+        - microservicekey-bulk-scan-ccd-sample-app
         - microservicekey-bar-api
         - microservicekey-api-gw
         - microservicekey-em-annotation-app
