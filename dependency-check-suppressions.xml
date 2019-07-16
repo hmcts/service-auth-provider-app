@@ -48,4 +48,12 @@
         <cve>CVE-2018-1258</cve>
     </suppress>
 
+    <suppress>
+        <notes><![CDATA[
+        test only dependency pulled in by rest-assured
+   ]]></notes>
+        <packageUrl regex="true">^pkg:maven/org\.apache\.sling/org\.apache\.sling\.javax\.activation@.*$</packageUrl>
+        <cve>CVE-2016-5394</cve>
+        <cve>CVE-2016-6798</cve>
+    </suppress>
 </suppressions>
