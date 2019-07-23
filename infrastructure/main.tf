@@ -72,7 +72,7 @@ locals {
     "RD_USER_PROFILE_API"         = "microservicekey-rd-user-profile-api"
     "ETHOS_REPL_SERVICE"          = "microservicekey-ethos-repl-service"
     "EMPLOYMENT_TRIBUNALS"        = "microservicekey-employment-tribunals"
-    "AM_ACCESSMGMT_API"         = "microservicekey-am-accessmgmt-api"
+    "AM_ACCESSMGMT_API"           = "microservicekey-am-accessmgmt-api"
   }
 
   microservice_secret_names = "${values(local.microservice_key_names)}"
