@@ -61,4 +61,5 @@ java:
         - microservicekey-rd-user-profile-api
         - microservicekey-ethos-repl-service
         - microservicekey-employment-tribunals
+        - microservicekey-am-accessmgmt-api
   image: 'https://hmcts.azurecr.io/hmcts/service-auth-provider-app:latest'
