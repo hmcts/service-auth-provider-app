@@ -55,6 +55,7 @@ locals {
     "BULK_SCAN_PROCESSOR_TESTS"   = "microservicekey-bulk-scan-processor-tests"
     "BULK_SCAN_ORCHESTRATOR"      = "microservicekey-bulk-scan-orchestrator"
     "BULK_SCAN_CCD_SAMPLE_APP"    = "microservicekey-bulk-scan-ccd-sample-app"
+    "BULK_SCAN_SAMPLE_APP_TESTS"  = "microservicekey-bulk-scan-sample-app-tests"
     "BAR_API"                     = "microservicekey-bar-api"
     "API_GW"                      = "microservicekey-api-gw"
     "EM_ANNOTATION_APP"           = "microservicekey-em-annotation-app"
