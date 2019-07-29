@@ -74,6 +74,7 @@ locals {
     "ETHOS_REPL_SERVICE"          = "microservicekey-ethos-repl-service"
     "EMPLOYMENT_TRIBUNALS"        = "microservicekey-employment-tribunals"
     "AM_ACCESSMGMT_API"           = "microservicekey-am-accessmgmt-api"
+    "XUI_WEBAPP"                  = "microservicekey-xui-webapp"
   }
 
   microservice_secret_names = "${values(local.microservice_key_names)}"
@@ -95,6 +96,11 @@ data "azurerm_key_vault_secret" "microservice_keys" {
   name      = "${local.microservice_secret_names[count.index]}"
   vault_uri = "${local.vault_uri}"
   count     = "${length(local.microservice_key_names)}"
+}
+
+data "azurerm_key_vault_secret" "s2s_key" {
+  name      = "microservicekey-xui-webapp"
+  vault_uri = "https://s2s-${var.env}.vault.azure.net/"
 }
 
 data "azurerm_key_vault_secret" "jwt_key" {

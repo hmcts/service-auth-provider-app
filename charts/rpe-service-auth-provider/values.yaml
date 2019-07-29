@@ -39,6 +39,7 @@ java:
         - microservicekey-finrem-ccd-data-migrator
         - microservicekey-jui-webapp
         - microservicekey-pui-webapp
+        - microservicekey-xui-webapp
         - microservicekey-coh-cor
         - microservicekey-bulk-scan-processor
         - microservicekey-bulk-scan-processor-tests
