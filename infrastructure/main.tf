@@ -98,11 +98,6 @@ data "azurerm_key_vault_secret" "microservice_keys" {
   count     = "${length(local.microservice_key_names)}"
 }
 
-data "azurerm_key_vault_secret" "s2s_key" {
-  name      = "microservicekey-xui-webapp"
-  vault_uri = "https://s2s-${var.env}.vault.azure.net/"
-}
-
 data "azurerm_key_vault_secret" "jwt_key" {
   name      = "jwt-key"
   vault_uri = "${local.vault_uri}"
