@@ -62,3 +62,4 @@ spring:
         s2s.microservicekey-ethos-repl-service: microserviceKeys.ethos_repl_service
         s2s.microservicekey-employment-tribunals: microserviceKeys.employment_tribunals
         s2s.microservicekey-am-accessmgmt-api: microserviceKeys.am_accessmgmt_api
+        s2s.microservicekey-xui-webapp: microserviceKeys.xui_webapp

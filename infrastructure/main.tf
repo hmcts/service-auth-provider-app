@@ -74,6 +74,7 @@ locals {
     "ETHOS_REPL_SERVICE"          = "microservicekey-ethos-repl-service"
     "EMPLOYMENT_TRIBUNALS"        = "microservicekey-employment-tribunals"
     "AM_ACCESSMGMT_API"           = "microservicekey-am-accessmgmt-api"
+    "XUI_WEBAPP"                  = "microservicekey-xui-webapp"
   }
 
   microservice_secret_names = "${values(local.microservice_key_names)}"
