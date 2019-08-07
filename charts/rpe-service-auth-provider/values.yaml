@@ -64,4 +64,5 @@ java:
         - microservicekey-ethos-repl-service
         - microservicekey-employment-tribunals
         - microservicekey-am-accessmgmt-api
+        - microservicekey-ctsc-work-allocation
   image: 'https://hmcts.azurecr.io/hmcts/service-auth-provider-app:latest'
