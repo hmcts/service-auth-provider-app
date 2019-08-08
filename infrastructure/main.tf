@@ -75,6 +75,7 @@ locals {
     "EMPLOYMENT_TRIBUNALS"        = "microservicekey-employment-tribunals"
     "AM_ACCESSMGMT_API"           = "microservicekey-am-accessmgmt-api"
     "XUI_WEBAPP"                  = "microservicekey-xui-webapp"
+    "CTSC_WORK_ALLOCATION"        = "microservicekey-ctsc-work-allocation"
   }
 
   microservice_secret_names = "${values(local.microservice_key_names)}"
