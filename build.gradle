@@ -149,9 +149,10 @@ task functional(type: Test, group: 'Verification') {
   classpath = sourceSets.functionalTest.runtimeClasspath
 }
 
-task smoke(type: Test) {
-  dependsOn functional
+task smoke(type: Test, group: 'Verification') {
   description = "Runs Smoke Tests"
+  testClassesDirs = sourceSets.functionalTest.output.classesDirs
+  classpath = sourceSets.functionalTest.runtimeClasspath
 }
 
 jacocoTestReport {
