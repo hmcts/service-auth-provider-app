@@ -35,7 +35,7 @@ public class JwtHS512ToolTest {
         // then
         assertThat(jws.getHeader().getAlgorithm()).isEqualTo(SignatureAlgorithm.HS512.getValue());
         assertThat(jws.getBody().getSubject()).isEqualTo("cmc");
-        assertThat(jws.getBody().getExpiration()).isCloseTo(Date.from(now().plus(Duration.ofSeconds(TTL))), 1_000);
+        assertThat(jws.getBody().getExpiration()).isCloseTo(Date.from(now().plus(Duration.ofSeconds(TTL))), 2_000);
         assertThat(jws.getSignature()).isNotEmpty();
     }
 
