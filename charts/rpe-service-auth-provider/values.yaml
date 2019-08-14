@@ -65,4 +65,4 @@ java:
         - microservicekey-employment-tribunals
         - microservicekey-am-accessmgmt-api
         - microservicekey-ctsc-work-allocation
-  image: 'https://hmcts.azurecr.io/hmcts/service-auth-provider-app:latest'
+  image: 'https://hmctspublic.azurecr.io/rpe/service-auth-provider:latest'
