@@ -45,3 +45,7 @@ variable "testing_support" {
   default = "false"
   type = "string"
 }
+
+variable "managed_identity_object_id" {
+  default = ""
+}
