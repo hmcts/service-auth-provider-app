@@ -87,7 +87,7 @@ ext["rest-assured.version"] = '4.0.0'
 dependencies {
   compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: versions.springBoot
   compile group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: versions.springBoot
-  compile group: 'com.google.guava', name: 'guava', version: '28.0-jre'
+  compile group: 'com.google.guava', name: 'guava', version: '28.1-jre'
   compile group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
   compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.9'
   compile group: 'com.warrenstrange', name: 'googleauth', version: '1.2.0'
