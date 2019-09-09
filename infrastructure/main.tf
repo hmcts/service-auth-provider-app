@@ -105,7 +105,7 @@ data "azurerm_key_vault_secret" "jwt_key" {
 }
 
 module "s2s-api" {
-  source       = "git@github.com:hmcts/cnp-module-webapp.git?ref=master"
+  source       = "git@github.com:hmcts/cnp-module-webapp?ref=master"
   product      = "${var.product}-${var.component}"
   location     = "${var.location}"
   env          = "${var.env}"
