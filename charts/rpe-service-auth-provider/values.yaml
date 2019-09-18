@@ -1,5 +1,6 @@
 java:
   applicationPort: 8489
+  aadIdentityName: rpe
   keyVaults:
     "s2s":
       resourceGroup: rpe-service-auth-provider
