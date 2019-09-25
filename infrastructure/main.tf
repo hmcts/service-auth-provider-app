@@ -3,16 +3,16 @@ provider "azurerm" {
 }
 
 locals {
-  is_preview          = "${var.env == "preview" || var.env == "spreview"}"
+  is_preview = "${var.env == "preview" || var.env == "spreview"}"
 
   # environment whose vault should be used by preview
-  vault_env           = "${var.env == "preview" ? "aat" : var.env == "spreview" ? "saat" : var.env }"
+  vault_env = "${var.env == "preview" ? "aat" : var.env == "spreview" ? "saat" : var.env }"
 
-  preview_vault_uri   = "https://s2s-${local.vault_env}.vault.azure.net/"
-  vault_uri           = "${local.is_preview ? local.preview_vault_uri : module.key-vault.key_vault_uri}"
+  preview_vault_uri = "https://s2s-${local.vault_env}.vault.azure.net/"
+  vault_uri         = "${local.is_preview ? local.preview_vault_uri : module.key-vault.key_vault_uri}"
 
-  preview_vault_name  = "s2s-${local.vault_env}"
-  vault_name          = "${local.is_preview ? local.preview_vault_name : module.key-vault.key_vault_name}"
+  preview_vault_name = "s2s-${local.vault_env}"
+  vault_name         = "${local.is_preview ? local.preview_vault_name : module.key-vault.key_vault_name}"
 
   # name of the service -> name of the vault secret holding the key
   microservice_key_names = {
@@ -86,8 +86,8 @@ locals {
                                 )}"
 
   core_app_settings = {
-    JWT_KEY                                     = "${data.azurerm_key_vault_secret.jwt_key.value}"
-    TESTING_SUPPORT_ENABLED                     = "${var.testing_support}"
+    JWT_KEY                 = "${data.azurerm_key_vault_secret.jwt_key.value}"
+    TESTING_SUPPORT_ENABLED = "${var.testing_support}"
   }
 
   sku_size = "${var.env == "prod" || var.env == "sprod" || var.env == "aat" ? "I2" : "I1"}"
@@ -104,21 +104,20 @@ data "azurerm_key_vault_secret" "jwt_key" {
   vault_uri = "${local.vault_uri}"
 }
 
-module "s2s-api" {
-  source       = "git@github.com:hmcts/cnp-module-webapp?ref=master"
-  product      = "${var.product}-${var.component}"
-  location     = "${var.location}"
-  env          = "${var.env}"
-  ilbIp        = "${var.ilbIp}"
-  subscription = "${var.subscription}"
-  capacity     = "${var.capacity}"
-  common_tags  = "${var.common_tags}"
+resource "azurerm_resource_group" "rg" {
+  name     = "${var.product}-${var.component}-${var.env}"
+  location = "${var.location}"
 
-  app_settings = "${merge(local.core_app_settings, local.microservice_key_settings)}"
+  tags = "${var.common_tags}"
+}
 
-  asp_name      = "${var.product}-${var.component}-${var.env}"
-  asp_rg        = "${var.product}-${var.component}-${var.env}"
-  instance_size = "${local.sku_size}"
+resource "azurerm_application_insights" "appinsights" {
+  name                = "${var.product}-${var.component}-appinsights-${var.env}"
+  location            = "${var.appinsights_location}"
+  resource_group_name = "${azurerm_resource_group.rg.name}"
+  application_type    = "Web"
+
+  tags = "${var.common_tags}"
 }
 
 module "key-vault" {
@@ -127,7 +126,8 @@ module "key-vault" {
   env                 = "${var.env}"
   tenant_id           = "${var.tenant_id}"
   object_id           = "${var.jenkins_AAD_objectId}"
-  resource_group_name = "${module.s2s-api.resource_group_name}"
+  resource_group_name = "${azurerm_resource_group.rg.name}"
+
   # dcd_reform_dev_logs group object ID
   product_group_object_id = "70de400b-4f47-4f25-a4f0-45e1ee4e4ae3"
   common_tags             = "${var.common_tags}"
