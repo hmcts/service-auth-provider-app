@@ -1,9 +1,9 @@
 variable "product" {
-  type    = "string"
+  type = "string"
 }
 
 variable "component" {
-  type    = "string"
+  type = "string"
 }
 
 variable "location" {
@@ -11,24 +11,13 @@ variable "location" {
   default = "UK South"
 }
 
-variable "server_port" {
-  type    = "string"
-  default = "8080"
-}
-
 variable "env" {
   type = "string"
-}
-
-variable "capacity" {
-  default = "1"
 }
 
 variable "common_tags" {
   type = "map"
 }
-
-variable "ilbIp" {}
 
 variable "tenant_id" {}
 
@@ -43,9 +32,15 @@ variable "subscription" {
 
 variable "testing_support" {
   default = "false"
-  type = "string"
+  type    = "string"
 }
 
 variable "managed_identity_object_id" {
   default = ""
+}
+
+variable "appinsights_location" {
+  type        = "string"
+  default     = "West Europe"
+  description = "Location for Application Insights"
 }
