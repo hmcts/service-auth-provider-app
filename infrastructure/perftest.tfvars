@@ -1,2 +1,2 @@
-managed_identity_object_id="7d360f2b-a0ca-4fd8-96c3-34b17f5dca55"
+managed_identity_object_id="6fa41c93-bc03-442f-8a0c-2f008594ae5c"
 testing_support = "true"
