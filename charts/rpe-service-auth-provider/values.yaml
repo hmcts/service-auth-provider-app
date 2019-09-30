@@ -45,6 +45,7 @@ java:
         - microservicekey-bulk-scan-processor
         - microservicekey-bulk-scan-processor-tests
         - microservicekey-bulk-scan-orchestrator
+        - microservicekey-bulk-scan-payment-processor
         - microservicekey-bulk-scan-ccd-sample-app
         - microservicekey-bulk-scan-sample-app-tests
         - microservicekey-bar-api

@@ -42,6 +42,7 @@ spring:
         s2s.microservicekey-bulk-scan-processor: microserviceKeys.bulk_scan_processor
         s2s.microservicekey-bulk-scan-processor-tests: microserviceKeys.bulk_scan_processor_tests
         s2s.microservicekey-bulk-scan-orchestrator: microserviceKeys.bulk_scan_orchestrator
+        s2s.microservicekey-bulk-scan-payment-processorr: microserviceKeys.bulk_scan_payment_processor
         s2s.microservicekey-bulk-scan-ccd-sample-app: microserviceKeys.bulk_scan_ccd_sample_app
         s2s.microservicekey-bulk-scan-sample-app-tests: microserviceKeys.bulk_scan_sample_app_tests
         s2s.microservicekey-bar-api: microserviceKeys.bar_api
