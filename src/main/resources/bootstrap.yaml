@@ -5,6 +5,7 @@ spring:
       aliases:
         s2s.jwt-key: JWTKEY
         s2s.microservicekey-ccd-admin: microserviceKeys.ccd_admin
+        s2s.microservicekey-ccd-case-document-am-api: microserviceKeys.ccd_case_document_am_api
         s2s.microservicekey-ccd-data: microserviceKeys.ccd_data
         s2s.microservicekey-ccd-definition: microserviceKeys.ccd_definition
         s2s.microservicekey-ccd-definition-designer: microserviceKeys.ccd_definition_designer
