@@ -72,6 +72,7 @@ locals {
     "DG_DOCASSEMBLY_API"          = "microservicekey-dg-docassembly-api"
     "RD_PROFESSIONAL_API"         = "microservicekey-rd-professional-api"
     "RD_USER_PROFILE_API"         = "microservicekey-rd-user-profile-api"
+    "RD_JUDICIAL_API"             = "microservicekey-rd-judicial-api"
     "ETHOS_REPL_SERVICE"          = "microservicekey-ethos-repl-service"
     "EMPLOYMENT_TRIBUNALS"        = "microservicekey-employment-tribunals"
     "AM_ACCESSMGMT_API"           = "microservicekey-am-accessmgmt-api"
