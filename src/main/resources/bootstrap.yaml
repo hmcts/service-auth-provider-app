@@ -66,3 +66,4 @@ spring:
         s2s.microservicekey-am-accessmgmt-api: microserviceKeys.am_accessmgmt_api
         s2s.microservicekey-xui-webapp: microserviceKeys.xui_webapp
         s2s.microservicekey-ctsc-work-allocation: microserviceKeys.ctsc_work_allocation
+        s2s.microservicekey-rd-judicial-api: microserviceKeys.rd_judicial_api
