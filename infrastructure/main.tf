@@ -17,6 +17,7 @@ locals {
   # name of the service -> name of the vault secret holding the key
   microservice_key_names = {
     "CCD_ADMIN"                   = "microservicekey-ccd-admin"
+    "CCD_CASE_DOCUMENT_AM_API"    = "microservicekey-ccd-case-document-am-api"
     "CCD_DATA"                    = "microservicekey-ccd-data"
     "CCD_DEFINITION"              = "microservicekey-ccd-definition"
     "CCD_DEFINITION_DESIGNER"     = "microservicekey-ccd-definition-designer"
