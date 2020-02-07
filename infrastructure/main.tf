@@ -3,16 +3,11 @@ provider "azurerm" {
 }
 
 locals {
-  is_preview = "${var.env == "preview" || var.env == "spreview"}"
-
   # environment whose vault should be used by preview
-  vault_env = "${var.env == "preview" ? "aat" : var.env == "spreview" ? "saat" : var.env }"
+  vault_env = "${var.env}"
 
-  preview_vault_uri = "https://s2s-${local.vault_env}.vault.azure.net/"
-  vault_uri         = "${local.is_preview ? local.preview_vault_uri : module.key-vault.key_vault_uri}"
-
-  preview_vault_name = "s2s-${local.vault_env}"
-  vault_name         = "${local.is_preview ? local.preview_vault_name : module.key-vault.key_vault_name}"
+  vault_uri         = "${module.key-vault.key_vault_uri}"
+  vault_name         = "${module.key-vault.key_vault_name}"
 
   # name of the service -> name of the vault secret holding the key
   microservice_key_names = {
