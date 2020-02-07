@@ -7,7 +7,7 @@ java:
       secrets:
         - jwt-key
         - microservicekey-ccd-admin
-        - microserviceKey-ccd-case-document-am-api
+        - microservicekey-ccd-case-document-am-api
         - microservicekey-ccd-data
         - microservicekey-ccd-definition
         - microservicekey-ccd-definition-designer
