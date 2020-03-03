@@ -74,6 +74,7 @@ locals {
     "AM_ACCESSMGMT_API"           = "microservicekey-am-accessmgmt-api"
     "XUI_WEBAPP"                  = "microservicekey-xui-webapp"
     "CTSC_WORK_ALLOCATION"        = "microservicekey-ctsc-work-allocation"
+    "ADOPTION_BACKEND"            = "microservicekey-adoption-backend"
   }
 
   microservice_secret_names = "${values(local.microservice_key_names)}"
