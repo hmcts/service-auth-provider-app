@@ -68,3 +68,4 @@ spring:
         s2s.microservicekey-ctsc-work-allocation: microserviceKeys.ctsc_work_allocation
         s2s.microservicekey-rd-judicial-api: microserviceKeys.rd_judicial_api
         s2s.microservicekey-adoption-backend: microserviceKeys.adoption_backend
+        s2s.microservicekey-payment-app: microserviceKeys.payment_app
