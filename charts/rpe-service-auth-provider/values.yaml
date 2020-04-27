@@ -70,5 +70,6 @@ java:
         - microservicekey-ctsc-work-allocation
         - microservicekey-rd-judicial-api
         - microservicekey-adoption-backend
+        - microservicekey-payment-app
   image: 'hmctspublic.azurecr.io/rpe/service-auth-provider:latest'
   ingressHost: rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal

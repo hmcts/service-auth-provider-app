@@ -75,6 +75,7 @@ locals {
     "XUI_WEBAPP"                  = "microservicekey-xui-webapp"
     "CTSC_WORK_ALLOCATION"        = "microservicekey-ctsc-work-allocation"
     "ADOPTION_BACKEND"            = "microservicekey-adoption-backend"
+    "PAYMENT_APP"                = "microservicekey-payment-app"
   }
 
   microservice_secret_names = "${values(local.microservice_key_names)}"
