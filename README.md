@@ -25,17 +25,6 @@ In order to setup Service Auth Provider to work with a client service, you need 
 This has to be done in each environment the service is going to be deployed to. Service Auth Provider will use that secret
 for validating OTPs. It has to be a BASE32-encoded sequence of ten random bytes (16 characters after encoding). By convention,
 the Azure Key Vault secret's name should follow this format: `microservicekey-{service-name}`. [Here's](#generating-secret) how to generate it.
-* Add the client service to `local.microservice_key_names` map in [main.tf](infrastructure/main.tf). The key has to be
-the service name (as in HTTP requests) and the value must be the name of the Azure Key Vault secret created in the previous step.
-For example, service named `test_service` would be configured like this:
-
-    ```
-      microservice_key_names = {
-        ...
-        "TEST_SERVICE" = "microservicekey-test-service"
-        ...
-      }
-    ```
 * To make it work on AKS , Add the client service name (as in HTTP requests ) and Azure Key Vault secret created in the previous steps to [bootstrap.yaml](src/main/resources/bootstrap.yaml) . 
 A service **TEST_SERVICE** with secret key **microservicekey-test-service**  needs to be configured as below :
     
