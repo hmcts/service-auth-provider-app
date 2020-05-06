@@ -69,3 +69,4 @@ spring:
         s2s.microservicekey-rd-judicial-api: microserviceKeys.rd_judicial_api
         s2s.microservicekey-adoption-backend: microserviceKeys.adoption_backend
         s2s.microservicekey-payment-app: microserviceKeys.payment_app
+        s2s.microservicekey-pcq-consolidation-service: microserviceKeys.pcq_consolidation_service
