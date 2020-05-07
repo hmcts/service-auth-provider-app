@@ -65,6 +65,7 @@ java:
         - microservicekey-rd-professional-api
         - microservicekey-rd-user-profile-api
         - microservicekey-ethos-repl-service
+        - microservicekey-ecm-consumer
         - microservicekey-employment-tribunals
         - microservicekey-am-accessmgmt-api
         - microservicekey-ctsc-work-allocation
