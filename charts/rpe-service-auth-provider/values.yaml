@@ -49,6 +49,7 @@ java:
         - microservicekey-bulk-scan-payment-processor
         - microservicekey-bulk-scan-ccd-sample-app
         - microservicekey-bulk-scan-sample-app-tests
+        - microservicekey-reform-scan-notification-tests
         - microservicekey-bar-api
         - microservicekey-api-gw
         - microservicekey-em-annotation-app
