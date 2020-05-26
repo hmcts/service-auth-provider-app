@@ -8,7 +8,6 @@ java:
         - jwt-key
         - microservicekey-ccd-admin
         - microservicekey-ccd-case-document-am-api
-        - microservicekey-am-role-assignment-service
         - microservicekey-ccd-data
         - microservicekey-ccd-definition
         - microservicekey-ccd-definition-designer
