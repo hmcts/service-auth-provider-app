@@ -1,5 +1,4 @@
 ARG APP_INSIGHTS_AGENT_VERSION=2.5.0
-ARG JAVA_OPTS=-Djava.io.tmpdir=/opt/app/tmp
 FROM hmctspublic.azurecr.io/base/java:openjdk-8-distroless-1.2
 
 # Mandatory!
