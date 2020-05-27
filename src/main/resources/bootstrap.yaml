@@ -46,6 +46,7 @@ spring:
         s2s.microservicekey-bulk-scan-payment-processor: microserviceKeys.bulk_scan_payment_processor
         s2s.microservicekey-bulk-scan-ccd-sample-app: microserviceKeys.bulk_scan_ccd_sample_app
         s2s.microservicekey-bulk-scan-sample-app-tests: microserviceKeys.bulk_scan_sample_app_tests
+        s2s.microservicekey-reform-scan-notification-tests: microserviceKeys.reform_scan_notification_tests
         s2s.microservicekey-bar-api: microserviceKeys.bar_api
         s2s.microservicekey-api-gw: microserviceKeys.api_gw
         s2s.microservicekey-em-annotation-app: microserviceKeys.em_annotation_app
