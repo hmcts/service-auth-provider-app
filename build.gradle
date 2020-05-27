@@ -73,6 +73,19 @@ def versions = [
 
 ext["rest-assured.version"] = '4.0.0'
 
+configurations.all {
+  resolutionStrategy {
+    eachDependency { DependencyResolveDetails details ->
+      if (details.requested.group in ['org.apache.logging.log4j']) {
+        details.useVersion '2.13.3'
+      }
+      if (details.requested.group in ['org.apache.tomcat.embed']) {
+        details.useVersion '9.0.35'
+      }
+    }
+  }
+}
+
 dependencies {
   compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: versions.springBoot
   compile group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: versions.springBoot
@@ -85,6 +98,8 @@ dependencies {
   compile group: 'uk.gov.hmcts.reform', name: 'health-spring-boot-starter', version: '0.0.5'
   compile group: 'uk.gov.hmcts.reform', name: 'properties-volume-spring-boot-starter', version:'0.0.4'
 
+  compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.13.3'
+  compile group: 'org.apache.logging.log4j', name: 'log4j-to-slf4j', version: '2.13.3'
 
   compile group: 'io.springfox', name: 'springfox-swagger2', version: versions.springfoxSwagger
   compile group: 'io.springfox', name: 'springfox-swagger-ui', version: versions.springfoxSwagger
