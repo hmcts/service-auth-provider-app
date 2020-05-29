@@ -17,7 +17,7 @@ public class SignInTest extends BaseFunctionalTest {
     @Test
     public void should_return_401_when_invalid_credentials_are_provided() throws Exception {
 
-        signInWith(new SignIn(this.serviceName, otp("ABCDEFGHIJKL")))
+        signInWith(new SignIn(this.serviceName, otp("QUJDREVGR0hJSktMCg==")))
             .then()
             .assertThat()
             .statusCode(401);
