@@ -6,6 +6,7 @@ spring:
         s2s.jwt-key: JWTKEY
         s2s.microservicekey-ccd-admin: microserviceKeys.ccd_admin
         s2s.microservicekey-ccd-case-document-am-api: microserviceKeys.ccd_case_document_am_api
+        s2s.microservicekey-am-role-assignment-service: microserviceKeys.am_role_assignment_service
         s2s.microservicekey-ccd-data: microserviceKeys.ccd_data
         s2s.microservicekey-ccd-definition: microserviceKeys.ccd_definition
         s2s.microservicekey-ccd-definition-designer: microserviceKeys.ccd_definition_designer
@@ -46,6 +47,7 @@ spring:
         s2s.microservicekey-bulk-scan-payment-processor: microserviceKeys.bulk_scan_payment_processor
         s2s.microservicekey-bulk-scan-ccd-sample-app: microserviceKeys.bulk_scan_ccd_sample_app
         s2s.microservicekey-bulk-scan-sample-app-tests: microserviceKeys.bulk_scan_sample_app_tests
+        s2s.microservicekey-reform-scan-notification-tests: microserviceKeys.reform_scan_notification_tests
         s2s.microservicekey-bar-api: microserviceKeys.bar_api
         s2s.microservicekey-api-gw: microserviceKeys.api_gw
         s2s.microservicekey-em-annotation-app: microserviceKeys.em_annotation_app
