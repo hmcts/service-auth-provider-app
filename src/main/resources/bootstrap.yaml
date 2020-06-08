@@ -4,6 +4,7 @@ spring:
       paths: /mnt/secrets/s2s
       aliases:
         s2s.jwt-key: JWTKEY
+        s2s.AppInsightsInstrumentationKey: azure.application-insights.instrumentation-key
         s2s.microservicekey-ccd-admin: microserviceKeys.ccd_admin
         s2s.microservicekey-ccd-case-document-am-api: microserviceKeys.ccd_case_document_am_api
         s2s.microservicekey-am-role-assignment-service: microserviceKeys.am_role_assignment_service
