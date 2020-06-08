@@ -5,6 +5,7 @@ java:
     "s2s":
       resourceGroup: rpe-service-auth-provider
       secrets:
+        - AppInsightsInstrumentationKey
         - jwt-key
         - microservicekey-ccd-admin
         - microservicekey-ccd-case-document-am-api
