@@ -9,6 +9,7 @@ spring:
         s2s.microservicekey-ccd-case-document-am-api: microserviceKeys.ccd_case_document_am_api
         s2s.microservicekey-am-role-assignment-service: microserviceKeys.am_role_assignment_service
         s2s.microservicekey-am-judicial-booking-service: microserviceKeys.am_judicial_booking_service
+        s2s.microservicekey-am-org-role-mapping-service: microserviceKeys.am_org-role-mapping-service
         s2s.microservicekey-ccd-data: microserviceKeys.ccd_data
         s2s.microservicekey-ccd-definition: microserviceKeys.ccd_definition
         s2s.microservicekey-ccd-definition-designer: microserviceKeys.ccd_definition_designer
