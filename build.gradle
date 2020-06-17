@@ -11,8 +11,8 @@ plugins {
 
 group = 'uk.gov.hmcts.auth.provider.service'
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+sourceCompatibility = 11
+targetCompatibility = 11
 
 sourceSets {
   functionalTest {
@@ -46,9 +46,9 @@ dependencyUpdates.resolutionStrategy {
   componentSelection { rules ->
     rules.all {
       def isNonStable = { String version ->
-        ['alpha', 'beta', 'rc', 'cr', 'm', 'preview', 'b', 'ea'].any { qualifier ->
-          version ==~ /(?i).*[.-]\$qualifier[.\\d-+]*/
-        }
+        def stableKeyword = ['RELEASE', 'FINAL', 'GA'].any { qualifier -> version.toUpperCase().contains(qualifier) }
+        def regex = /^[0-9,.v-]+(-r)?$/
+        return !stableKeyword && !(version ==~ regex)
       }
 
       if (isNonStable(candidate.version) && !isNonStable(currentVersion)) {
@@ -71,16 +71,14 @@ def versions = [
   reformLogging: '5.1.5',
 ]
 
-ext["rest-assured.version"] = '4.0.0'
+ext["rest-assured.version"] = '4.3.0'
 
 configurations.all {
   resolutionStrategy {
     eachDependency { DependencyResolveDetails details ->
-      if (details.requested.group in ['org.apache.logging.log4j']) {
-        details.useVersion '2.13.3'
-      }
-      if (details.requested.group in ['org.apache.tomcat.embed']) {
-        details.useVersion '9.0.35'
+      if (details.requested.group == 'org.codehaus.groovy') {
+        details.useVersion "3.0.2"
+        details.because "needed by rest-assured>=4.3"
       }
     }
   }
@@ -103,6 +101,8 @@ dependencies {
 
   compile group: 'io.springfox', name: 'springfox-swagger2', version: versions.springfoxSwagger
   compile group: 'io.springfox', name: 'springfox-swagger-ui', version: versions.springfoxSwagger
+
+  compile 'jakarta.xml.bind:jakarta.xml.bind-api:2.3.3'
 
   compileOnly group: 'net.sourceforge.findbugs', name: 'annotations', version: '1.3.2'
 
