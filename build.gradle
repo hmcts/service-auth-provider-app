@@ -76,12 +76,6 @@ ext["rest-assured.version"] = '4.3.0'
 configurations.all {
   resolutionStrategy {
     eachDependency { DependencyResolveDetails details ->
-      if (details.requested.group in ['org.apache.logging.log4j']) {
-        details.useVersion '2.13.3'
-      }
-      if (details.requested.group in ['org.apache.tomcat.embed']) {
-        details.useVersion '9.0.35'
-      }
       if (details.requested.group == 'org.codehaus.groovy') {
         details.useVersion "3.0.2"
         details.because "needed by rest-assured>=4.3"
