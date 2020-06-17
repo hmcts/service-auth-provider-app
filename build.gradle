@@ -11,8 +11,8 @@ plugins {
 
 group = 'uk.gov.hmcts.auth.provider.service'
 
-sourceCompatibility = 11
-targetCompatibility = 11
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 sourceSets {
   functionalTest {
@@ -46,9 +46,9 @@ dependencyUpdates.resolutionStrategy {
   componentSelection { rules ->
     rules.all {
       def isNonStable = { String version ->
-        ['alpha', 'beta', 'rc', 'cr', 'm', 'preview', 'b', 'ea'].any { qualifier ->
-          version ==~ /(?i).*[.-]\$qualifier[.\\d-+]*/
-        }
+        def stableKeyword = ['RELEASE', 'FINAL', 'GA'].any { qualifier -> version.toUpperCase().contains(qualifier) }
+        def regex = /^[0-9,.v-]+(-r)?$/
+        return !stableKeyword && !(version ==~ regex)
       }
 
       if (isNonStable(candidate.version) && !isNonStable(currentVersion)) {
@@ -71,7 +71,7 @@ def versions = [
   reformLogging: '5.1.5',
 ]
 
-ext["rest-assured.version"] = '4.0.0'
+ext["rest-assured.version"] = '4.3.0'
 
 configurations.all {
   resolutionStrategy {
