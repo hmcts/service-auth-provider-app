@@ -79,5 +79,6 @@ java:
         - microservicekey-payment-app
         - microservicekey-pcq-consolidation-service
         - microservicekey-aac-manage-case-assignment
+        - microservicekey-ucmc-service
   image: 'hmctspublic.azurecr.io/rpe/service-auth-provider:latest'
   ingressHost: rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
