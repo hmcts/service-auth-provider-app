@@ -30,10 +30,6 @@ variable "subscription" {
   type = "string"
 }
 
-variable "managed_identity_object_id" {
-  default = ""
-}
-
 variable "appinsights_location" {
   type        = "string"
   default     = "West Europe"
