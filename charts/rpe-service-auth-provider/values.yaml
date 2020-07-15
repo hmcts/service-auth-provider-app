@@ -11,6 +11,7 @@ java:
         - microservicekey-ccd-case-document-am-api
         - microservicekey-am-role-assignment-service
         - microservicekey-am-judicial-booking-service
+        - microservicekey-am-org-role-mapping-service
         - microservicekey-ccd-data
         - microservicekey-ccd-definition
         - microservicekey-ccd-definition-designer
@@ -78,5 +79,6 @@ java:
         - microservicekey-payment-app
         - microservicekey-pcq-consolidation-service
         - microservicekey-aac-manage-case-assignment
+        - microservicekey-ucmc-service
   image: 'hmctspublic.azurecr.io/rpe/service-auth-provider:latest'
   ingressHost: rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
