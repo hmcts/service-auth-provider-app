@@ -77,5 +77,4 @@ spring:
         s2s.microservicekey-payment-app: microserviceKeys.payment_app
         s2s.microservicekey-pcq-consolidation-service: microserviceKeys.pcq_consolidation_service
         s2s.microservicekey-aac-manage-case-assignment: microserviceKeys.aac_manage_case_assignment
-        s2s.microservicekey-ucmc-service: microserviceKeys.ucmc_service
         s2s.microservicekey-unspec-service: microserviceKeys.unspec_service
