@@ -69,6 +69,7 @@ java:
         - microservicekey-dg-docassembly-api
         - microservicekey-rd-professional-api
         - microservicekey-rd-user-profile-api
+        - microservicekey-rd-caseworker-ref-api
         - microservicekey-ethos-repl-service
         - microservicekey-ecm-consumer
         - microservicekey-employment-tribunals
