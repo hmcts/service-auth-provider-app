@@ -45,7 +45,6 @@ A service **TEST_SERVICE** with secret key **microservicekey-test-service**  nee
             - microservicekey-test-service 
     ```
 * Bump the helm chart minor version in [Chart.yaml](charts/rpe-service-auth-provider/Chart.yaml) 
-* Once the PR is merged and latest chart is published to ACR, raise a [PR on flux](https://github.com/hmcts/cnp-flux-config/pull/1869)  to upgrade chart version. 
 
 #### <a name="generating-secret"></a>Generating the microservice secret
 
