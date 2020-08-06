@@ -79,3 +79,4 @@ spring:
         s2s.microservicekey-pcq-consolidation-service: microserviceKeys.pcq_consolidation_service
         s2s.microservicekey-aac-manage-case-assignment: microserviceKeys.aac_manage_case_assignment
         s2s.microservicekey-unspec-service: microserviceKeys.unspec_service
+        s2s.microservicekey-rd-fee-pay-ref-data-load: microserviceKeys.rd_fee_pay_ref_data_load
