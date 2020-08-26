@@ -81,3 +81,4 @@ spring:
         s2s.microservicekey-unspec-service: microserviceKeys.unspec_service
         s2s.microservicekey-rd-location-ref-data-load: microserviceKeys.rd_location_ref_data_load
         s2s.microservicekey-wa: microserviceKeys.wa
+        s2s.microservicekey-rd-location-ref-api: microserviceKeys.rd_location_ref_api
