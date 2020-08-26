@@ -83,5 +83,6 @@ java:
         - microservicekey-unspec-service
         - microservicekey-rd-location-ref-data-load
         - microservicekey-wa
+        - microservicekey-rd-location-ref-api
   image: 'hmctspublic.azurecr.io/rpe/service-auth-provider:latest'
   ingressHost: rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
