@@ -17,7 +17,7 @@ static LinkedHashMap<String, Object> secret(String secretName, String envVar) {
   ]
 }
 
-@Library("Infrastructure")
+@Library("Infrastructure@pipeline-warning-keyvault")
 
 def type = "java"
 def product = "rpe"
