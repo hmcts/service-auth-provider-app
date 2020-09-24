@@ -17,7 +17,7 @@ static LinkedHashMap<String, Object> secret(String secretName, String envVar) {
   ]
 }
 
-@Library("Infrastructure@dependencycheckv6")
+@Library("Infrastructure")
 
 def type = "java"
 def product = "rpe"
