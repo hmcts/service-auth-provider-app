@@ -86,6 +86,7 @@ java:
         - microservicekey-wa-workflow-api
         - microservicekey-wa-task-management-api
         - microservicekey-wa-task-configuration-api
+        - microservicekey-wa-case-event-handler
         - microservicekey-rd-location-ref-api
   image: 'hmctspublic.azurecr.io/rpe/service-auth-provider:latest'
   ingressHost: rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
