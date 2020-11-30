@@ -83,6 +83,7 @@ java:
         - microservicekey-aac-manage-case-assignment
         - microservicekey-unspec-service
         - microservicekey-rd-location-ref-data-load
+        - microservicekey-wa-camunda-pipeline-upload
         - microservicekey-wa-workflow-api
         - microservicekey-wa-task-management-api
         - microservicekey-wa-task-configuration-api

@@ -81,6 +81,7 @@ spring:
         s2s.microservicekey-aac-manage-case-assignment: microserviceKeys.aac_manage_case_assignment
         s2s.microservicekey-unspec-service: microserviceKeys.unspec_service
         s2s.microservicekey-rd-location-ref-data-load: microserviceKeys.rd_location_ref_data_load
+        s2s.microservicekey-wa-camunda-pipeline-upload: microserviceKeys.wa_camunda_pipeline_upload
         s2s.microservicekey-wa-workflow-api: microserviceKeys.wa_workflow_api
         s2s.microservicekey-wa-task-management-api: microserviceKeys.wa_task_management_api
         s2s.microservicekey-wa-task-configuration-api: microserviceKeys.wa_task_configuration_api
