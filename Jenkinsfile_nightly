@@ -12,5 +12,5 @@ def product = "rpe"
 def app = "service-auth-provider"
 
 withNightlyPipeline(type, product, app) {
-    enableSlackNotifications('#rpe-build-notices')
+    enableSlackNotifications('#platops-build-notices')
 }
