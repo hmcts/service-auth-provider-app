@@ -81,7 +81,7 @@ configurations.all {
         details.because "needed by rest-assured>=4.3"
       }
       if (details.requested.group in ['org.apache.tomcat.embed']) {
-        details.useVersion '9.0.39'
+        details.useVersion '9.0.41'
       }
     }
   }
