@@ -87,6 +87,7 @@ spring:
         s2s.microservicekey-wa-task-management-api: microserviceKeys.wa_task_management_api
         s2s.microservicekey-wa-task-configuration-api: microserviceKeys.wa_task_configuration_api
         s2s.microservicekey-wa-case-event-handler: microserviceKeys.wa_case_event_handler
+        s2s.microservicekey-camunda-bpm: microserviceKeys.camunda_bpm
         s2s.microservicekey-rd-location-ref-api: microserviceKeys.rd_location_ref_api
         s2s.microservicekey-nfdiv-cms: microserviceKeys.nfdiv_cms
         s2s.microservicekey-nfdiv-cos: microserviceKeys.nfdiv_cos

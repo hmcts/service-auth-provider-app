@@ -89,6 +89,7 @@ java:
         - microservicekey-wa-task-management-api
         - microservicekey-wa-task-configuration-api
         - microservicekey-wa-case-event-handler
+        - microservicekey-camunda-bpm
         - microservicekey-rd-location-ref-api
         - microservicekey-nfdiv-cms
         - microservicekey-nfdiv-cos
