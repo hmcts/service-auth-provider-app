@@ -7,6 +7,7 @@ plugins {
   id 'org.sonarqube' version '3.0'
   id 'io.spring.dependency-management' version '1.0.10.RELEASE'
   id 'org.springframework.boot' version '2.3.4.RELEASE'
+  id 'au.com.dius.pact' version '4.1.0'
 }
 
 group = 'uk.gov.hmcts.auth.provider.service'
@@ -21,6 +22,14 @@ sourceSets {
       runtimeClasspath += main.output
       srcDir file('src/functionalTest/java')
     }
+  }
+  contractTest {
+    java {
+      compileClasspath += main.output
+      runtimeClasspath += main.output
+      srcDir file('src/contractTest/java')
+    }
+    resources.srcDir file('src/contractTest/resources')
   }
 }
 
@@ -69,6 +78,7 @@ def versions = [
   springBoot: plugins.getPlugin('org.springframework.boot').class.package.implementationVersion,
   springfoxSwagger: '2.9.2',
   reformLogging: '5.1.5',
+  pact_version: '4.1.7'
 ]
 
 ext["rest-assured.version"] = '4.3.0'
@@ -117,6 +127,15 @@ dependencies {
   functionalTestCompile group: 'com.typesafe', name: 'config', version: '1.4.1'
   functionalTestCompile group: 'io.rest-assured', name: 'rest-assured'
 
+  contractTestCompile group: 'au.com.dius.pact.provider', name: 'junit5', version: versions.pact_version
+  contractTestCompile group: 'au.com.dius.pact.provider', name: 'spring', version: versions.pact_version
+  contractTestCompile group: 'au.com.dius.pact.provider', name: 'junit5spring', version: versions.pact_version
+  contractTestCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test'
+  contractTestCompile group: 'com.warrenstrange', name: 'googleauth', version: '1.5.0'
+  contractTestCompile("org.junit.jupiter:junit-jupiter-api:5.3.2")
+  contractTestRuntime("org.junit.jupiter:junit-jupiter-engine:5.3.2")
+  contractTestImplementation('org.junit.jupiter:junit-jupiter-api:5.3.2')
+
   testCompile(group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: versions.springBoot) {
     exclude(module: 'commons-logging')
   }
@@ -161,6 +180,25 @@ task smoke(type: Test, group: 'Verification') {
   testClassesDirs = sourceSets.functionalTest.output.classesDirs
   classpath = sourceSets.functionalTest.runtimeClasspath
 }
+
+task contractTest(type: Test) {
+  logger.lifecycle("Runnning contract Tests")
+  useJUnitPlatform()
+  testClassesDirs = sourceSets.contractTest.output.classesDirs
+  classpath = sourceSets.contractTest.runtimeClasspath
+
+}
+
+task runProviderPactVerification(type: Test) {
+  logger.lifecycle("Runs pact Tests")
+  testClassesDirs = sourceSets.contractTest.output.classesDirs
+  classpath = sourceSets.contractTest.runtimeClasspath
+}
+
+runProviderPactVerification.dependsOn contractTest
+
+runProviderPactVerification.finalizedBy pactVerify
+
 
 jacocoTestReport {
   executionData(test)
