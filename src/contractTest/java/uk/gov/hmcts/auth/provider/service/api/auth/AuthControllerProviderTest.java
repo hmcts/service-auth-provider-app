@@ -54,11 +54,16 @@ public class AuthControllerProviderTest {
     }
 
     @State({"microservice with valid credentials"})
-    public void toSetUpValidMicroserviceToken() {
+    public void toSetUpValidMicroservice() {
         when(microserviceRepository.findOne(anyString())).thenReturn(new Microservice("someId", "someKey"));
         when(totpAuthenticator.isOneTimePasswordValid(anyString(), anyString())).thenReturn(Boolean.TRUE);
         when(jwtTool.issueTokenForSubject(anyString())).thenReturn(
             "someMicroServiceToken");
+    }
 
+    @State({"microservice with valid token"})
+    public void toSetUpMicroserviceToken() {
+        when(jwtTool.verifyAndExtractSubject(anyString())).thenReturn(
+            "someMicroServiceName");
     }
 }
