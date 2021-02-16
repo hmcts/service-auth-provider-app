@@ -21,11 +21,3 @@ rs256:
 spring:
   application:
     name: Service Auth Provider
-
-logging:
-  level:
-    org.springframework.web: ERROR
-    uk.gov.hmcts.reform.divorce.documentgenerator: DEBUG
-    au.com.dius.pact: DEBUG
-  pattern:
-    console: "%d{yyyy-MMM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{15} - %msg%n"
