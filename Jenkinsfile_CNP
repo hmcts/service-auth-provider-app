@@ -38,7 +38,7 @@ withPipeline(type, product, app) {
     disableLegacyDeployment()
 
     onMaster() {
-        env.PACT_BROKER_SCHEME = "master"
+        env.PACT_BRANCH_NAME = "master"
         enablePactAs([AppPipelineDsl.PactRoles.PROVIDER])
     }
 }
