@@ -93,5 +93,6 @@ java:
         - microservicekey-rd-location-ref-api
         - microservicekey-nfdiv-cms
         - microservicekey-nfdiv-cos
+        - microservicekey-nfdiv-case-api
   image: 'hmctspublic.azurecr.io/rpe/service-auth-provider:latest'
   ingressHost: rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
