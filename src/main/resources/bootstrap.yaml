@@ -91,3 +91,4 @@ spring:
         s2s.microservicekey-rd-location-ref-api: microserviceKeys.rd_location_ref_api
         s2s.microservicekey-nfdiv-cms: microserviceKeys.nfdiv_cms
         s2s.microservicekey-nfdiv-cos: microserviceKeys.nfdiv_cos
+        s2s.microservicekey-nfdiv-case-api: microserviceKeys.nfdiv_case_api

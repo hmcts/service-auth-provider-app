@@ -64,7 +64,13 @@ import base64
 base64.b32encode(os.urandom(10))
 ```
 #### Writing a secret into all the needed vaults
+Please make sure `realpath` is installed as script uses it.
+```
+Ubuntu: sudo apt-get install coreutils
+OS X  : brew install coreutils
 
+On Debian or Ubuntu realpath should be installed by default
+```
 There's a script provided `./bin/set-secret-in-all-vaults <microservice-name>`
 This will write the secret into all the vaults and then it will run the check script to check it can find the secret
 
