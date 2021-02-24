@@ -8,7 +8,7 @@ spring:
         s2s.microservicekey-ccd-admin: microserviceKeys.ccd_admin
         s2s.microservicekey-ccd-case-document-am-api: microserviceKeys.ccd_case_document_am_api
         s2s.microservicekey-am-role-assignment-service: microserviceKeys.am_role_assignment_service
-        s2s.microservicekey-am-role-assignment-refresh: microserviceKeys.am_role_assignment_refresh_batch
+        s2s.microservicekey-am-role-assignment-refresh-batch: microserviceKeys.am_role_assignment_refresh_batch
         s2s.microservicekey-am-judicial-booking-service: microserviceKeys.am_judicial_booking_service
         s2s.microservicekey-am-org-role-mapping-service: microserviceKeys.am_org_role_mapping_service
         s2s.microservicekey-ccd-data: microserviceKeys.ccd_data
