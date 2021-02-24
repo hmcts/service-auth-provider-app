@@ -10,6 +10,7 @@ java:
         - microservicekey-ccd-admin
         - microservicekey-ccd-case-document-am-api
         - microservicekey-am-role-assignment-service
+        - microservicekey-am-role-assignment-refresh-batch
         - microservicekey-am-judicial-booking-service
         - microservicekey-am-org-role-mapping-service
         - microservicekey-ccd-data
