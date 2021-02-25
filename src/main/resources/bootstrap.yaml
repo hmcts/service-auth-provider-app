@@ -93,3 +93,4 @@ spring:
         s2s.microservicekey-nfdiv-cms: microserviceKeys.nfdiv_cms
         s2s.microservicekey-nfdiv-cos: microserviceKeys.nfdiv_cos
         s2s.microservicekey-nfdiv-case-api: microserviceKeys.nfdiv_case_api
+        s2s.microservicekey-em-hrs-api: microserviceKeys.em_hrs_api
