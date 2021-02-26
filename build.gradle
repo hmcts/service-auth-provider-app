@@ -78,7 +78,8 @@ def versions = [
   springBoot: plugins.getPlugin('org.springframework.boot').class.package.implementationVersion,
   springfoxSwagger: '2.9.2',
   reformLogging: '5.1.5',
-  pact_version: '4.1.7'
+  pact_version: '4.1.7',
+  junit_jupiter: '5.7.1'
 ]
 
 ext["rest-assured.version"] = '4.3.0'
@@ -132,9 +133,10 @@ dependencies {
   contractTestCompile group: 'au.com.dius.pact.provider', name: 'junit5spring', version: versions.pact_version
   contractTestCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test'
   contractTestCompile group: 'com.warrenstrange', name: 'googleauth', version: '1.5.0'
-  contractTestCompile("org.junit.jupiter:junit-jupiter-api:5.7.1")
-  contractTestRuntime("org.junit.jupiter:junit-jupiter-engine:5.7.1")
-  contractTestImplementation('org.junit.jupiter:junit-jupiter-api:5.3.2')
+  contractTestCompile group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: versions.junit_jupiter
+  contractTestRuntime group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: versions.junit_jupiter
+  contractTestImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: versions.junit_jupiter
+  contractTestRuntime group: 'org.junit.platform', name: 'junit-platform-commons', version: '1.7.0'
 
   testCompile(group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: versions.springBoot) {
     exclude(module: 'commons-logging')
