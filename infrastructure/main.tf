@@ -37,7 +37,7 @@ data "azurerm_user_assigned_identity" "rpe-shared-identity" {
 }
 
 module "key-vault" {
-  source              = "git@github.com:hmcts/cnp-module-key-vault?ref=azurermv2"
+  source              = "git@github.com:hmcts/cnp-module-key-vault?ref=master"
   product             = "s2s"
   env                 = var.env
   tenant_id           = var.tenant_id
