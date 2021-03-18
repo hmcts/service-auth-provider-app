@@ -21,3 +21,5 @@ rs256:
 spring:
   application:
     name: Service Auth Provider
+  config:
+    import: "optional:configtree:/mnt/secrets/s2s/"

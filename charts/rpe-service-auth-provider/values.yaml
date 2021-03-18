@@ -3,99 +3,190 @@ java:
   aadIdentityName: rpe
   keyVaults:
     "s2s":
-      resourceGroup: rpe-service-auth-provider
       secrets:
-        - AppInsightsInstrumentationKey
-        - jwt-key
-        - microservicekey-ccd-admin
-        - microservicekey-ccd-case-document-am-api
-        - microservicekey-am-role-assignment-service
-        - microservicekey-am-role-assignment-refresh-batch
-        - microservicekey-am-judicial-booking-service
-        - microservicekey-am-org-role-mapping-service
-        - microservicekey-ccd-data
-        - microservicekey-ccd-definition
-        - microservicekey-ccd-definition-designer
-        - microservicekey-ccd-gw
-        - microservicekey-ccd-ps
-        - microservicekey-cmc
-        - microservicekey-cmcLegalFrontend
-        - microservicekey-cmcClaimStore
-        - microservicekey-cmc-claim-external-api
-        - microservicekey-divorce
-        - microservicekey-divorce-frontend
-        - microservicekey-divorceCcdSubmission
-        - microservicekey-divorceCcdValidation
-        - microservicekey-divorceDocumentUpload
-        - microservicekey-divorceDocumentGenerator
-        - microservicekey-draftStoreTests
-        - microservicekey-platformJobScheduler
-        - microservicekey-reference
-        - microservicekey-sscs
-        - microservicekey-sscs-bulkscan
-        - microservicekey-sscs-tribunals-case
-        - microservicekey-probate-frontend
-        - microservicekey-probate-backend
-        - microservicekey-send-letter-consumer
-        - microservicekey-send-letter-tests
-        - microservicekey-em-gw
-        - microservicekey-finrem-document-generator
-        - microservicekey-finrem-notification-service
-        - microservicekey-finrem-case-orchestration
-        - microservicekey-finrem-payment-service
-        - microservicekey-finrem-ccd-data-migrator
-        - microservicekey-jui-webapp
-        - microservicekey-pui-webapp
-        - microservicekey-xui-webapp
-        - microservicekey-coh-cor
-        - microservicekey-bulk-scan-processor
-        - microservicekey-bulk-scan-processor-tests
-        - microservicekey-bulk-scan-orchestrator
-        - microservicekey-bulk-scan-payment-processor
-        - microservicekey-bulk-scan-ccd-sample-app
-        - microservicekey-bulk-scan-sample-app-tests
-        - microserviceKey-reform-scan-blob-router
-        - microservicekey-reform-scan-notification-tests
-        - microservicekey-bar-api
-        - microservicekey-api-gw
-        - microservicekey-em-annotation-app
-        - microservicekey-em-npa-app
-        - microservicekey-cet
-        - microservicekey-cet-frontend
-        - microservicekey-fpl-case-service
-        - microservicekey-iac
-        - microservicekey-em-stitching-api
-        - microservicekey-em-ccd-orchestrator
-        - microservicekey-ccpay-bubble
-        - microservicekey-dg-template-management
-        - microservicekey-dg-docassembly-api
-        - microservicekey-rd-professional-api
-        - microservicekey-rd-user-profile-api
-        - microservicekey-rd-caseworker-ref-api
-        - microservicekey-rd-profile-sync
-        - microservicekey-ethos-repl-service
-        - microservicekey-ecm-consumer
-        - microservicekey-employment-tribunals
-        - microservicekey-am-accessmgmt-api
-        - microservicekey-ctsc-work-allocation
-        - microservicekey-rd-judicial-api
-        - microservicekey-adoption-backend
-        - microservicekey-payment-app
-        - microservicekey-pcq-consolidation-service
-        - microservicekey-aac-manage-case-assignment
-        - microservicekey-unspec-service
-        - microservicekey-rd-location-ref-data-load
-        - microservicekey-wa-camunda-pipeline-upload
-        - microservicekey-wa-workflow-api
-        - microservicekey-wa-task-management-api
-        - microservicekey-wa-task-configuration-api
-        - microservicekey-wa-case-event-handler
-        - microservicekey-camunda-bpm
-        - microservicekey-rd-location-ref-api
-        - microservicekey-nfdiv-cms
-        - microservicekey-nfdiv-cos
-        - microservicekey-nfdiv-case-api
-        - microservicekey-em-hrs-api
-        - microservicekey-em-hrs-ingestor
+      - name: jwt-key
+        alias: JWTKEY
+      - name: AppInsightsInstrumentationKey
+        alias: azure.application-insights.instrumentation-key
+      - name: microservicekey-ccd-admin
+        alias: microserviceKeys.ccd_admin
+      - name: microservicekey-ccd-case-document-am-api
+        alias: microserviceKeys.ccd_case_document_am_api
+      - name: microservicekey-am-role-assignment-service
+        alias: microserviceKeys.am_role_assignment_service
+      - name: microservicekey-am-role-assignment-refresh-batch
+        alias: microserviceKeys.am_role_assignment_refresh_batch
+      - name: microservicekey-am-judicial-booking-service
+        alias: microserviceKeys.am_judicial_booking_service
+      - name: microservicekey-am-org-role-mapping-service
+        alias: microserviceKeys.am_org_role_mapping_service
+      - name: microservicekey-ccd-data
+        alias: microserviceKeys.ccd_data
+      - name: microservicekey-ccd-definition
+        alias: microserviceKeys.ccd_definition
+      - name: microservicekey-ccd-definition-designer
+        alias: microserviceKeys.ccd_definition_designer
+      - name: microservicekey-ccd-gw
+        alias: microserviceKeys.ccd_gw
+      - name: microservicekey-ccd-ps
+        alias: microserviceKeys.ccd_ps
+      - name: microservicekey-cmc
+        alias: microserviceKeys.cmc
+      - name: microservicekey-cmcLegalFrontend
+        alias: microserviceKeys.cmc_legal_frontend
+      - name: microservicekey-cmcClaimStore
+        alias: microserviceKeys.cmc_claim_store
+      - name: microservicekey-cmc-claim-external-api
+        alias: microserviceKeys.cmc_claim_external_api
+      - name: microservicekey-divorce
+        alias: microserviceKeys.drivorce
+      - name: microservicekey-divorce-frontend
+        alias: microserviceKeys.divorce_frontend
+      - name: microservicekey-divorceCcdSubmission
+        alias: microserviceKeys.divorce_ccd_submission
+      - name: microservicekey-divorceCcdValidation
+        alias: microserviceKeys.divorce_ccd_validation
+      - name: microservicekey-divorceDocumentUpload
+        alias: microserviceKeys.divorce_document_upload
+      - name: microservicekey-divorceDocumentGenerator
+        alias: microserviceKeys.divorce_document_generator
+      - name: microservicekey-draftStoreTests
+        alias: microserviceKeys.draft_store_tests
+      - name: microservicekey-platformJobScheduler
+        alias: microserviceKeys.jobscheduler
+      - name: microservicekey-reference
+        alias: microserviceKeys.reference
+      - name: microservicekey-sscs
+        alias: microserviceKeys.sscs
+      - name: microservicekey-sscs-bulkscan
+        alias: microserviceKeys.sscs_bulkscan
+      - name: microservicekey-sscs-tribunals-case
+        alias: microserviceKeys.sscs_tribunals_case
+      - name: microservicekey-probate-frontend
+        alias: microserviceKeys.probate_frontend
+      - name: microservicekey-probate-backend
+        alias: microserviceKeys.probate_backend
+      - name: microservicekey-send-letter-consumer
+        alias: microserviceKeys.send_letter_consumer
+      - name: microservicekey-send-letter-tests
+        alias: microserviceKeys.send_letter_tests
+      - name: microservicekey-em-gw
+        alias: microserviceKeys.em_gw
+      - name: microservicekey-finrem-document-generator
+        alias: microserviceKeys.finrem_document_generator
+      - name: microservicekey-finrem-notification-service
+        alias: microserviceKeys.finrem_notification_service
+      - name: microservicekey-finrem-case-orchestration
+        alias: microserviceKeys.finrem_case_orchestration
+      - name: microservicekey-finrem-payment-service
+        alias: microserviceKeys.finrem_payment_service
+      - name: microservicekey-finrem-ccd-data-migrator
+        alias: microserviceKeys.finrem_ccd_data_migrator
+      - name: microservicekey-jui-webapp
+        alias: microserviceKeys.jui_webapp
+      - name: microservicekey-pui-webapp
+        alias: microserviceKeys.pui_webapp
+      - name: microservicekey-coh-cor
+        alias: microserviceKeys.coh_cor
+      - name: microservicekey-bulk-scan-processor
+        alias: microserviceKeys.bulk_scan_processor
+      - name: microservicekey-bulk-scan-processor-tests
+        alias: microserviceKeys.bulk_scan_processor_tests
+      - name: microservicekey-bulk-scan-orchestrator
+        alias: microserviceKeys.bulk_scan_orchestrator
+      - name: microservicekey-bulk-scan-payment-processor
+        alias: microserviceKeys.bulk_scan_payment_processor
+      - name: microservicekey-bulk-scan-ccd-sample-app
+        alias: microserviceKeys.bulk_scan_ccd_sample_app
+      - name: microservicekey-bulk-scan-sample-app-tests
+        alias: microserviceKeys.bulk_scan_sample_app_tests
+      - name: microservicekey-reform-scan-notification-tests
+        alias: microserviceKeys.reform_scan_notification_tests
+      - name: microserviceKey-reform-scan-blob-router
+        alias: microserviceKeys.reform_scan_blob_router
+      - name: microservicekey-bar-api
+        alias: microserviceKeys.bar_api
+      - name: microservicekey-api-gw
+        alias: microserviceKeys.api_gw
+      - name: microservicekey-em-annotation-app
+        alias: microserviceKeys.em_annotation_app
+      - name: microservicekey-em-npa-app
+        alias: microserviceKeys.em_npa_app
+      - name: microservicekey-cet
+        alias: microserviceKeys.cet
+      - name: microservicekey-cet-frontend
+        alias: microserviceKeys.cet_frontend
+      - name: microservicekey-fpl-case-service
+        alias: microserviceKeys.fpl_case_service
+      - name: microservicekey-iac
+        alias: microserviceKeys.iac
+      - name: microservicekey-em-stitching-api
+        alias: microserviceKeys.em_stitching_api
+      - name: microservicekey-em-ccd-orchestrator
+        alias: microserviceKeys.em_ccd_orchestrator
+      - name: microservicekey-ccpay-bubble
+        alias: microserviceKeys.ccpay_bubble
+      - name: microservicekey-dg-template-management
+        alias: microserviceKeys.dg_template_management_api
+      - name: microservicekey-dg-docassembly-api
+        alias: microserviceKeys.dg_docassembly_api
+      - name: microservicekey-rd-professional-api
+        alias: microserviceKeys.rd_professional_api
+      - name: microservicekey-rd-user-profile-api
+        alias: microserviceKeys.rd_user_profile_api
+      - name: microservicekey-rd-caseworker-ref-api
+        alias: microserviceKeys.rd_caseworker_ref_api
+      - name: microservicekey-rd-profile-sync
+        alias: microserviceKeys.rd_profile_sync
+      - name: microservicekey-ethos-repl-service
+        alias: microserviceKeys.ethos_repl_service
+      - name: microservicekey-ecm-consumer
+        alias: microserviceKeys.ecm_consumer
+      - name: microservicekey-employment-tribunals
+        alias: microserviceKeys.employment_tribunals
+      - name: microservicekey-am-accessmgmt-api
+        alias: microserviceKeys.am_accessmgmt_api
+      - name: microservicekey-xui-webapp
+        alias: microserviceKeys.xui_webapp
+      - name: microservicekey-ctsc-work-allocation
+        alias: microserviceKeys.ctsc_work_allocation
+      - name: microservicekey-rd-judicial-api
+        alias: microserviceKeys.rd_judicial_api
+      - name: microservicekey-adoption-backend
+        alias: microserviceKeys.adoption_backend
+      - name: microservicekey-payment-app
+        alias: microserviceKeys.payment_app
+      - name: microservicekey-pcq-consolidation-service
+        alias: microserviceKeys.pcq_consolidation_service
+      - name: microservicekey-aac-manage-case-assignment
+        alias: microserviceKeys.aac_manage_case_assignment
+      - name: microservicekey-unspec-service
+        alias: microserviceKeys.unspec_service
+      - name: microservicekey-rd-location-ref-data-load
+        alias: microserviceKeys.rd_location_ref_data_load
+      - name: microservicekey-wa-camunda-pipeline-upload
+        alias: microserviceKeys.wa_camunda_pipeline_upload
+      - name: microservicekey-wa-workflow-api
+        alias: microserviceKeys.wa_workflow_api
+      - name: microservicekey-wa-task-management-api
+        alias: microserviceKeys.wa_task_management_api
+      - name: microservicekey-wa-task-configuration-api
+        alias: microserviceKeys.wa_task_configuration_api
+      - name: microservicekey-wa-case-event-handler
+        alias: microserviceKeys.wa_case_event_handler
+      - name: microservicekey-camunda-bpm
+        alias: microserviceKeys.camunda_bpm
+      - name: microservicekey-rd-location-ref-api
+        alias: microserviceKeys.rd_location_ref_api
+      - name: microservicekey-nfdiv-cms
+        alias: microserviceKeys.nfdiv_cms
+      - name: microservicekey-nfdiv-cos
+        alias: microserviceKeys.nfdiv_cos
+      - name: microservicekey-nfdiv-case-api
+        alias: microserviceKeys.nfdiv_case_api
+      - name: microservicekey-em-hrs-api
+        alias: microserviceKeys.em_hrs_api
+      - name: microservicekey-em-hrs-ingestor
+        alias: microserviceKeys.em_hrs_ingestor
   image: 'hmctspublic.azurecr.io/rpe/service-auth-provider:latest'
   ingressHost: rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
