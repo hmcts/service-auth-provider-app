@@ -130,14 +130,12 @@ dependencies {
 
   testCompile group: 'junit', name: 'junit', version: '4.13.2'
   testCompile group: 'org.assertj', name: 'assertj-core', version: '3.19.0'
-  testImplementation("org.junit.vintage:junit-vintage-engine") {
-    exclude group: "org.hamcrest", module: "hamcrest-core"
-  }
 
   functionalTestCompile sourceSets.main.runtimeClasspath
   functionalTestCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: versions.springBoot
   functionalTestCompile group: 'com.typesafe', name: 'config', version: '1.4.1'
   functionalTestCompile group: 'io.rest-assured', name: 'rest-assured'
+  functionalTestCompile group: 'junit', name: 'junit', version: '4.13.2'
 
   contractTestCompile group: 'au.com.dius.pact.provider', name: 'junit5', version: versions.pact_version
   contractTestCompile group: 'au.com.dius.pact.provider', name: 'spring', version: versions.pact_version
