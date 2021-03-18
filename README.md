@@ -25,25 +25,18 @@ In order to setup Service Auth Provider to work with a client service, you need 
 This has to be done in each environment the service is going to be deployed to. Service Auth Provider will use that secret
 for validating OTPs. It has to be a BASE32-encoded sequence of ten random bytes (16 characters after encoding). By convention,
 the Azure Key Vault secret's name should follow this format: `microservicekey-{service-name}`. [Here's](#generating-secret) how to generate it.
-* To make it work on AKS , Add the client service name (as in HTTP requests ) and Azure Key Vault secret created in the previous steps to [bootstrap.yaml](src/main/resources/bootstrap.yaml) . 
+* To make it work on AKS , Add the client service name (as in HTTP requests ) and Azure Key Vault secret created in the previous steps to [values.yaml](charts/rpe-service-auth-provider/values.yaml). 
 A service **TEST_SERVICE** with secret key **microservicekey-test-service**  needs to be configured as below :
-    
-    ```
-    spring:
-      cloud:
-        propertiesvolume:
-          aliases:
-            s2s.microservicekey-test-service: microserviceKeys.test_service     
-    ```  
-    Note: **test_service** is lower cased in alias mapping, though its not mandatory. 
-    Also, Add secret key to [values.yaml](charts/rpe-service-auth-provider/values.yaml) 
-    ```
-    java:
-      keyVaults:
-        "s2s":
-          secrets:
-            - microservicekey-test-service 
-    ```
+
+ ```
+java:
+  keyVaults:
+    "s2s":
+      secrets:
+        - name: microservicekey-test-service
+          alias: microserviceKeys.test_service
+```
+ Note: **test_service** is lower cased in alias mapping, though its not mandatory. 
 * Bump the helm chart minor version in [Chart.yaml](charts/rpe-service-auth-provider/Chart.yaml) 
 
 #### <a name="generating-secret"></a>Generating the microservice secret
