@@ -162,6 +162,8 @@ java:
         alias: microserviceKeys.aac_manage_case_assignment
       - name: microservicekey-unspec-service
         alias: microserviceKeys.unspec_service
+      - name: microservicekey-civil-service
+        alias: microserviceKeys.civil_service
       - name: microservicekey-rd-location-ref-data-load
         alias: microserviceKeys.rd_location_ref_data_load
       - name: microservicekey-wa-camunda-pipeline-upload
