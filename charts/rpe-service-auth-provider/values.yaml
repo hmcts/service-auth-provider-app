@@ -160,8 +160,6 @@ java:
         alias: microserviceKeys.pcq_consolidation_service
       - name: microservicekey-aac-manage-case-assignment
         alias: microserviceKeys.aac_manage_case_assignment
-      - name: microservicekey-unspec-service
-        alias: microserviceKeys.unspec_service
       - name: microservicekey-civil-service
         alias: microserviceKeys.civil_service
       - name: microservicekey-rd-location-ref-data-load
