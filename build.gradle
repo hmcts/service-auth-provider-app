@@ -120,7 +120,7 @@ configurations.all {
 
       /*  CVE-2020-17521 */
       if (details.requested.name == 'groovy'|| details.requested.name == 'groovy-json'|| details.requested.name == 'groovy-xml') {
-        details.useVersion '2.11.0'
+        details.useVersion '3.0.8'
       }
 
       /*  CVE-2018-10237, CVE-2020-8908 */
