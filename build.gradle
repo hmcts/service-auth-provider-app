@@ -104,12 +104,45 @@ configurations.all {
         details.useVersion '9.0.50'
       }
       /*CVE-2021-22118*/
-      if (det.requested.name == 'spring-aop'||det.requested.name == 'spring-aspects'||det.requested.name == 'spring-beans'
-        ||det.requested.name == 'spring-context'||det.requested.name == 'spring-core'||det.requested.name == 'spring-expression'
-        ||det.requested.name == 'spring-jcl'||det.requested.name == 'spring-jdbc'||det.requested.name == 'spring-orm'
-        ||det.requested.name == 'spring-tx'||det.requested.name == 'spring-web'||det.requested.name == 'spring-webmvc'
-        ||det.requested.name == 'spring-context-support'||det.requested.name == 'spring-test') {
-        det.useVersion '5.2.15.RELEASE'
+      if (details.requested.name == 'spring-core') {
+        details.useVersion '5.3.9'
+      }
+
+      /* CVE-2021-27568 */
+      if (details.requested.name == 'accessors-smart') {
+        details.useVersion '2.4.7'
+      }
+
+      /*  CVE-2021-29425 */
+      if (details.requested.name == 'commons-io') {
+        details.useVersion '2.11.0'
+      }
+
+      /*  CVE-2020-17521 */
+      if (details.requested.name == 'groovy'|| details.requested.name == 'groovy-json'|| details.requested.name == 'groovy-xml') {
+        details.useVersion '2.11.0'
+      }
+
+      /*  CVE-2018-10237, CVE-2020-8908 */
+      if (details.requested.name == 'guava') {
+        details.useVersion '30.1.1-jre'
+      }
+
+      /*   CVE-2021-27568 */
+      if (details.requested.name == 'json-smart') {
+        details.useVersion '2.4.7'
+      }
+
+      /*    CVE-2020-15824, CVE-2020-29582 */
+      if (details.requested.name == 'kotlin-reflect'||details.requested.name == 'kotlin-stdlib'||details.requested.name == 'kotlin-stdlib-common'
+        ||details.requested.name == 'kotlin-stdlib-jdk7'||details.requested.name == 'kotlin-stdlib-jdk8'
+      ) {
+        details.useVersion '1.5.21'
+      }
+
+      /*    CVE-2021-28657 */
+      if (details.requested.name == 'tika-core') {
+        details.useVersion '2.0.0'
       }
     }
   }
