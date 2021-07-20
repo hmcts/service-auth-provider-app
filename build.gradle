@@ -101,7 +101,15 @@ configurations.all {
         details.because "needed by rest-assured>=4.3"
       }
       if (details.requested.group in ['org.apache.tomcat.embed']) {
-        details.useVersion '9.0.44'
+        details.useVersion '9.0.50'
+      }
+      /*CVE-2021-22118*/
+      if (det.requested.name == 'spring-aop'||det.requested.name == 'spring-aspects'||det.requested.name == 'spring-beans'
+        ||det.requested.name == 'spring-context'||det.requested.name == 'spring-core'||det.requested.name == 'spring-expression'
+        ||det.requested.name == 'spring-jcl'||det.requested.name == 'spring-jdbc'||det.requested.name == 'spring-orm'
+        ||det.requested.name == 'spring-tx'||det.requested.name == 'spring-web'||det.requested.name == 'spring-webmvc'
+        ||det.requested.name == 'spring-context-support'||det.requested.name == 'spring-test') {
+        det.useVersion '5.2.15.RELEASE'
       }
     }
   }
