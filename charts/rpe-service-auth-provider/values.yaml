@@ -118,6 +118,8 @@ java:
         alias: microserviceKeys.cet_frontend
       - name: microservicekey-fpl-case-service
         alias: microserviceKeys.fpl_case_service
+      - name: microservicekey-fprl-dgs-api
+        alias: microserviceKeys.fprl_dgs_api
       - name: microservicekey-iac
         alias: microserviceKeys.iac
       - name: microservicekey-em-stitching-api
