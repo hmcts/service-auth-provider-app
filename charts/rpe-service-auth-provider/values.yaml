@@ -160,6 +160,8 @@ java:
         alias: microserviceKeys.payment_app
       - name: microservicekey-pcq-consolidation-service
         alias: microserviceKeys.pcq_consolidation_service
+      - name: microservicekey-lau-case-backend
+        alias: microserviceKeys.lau_case_backend
       - name: microservicekey-aac-manage-case-assignment
         alias: microserviceKeys.aac_manage_case_assignment
       - name: microservicekey-civil-service
