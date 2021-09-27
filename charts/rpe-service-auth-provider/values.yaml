@@ -198,5 +198,7 @@ java:
         alias: microserviceKeys.em_hrs_ingestor
       - name: microservicekey-refunds-api
         alias: microserviceKeys.refunds_api
+      - name: microservicekey-ccpay-cpo-function-node
+        alias: microserviceKeys.ccpay_cpo_function_node
   image: 'hmctspublic.azurecr.io/rpe/service-auth-provider:latest'
   ingressHost: rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
