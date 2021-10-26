@@ -202,5 +202,7 @@ java:
         alias: microserviceKeys.ccpay_cpo_function_node
       - name: microservicekey-paymentoutcome-web
         alias: microserviceKeys.paymentoutcome_web
+      - name: microservicekey-service-request-cpo-update-service
+        alias: microserviceKeys.service_request_cpo_update_service
   image: 'hmctspublic.azurecr.io/rpe/service-auth-provider:latest'
   ingressHost: rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
