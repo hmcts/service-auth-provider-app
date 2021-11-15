@@ -118,8 +118,8 @@ java:
         alias: microserviceKeys.cet_frontend
       - name: microservicekey-fpl-case-service
         alias: microserviceKeys.fpl_case_service
-      - name: microservicekey-fprl-dgs-api
-        alias: microserviceKeys.fprl_dgs_api
+      - name: microservicekey-prl-dgs-api
+        alias: microserviceKeys.prl_dgs_api
       - name: microservicekey-iac
         alias: microserviceKeys.iac
       - name: microservicekey-em-stitching-api
@@ -204,5 +204,7 @@ java:
         alias: microserviceKeys.paymentoutcome_web
       - name: microservicekey-service-request-cpo-update-service
         alias: microserviceKeys.service_request_cpo_update_service
+      - name: microservicekey-prl-cos-api
+        alias: microserviceKeys.prl_cos_api
   image: 'hmctspublic.azurecr.io/rpe/service-auth-provider:latest'
   ingressHost: rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
