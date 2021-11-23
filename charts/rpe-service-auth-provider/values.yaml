@@ -208,6 +208,8 @@ java:
         alias: microserviceKeys.prl_cos_api
       - name: microservicekey-rd-commondata-api
         alias: microserviceKeys.rd_commondata_api
+      - name: microservicekey-adoption-web
+        alias: microserviceKeys.adoption_web
         
   image: 'hmctspublic.azurecr.io/rpe/service-auth-provider:latest'
   ingressHost: rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
