@@ -76,25 +76,29 @@ If the build is green, and the PR template was filled out correctly showing that
 #### Reading the secret in client service's infrastructure code
 
 Once the service's secret is stored in Azure Key Vault, it can be retrieved
-from there in S2S infrastructure (Terraform) code. In order to avoid duplication,
-we recommend that the infrastructure definition of the client service also reads
-this secret. Here's some Terraform code that does it:
+from the S2S key vault with Terraform and written into your own vault.
 
-```
-data "azurerm_key_vault_secret" "s2s_key" {
-  name      = "{name of the secret, e.g. microservicekey-draft-store}"
-  vault_uri = "https://s2s-${var.env}.vault.azure.net/"
+```hcl
+data "azurerm_key_vault" "key_vault" {
+  name                = "${var.product}-${var.env}" # update these values if required
+  resource_group_name = "${var.product}-${var.env}" # update these values if required
 }
 
-...
+data "azurerm_key_vault" "s2s_vault" {
+  name                = "s2s-${var.env}"
+  resource_group_name = "rpe-service-auth-provider-${var.env}"
+}
 
-    app_settings = {
-        ...
-        S2S_KEY = "${data.azurerm_key_vault_secret.s2s_key.value}"
-        ...
-    }
+data "azurerm_key_vault_secret" "key_from_vault" {
+  name         = "microservicekey-ccd-data" # update key name e.g. microservicekey-your-name
+  key_vault_id = data.azurerm_key_vault.s2s_vault.id
+}
 
-...
+resource "azurerm_key_vault_secret" "s2s" {
+  name         = "s2s-secret"
+  value        = data.azurerm_key_vault_secret.key_from_vault.value
+  key_vault_id = data.azurerm_key_vault.key_vault.id
+}
 ```
 
 ### Running
