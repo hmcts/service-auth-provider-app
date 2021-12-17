@@ -222,6 +222,8 @@ java:
         alias: microservicekey.et_cos
       - name: microservicekey-et-msg-handler
         alias: microservicekey.et_msg_handler
+      - name: microservicekey-notifications-service
+        alias: microserviceKeys.notifications_service
 
   image: 'hmctspublic.azurecr.io/rpe/service-auth-provider:latest'
   ingressHost: rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
