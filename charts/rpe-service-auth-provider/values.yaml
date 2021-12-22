@@ -219,9 +219,9 @@ java:
       - name: microservicekey-da-cos-api
         alias: microservicekey.da_cos_api
       - name: microservicekey-et-cos
-        alias: microservicekey.et_cos
+        alias: microserviceKeys.et_cos
       - name: microservicekey-et-msg-handler
-        alias: microservicekey.et_msg_handler
+        alias: microserviceKeys.et_msg_handler
       - name: microservicekey-notifications-service
         alias: microserviceKeys.notifications_service
 
