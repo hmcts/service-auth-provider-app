@@ -122,6 +122,8 @@ java:
         alias: microserviceKeys.prl_dgs_api
       - name: microservicekey-iac
         alias: microserviceKeys.iac
+      - name: microservicekey-idam-api
+        alias: microserviceKeys.idam_api
       - name: microservicekey-em-stitching-api
         alias: microserviceKeys.em_stitching_api
       - name: microservicekey-em-ccd-orchestrator
