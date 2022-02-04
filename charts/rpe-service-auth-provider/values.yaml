@@ -224,6 +224,9 @@ java:
         alias: microserviceKeys.et_msg_handler
       - name: microservicekey-notifications-service
         alias: microserviceKeys.notifications_service
+      - name: microservicekey-sscs-hearings-api
+        alias: microserviceKeys.sscs_hearings_api
+
 
   image: 'hmctspublic.azurecr.io/rpe/service-auth-provider:latest'
   ingressHost: rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
