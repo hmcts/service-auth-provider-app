@@ -164,10 +164,6 @@ java:
         alias: microserviceKeys.pcq_consolidation_service
       - name: microservicekey-lau-case-backend
         alias: microserviceKeys.lau_case_backend
-      - name: microservicekey-lau-case-frontend
-        alias: microserviceKeys.lau_case_frontend
-      - name: microservicekey-lau-idam-frontend
-        alias: microserviceKeys.lau_idam_frontend
       - name: microservicekey-lau-frontend
         alias: microserviceKeys.lau_frontend
       - name: microservicekey-aac-manage-case-assignment
