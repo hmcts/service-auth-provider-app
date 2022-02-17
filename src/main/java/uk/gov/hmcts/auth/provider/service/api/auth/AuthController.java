@@ -1,8 +1,8 @@
 package uk.gov.hmcts.auth.provider.service.api.auth;
 
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,10 +29,10 @@ public class AuthController {
     }
 
     @PostMapping("/lease")
-    @ApiOperation("Sign in, lease auth token")
+    @Operation(summary = "Sign in, lease auth token")
     @ApiResponses({
-        @ApiResponse(code = 200, message = "JWT token"),
-        @ApiResponse(code = 401, message = "Unauthorised. Returns error message.")
+        @ApiResponse(responseCode = "200", description = "JWT token"),
+        @ApiResponse(responseCode = "401", description = "Unauthorised. Returns error message.")
     })
     @ResponseBody
     public ResponseEntity<String> lease(
@@ -43,10 +43,10 @@ public class AuthController {
     }
 
     @GetMapping("/details")
-    @ApiOperation("Validate service's token")
+    @Operation(summary = "Validate service's token")
     @ApiResponses({
-        @ApiResponse(code = 200, message = "Token valid. Returns service name"),
-        @ApiResponse(code = 401, message = "Token invalid.")
+        @ApiResponse(responseCode = "200", description = "Token valid. Returns service name"),
+        @ApiResponse(responseCode = "401", description = "Token invalid.")
     })
     @ResponseBody
     public ResponseEntity<String> authCheck(@RequestHeader(name = "Authorization") @NotEmpty String bearerToken) {

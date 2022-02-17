@@ -13,6 +13,9 @@ jwtKey: ${JWTKEY:wThK0f0/lh3FlxFcL4xUWDMI5C1J9KyQBgXV4wseh1e5J1uYJIjvTvArHxQDrYo
 
 ttlInSeconds: ${TTLINSECONDS:14400}
 
+springdoc:
+  packagesToScan: uk.gov.hmcts.auth.provider.service.api.auth
+
 rs256:
   enabled: ${RS256_ENABLED:false}
   privateKey: ${RS256_PRIVATEKEY:}

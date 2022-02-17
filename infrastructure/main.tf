@@ -56,3 +56,9 @@ resource "azurerm_key_vault_secret" "AZURE_APPINSGHTS_KEY" {
   value        = azurerm_application_insights.appinsights.instrumentation_key
   key_vault_id = module.key-vault.key_vault_id
 }
+
+resource "azurerm_key_vault_secret" "connection-string" {
+  name         = "app-insights-connection-string"
+  value        = azurerm_application_insights.appinsights.connection_string
+  key_vault_id = module.key-vault.key_vault_id
+}

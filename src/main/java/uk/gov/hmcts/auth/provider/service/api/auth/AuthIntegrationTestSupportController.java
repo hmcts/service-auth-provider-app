@@ -1,8 +1,8 @@
 package uk.gov.hmcts.auth.provider.service.api.auth;
 
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.http.MediaType;
@@ -29,9 +29,9 @@ public class AuthIntegrationTestSupportController {
         this.jwtTool = jwtTool;
     }
 
-    @ApiOperation("Generate a JWT token for arbitrary microservice")
+    @Operation(summary = "Generate a JWT token for arbitrary microservice")
     @ApiResponses({
-        @ApiResponse(code = 200, message = "JWT token"),
+        @ApiResponse(responseCode = "200", description = "JWT token"),
     })
     @RequestMapping(value = "/lease", method = POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
