@@ -30,12 +30,15 @@ env.PACT_BROKER_URL = "pact-broker.platform.hmcts.net"
 env.PACT_BROKER_PORT = "443"
 env.PACT_BROKER_SCHEME = "https"
 
+def branchesToSync = ['demo', 'perftest', 'ithc']
+
 withPipeline(type, product, app) {
     env.TEST_SERVICE_NAME =  "send_letter_tests"
     enableSlackNotifications('#platops-build-notices')
     loadVaultSecrets(secrets)
     enableAksStagingDeployment()
     disableLegacyDeployment()
+    syncBranchesWithMaster(branchesToSync)
 
     onMaster() {
         env.PACT_BRANCH_NAME = "master"
