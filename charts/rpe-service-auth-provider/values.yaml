@@ -224,6 +224,8 @@ java:
         alias: microserviceKeys.sscs_hearings_api
       - name: microservicekey-ds-ui
         alias: microserviceKeys.ds_ui
+      - name: microservicekey-hmc-cft-hearing-service
+        alias: microserviceKeys.hmc_cft_hearing_service
 
 
   image: 'hmctspublic.azurecr.io/rpe/service-auth-provider:latest'
