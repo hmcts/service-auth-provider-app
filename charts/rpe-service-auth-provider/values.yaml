@@ -228,8 +228,8 @@ java:
         alias: microserviceKeys.hmc_cft_hearing_service
       - name: microservicekey-et-sya-api
         alias: microserviceKeys.et_sya_api
-      - name: microservicekey-family-bulk-scan-api
-        alias: microserviceKeys.family_bulk_scan_api
+      - name: microservicekey-fis-bulk-scan-api
+        alias: microserviceKeys.fis_bulk_scan_api
 
 
   image: 'hmctspublic.azurecr.io/rpe/service-auth-provider:latest'
