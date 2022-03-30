@@ -230,6 +230,8 @@ java:
         alias: microserviceKeys.et_sya_api
       - name: microservicekey-fis-bulk-scan-api
         alias: microserviceKeys.fis_bulk_scan_api
+      - name: microservicekey-hmc-hmi-inbound-adapter
+        alias: microserviceKeys.hmc_hmi_inbound_adapter
 
 
   image: 'hmctspublic.azurecr.io/rpe/service-auth-provider:latest'
