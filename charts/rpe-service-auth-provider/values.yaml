@@ -232,6 +232,8 @@ java:
         alias: microserviceKeys.fis_bulk_scan_api
       - name: microservicekey-hmc-hmi-inbound-adapter
         alias: microserviceKeys.hmc_hmi_inbound_adapter
+      - name: microservicekey-fis-cos-api
+        alias: microserviceKeys.fis_cos_api
 
 
   image: 'hmctspublic.azurecr.io/rpe/service-auth-provider:latest'
