@@ -20,6 +20,8 @@ java:
         alias: microserviceKeys.am_judicial_booking_service
       - name: microservicekey-am-org-role-mapping-service
         alias: microserviceKeys.am_org_role_mapping_service
+      - name: microservicekey-ccd-case-disposer
+        alias: microserviceKeys.ccd_case_disposer
       - name: microservicekey-ccd-data
         alias: microserviceKeys.ccd_data
       - name: microservicekey-ccd-definition
