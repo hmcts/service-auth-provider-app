@@ -38,5 +38,9 @@
         <notes>Temporary to unblock pipeline</notes>
         <cve>CVE-2020-36518</cve>
     </suppress>
+    
+    <suppress>
+        <cve>CVE-2022-22968</cve>
+    </suppress>
 
 </suppressions>
