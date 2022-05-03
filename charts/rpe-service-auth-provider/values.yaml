@@ -236,6 +236,8 @@ java:
         alias: microserviceKeys.hmc_hmi_inbound_adapter
       - name: microservicekey-fis-cos-api
         alias: microserviceKeys.fis_cos_api
+      - name: microservicekey-prl-citizen-frontend
+        alias: microserviceKeys.prl_citizen_frontend
 
 
   image: 'hmctspublic.azurecr.io/rpe/service-auth-provider:latest'
