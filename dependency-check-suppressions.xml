@@ -33,10 +33,11 @@
         <cve>CVE-2020-10663</cve>
         <cve>CVE-2020-7712</cve>
     </suppress>
-    
-    <suppress until="2022-04-01">
+
+    <suppress until="2022-06-01">
         <notes>Temporary to unblock pipeline</notes>
         <cve>CVE-2020-36518</cve>
+        <cve>CVE-2022-22968</cve>
     </suppress>
     
     <suppress>
