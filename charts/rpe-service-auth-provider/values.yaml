@@ -241,7 +241,7 @@ java:
       - name: microservicekey-ts-translation-service
         alias: microserviceKeys.ts-translation-service
       - name: microservicekey-ccd-next-hearing-date-updater
-          alias: microserviceKeys.ccd-next-hearing-date-updater
+        alias: microserviceKeys.ccd-next-hearing-date-updater
 
 
   image: 'hmctspublic.azurecr.io/rpe/service-auth-provider:latest'
