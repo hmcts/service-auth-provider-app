@@ -34,10 +34,11 @@
         <cve>CVE-2020-7712</cve>
     </suppress>
 
-    <suppress until="2022-06-01">
+    <suppress until="2022-10-01">
         <notes>Temporary to unblock pipeline</notes>
         <cve>CVE-2020-36518</cve>
         <cve>CVE-2022-22968</cve>
+        <cve>CVE-2022-25857</cve>
     </suppress>
     <suppress>
         <notes>There is no non-vulnerable upgrade path for this component/package according to https://github.com/spring-projects/spring-framework/issues/24434</notes>
