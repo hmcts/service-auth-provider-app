@@ -8,7 +8,7 @@ plugins {
   id 'org.sonarqube' version '3.4.0.2513'
   id 'io.spring.dependency-management' version '1.0.13.RELEASE'
   id 'org.springframework.boot' version '2.7.1'
-  id 'au.com.dius.pact' version '4.3.14'
+  id 'au.com.dius.pact' version '4.3.15'
 }
 
 group = 'uk.gov.hmcts.auth.provider.service'
