@@ -4,11 +4,11 @@ plugins {
   id 'jacoco'
   id 'se.patrikerdes.use-latest-versions' version '0.2.18'
   id 'com.github.ben-manes.versions' version '0.42.0'
-  id 'org.owasp.dependencycheck' version '7.1.0.1'
+  id 'org.owasp.dependencycheck' version '7.2.1'
   id 'org.sonarqube' version '3.4.0.2513'
-  id 'io.spring.dependency-management' version '1.0.13.RELEASE'
-  id 'org.springframework.boot' version '2.7.1'
-  id 'au.com.dius.pact' version '4.3.14'
+  id 'io.spring.dependency-management' version '1.0.14.RELEASE'
+  id 'org.springframework.boot' version '2.7.4'
+  id 'au.com.dius.pact' version '4.3.15'
 }
 
 group = 'uk.gov.hmcts.auth.provider.service'
@@ -99,14 +99,14 @@ def versions = [
   junit_jupiter: '5.7.1'
 ]
 
-ext["rest-assured.version"] = '4.3.0'
+ext["rest-assured.version"] = '4.5.1'
 
 configurations.all {
   resolutionStrategy {
     eachDependency { DependencyResolveDetails details ->
       if (details.requested.group == 'org.codehaus.groovy') {
         details.useVersion "3.0.2"
-        details.because "needed by rest-assured>=4.3"
+        details.because "needed by rest-assured>=4.5"
       }
       if (details.requested.group in ['org.apache.tomcat.embed']) {
         details.useVersion '9.0.65'
