@@ -39,7 +39,6 @@
         <cve>CVE-2020-36518</cve>
         <cve>CVE-2022-22968</cve>
         <cve>CVE-2022-25857</cve>
-        <cve>CVE-2022-42252</cve>
     </suppress>
     <suppress>
         <notes>There is no non-vulnerable upgrade path for this component/package according to https://github.com/spring-projects/spring-framework/issues/24434</notes>
@@ -55,6 +54,7 @@
         <cve>CVE-2022-38750</cve>
         <cve>CVE-2022-38751</cve>
         <cve>CVE-2022-38752</cve>
+        <cve>CVE-2022-41854</cve>
     </suppress>
     <suppress>
         <cve>CVE-2022-42003</cve>
