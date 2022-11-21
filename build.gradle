@@ -24,6 +24,16 @@ tasks.withType(JavaExec).configureEach {
   javaLauncher.set(javaToolchains.launcherFor(java.toolchain))
 }
 
+dependencyManagement {
+    dependencies {
+
+        //CVE-2022-25857, CVE-2022-38749, CVE-2022-38750, CVE-2022-38751, CVE-2022-38752, CVE-2022-41854
+        dependencySet(group: 'org.yaml', version: '1.33') {
+            entry 'snakeyaml'
+        }
+    }
+}
+
 sourceSets {
   functionalTest {
     java {
@@ -109,7 +119,7 @@ configurations.all {
         details.because "needed by rest-assured>=4.5"
       }
       if (details.requested.group in ['org.apache.tomcat.embed']) {
-        details.useVersion '9.0.65'
+        details.useVersion '9.0.69'
       }
 
       /*  CVE-2021-29425 */
