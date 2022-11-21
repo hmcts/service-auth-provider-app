@@ -196,6 +196,8 @@ java:
         alias: microserviceKeys.nfdiv_cos
       - name: microservicekey-nfdiv-case-api
         alias: microserviceKeys.nfdiv_case_api
+      - name: microservicekey-sptribs-case-api
+        alias: microserviceKeys.sptribs_case_api
       - name: microservicekey-em-hrs-api
         alias: microserviceKeys.em_hrs_api
       - name: microservicekey-em-hrs-ingestor
@@ -242,6 +244,8 @@ java:
         alias: microserviceKeys.ts-translation-service
       - name: microservicekey-ccd-next-hearing-date-updater
         alias: microserviceKeys.ccd_next_hearing_date_updater
+      - name: microservicekey-fis-hmc-api
+        alias: microserviceKeys.fis_hmc_api
 
 
   image: 'hmctspublic.azurecr.io/rpe/service-auth-provider:latest'
