@@ -22,7 +22,7 @@ static LinkedHashMap<String, Object> secret(String secretName, String envVar) {
 
 def type = "java"
 def product = "rpe"
-def app = "service-auth-provider"
+def component = "service-auth-provider"
 
 // Vars for Kubernetes
 env.PACT_BROKER_FULL_URL = 'https://pact-broker.platform.hmcts.net'
@@ -32,7 +32,7 @@ env.PACT_BROKER_SCHEME = "https"
 
 def branchesToSync = ['demo', 'perftest', 'ithc']
 
-withPipeline(type, product, app) {
+withPipeline(type, product, component) {
     env.TEST_SERVICE_NAME =  "send_letter_tests"
     enableSlackNotifications('#platops-build-notices')
     loadVaultSecrets(secrets)

@@ -34,14 +34,29 @@
         <cve>CVE-2020-7712</cve>
     </suppress>
 
-    <suppress until="2022-06-01">
+    <suppress until="2022-12-01">
         <notes>Temporary to unblock pipeline</notes>
         <cve>CVE-2020-36518</cve>
         <cve>CVE-2022-22968</cve>
+        <cve>CVE-2022-25857</cve>
     </suppress>
     <suppress>
         <notes>There is no non-vulnerable upgrade path for this component/package according to https://github.com/spring-projects/spring-framework/issues/24434</notes>
         <cve>CVE-2016-1000027</cve>
     </suppress>
 
+    <!-- remove when spring boot is upgraded to 3.x-->
+    <suppress>
+        <notes><![CDATA[Not relevant to us as all yaml is checked directly into the repo]]></notes>
+        <packageUrl regex="true">^pkg:maven/org\.yaml/snakeyaml@.*$</packageUrl>
+        <cve>CVE-2022-25857</cve>
+        <cve>CVE-2022-38749</cve>
+        <cve>CVE-2022-38750</cve>
+        <cve>CVE-2022-38751</cve>
+        <cve>CVE-2022-38752</cve>
+        <cve>CVE-2022-41854</cve>
+    </suppress>
+    <suppress>
+        <cve>CVE-2022-42003</cve>
+    </suppress>
 </suppressions>
