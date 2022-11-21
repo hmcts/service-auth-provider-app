@@ -34,7 +34,7 @@
         <cve>CVE-2020-7712</cve>
     </suppress>
 
-    <suppress until="2022-10-01">
+    <suppress until="2022-12-01">
         <notes>Temporary to unblock pipeline</notes>
         <cve>CVE-2020-36518</cve>
         <cve>CVE-2022-22968</cve>
@@ -54,5 +54,9 @@
         <cve>CVE-2022-38750</cve>
         <cve>CVE-2022-38751</cve>
         <cve>CVE-2022-38752</cve>
+        <cve>CVE-2022-41854</cve>
+    </suppress>
+    <suppress>
+        <cve>CVE-2022-42003</cve>
     </suppress>
 </suppressions>

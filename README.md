@@ -119,7 +119,7 @@ Dockerized app comes with preconfigured sample service. See [docker-compose.yml]
 
 ## Documentation
 API documentation is provided with Swagger.  
-Json spec is available under standard `/v2/api-docs` route.
+Json spec is available under standard `/v3/api-docs` route.
 
 Flow diagram can be found [here](docs/design.md)
 
