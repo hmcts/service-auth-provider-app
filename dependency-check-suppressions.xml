@@ -58,5 +58,6 @@
     </suppress>
     <suppress>
         <cve>CVE-2022-42003</cve>
+        <cve>CVE-2021-37533</cve>
     </suppress>
 </suppressions>
