@@ -63,4 +63,8 @@
         <cve>CVE-2022-42003</cve>
         <cve>CVE-2021-37533</cve>
     </suppress>
+        <suppress>
+        <notes>LatencyUtils</notes>
+        <cve>CVE-2021-4277</cve>
+    </suppress>
 </suppressions>
