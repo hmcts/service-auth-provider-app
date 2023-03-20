@@ -40,6 +40,8 @@ java:
         alias: microserviceKeys.cmc_claim_store
       - name: microservicekey-cmc-claim-external-api
         alias: microserviceKeys.cmc_claim_external_api
+      - name: microservicekey-civil-sdt-commissioning
+        alias: microserviceKeys.civil_sdt_commissioning
       - name: microservicekey-divorce
         alias: microserviceKeys.drivorce
       - name: microservicekey-divorce-frontend
