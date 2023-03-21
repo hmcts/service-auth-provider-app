@@ -1,5 +1,5 @@
 {
-  "enabledManagers": ["helm-requirements","gradle-wrapper","regex"],
+  "enabledManagers": ["helm-requirements","gradle-wrapper","regex","terraform","terraform-version"],
   "labels": ["dependencies"],
   "helm-requirements":
   {
