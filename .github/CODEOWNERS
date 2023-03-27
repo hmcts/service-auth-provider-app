@@ -8,5 +8,6 @@
 gradle/**
 
 infrastructure/state.tf
+infrastructure/.terraform-version
 build.gradle
 charts/rpe-service-auth-provider/Chart.yaml
