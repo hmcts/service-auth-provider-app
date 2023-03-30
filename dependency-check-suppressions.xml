@@ -67,4 +67,19 @@
         <notes>LatencyUtils</notes>
         <cve>CVE-2021-4277</cve>
     </suppress>
+
+    <suppress>
+        <notes><![CDATA[
+    file name: tomcat-embed-websocket-9.0.69.jar
+    ]]></notes>
+        <packageUrl regex="true">^pkg:maven/org\.apache\.tomcat\.embed/tomcat\-embed\-websocket@.*$</packageUrl>
+        <cve>CVE-2023-28708</cve>
+    </suppress>
+    <suppress>
+        <notes><![CDATA[
+    file name: tomcat-embed-core-9.0.69.jar
+    ]]></notes>
+        <packageUrl regex="true">^pkg:maven/org\.apache\.tomcat\.embed/tomcat\-embed\-core@.*$</packageUrl>
+        <cve>CVE-2023-28708</cve>
+    </suppress>
 </suppressions>
