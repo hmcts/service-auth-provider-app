@@ -202,6 +202,8 @@ java:
         alias: microserviceKeys.sptribs_case_api
       - name: microservicekey-sptribs-dss-backend
         alias: microserviceKeys.sptribs_dss_backend
+      - name: microservicekey-sptribs-frontend
+        alias: microserviceKeys.sptribs_frontend
       - name: microservicekey-em-hrs-api
         alias: microserviceKeys.em_hrs_api
       - name: microservicekey-em-hrs-ingestor
