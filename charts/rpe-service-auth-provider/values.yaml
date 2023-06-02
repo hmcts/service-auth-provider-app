@@ -256,6 +256,8 @@ java:
         alias: microserviceKeys.jps_judicial_payment_frontend
       - name: microservicekey-jps-judicial-payment-service
         alias: microserviceKeys.jps_judicial_payment_service
+      - name: microservicekey-cui-ra
+        alias: microserviceKeys.cui_ra
 
 
   image: 'hmctspublic.azurecr.io/rpe/service-auth-provider:latest'
