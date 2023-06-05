@@ -258,7 +258,8 @@ java:
         alias: microserviceKeys.jps_judicial_payment_service
       - name: microservicekey-cui-ra
         alias: microserviceKeys.cui_ra
-
+      - name: microservicekey-civil-sdt
+        alias: microserviceKeys.civil_sdt
 
   image: 'hmctspublic.azurecr.io/rpe/service-auth-provider:latest'
   ingressHost: rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
