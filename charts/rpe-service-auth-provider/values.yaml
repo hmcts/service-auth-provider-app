@@ -260,6 +260,8 @@ java:
         alias: microserviceKeys.cui_ra
       - name: microservicekey-civil-sdt
         alias: microserviceKeys.civil_sdt
+      - name: microservicekey-idam-user-disposer
+        alias: microserviceKeys.idam-user-disposer
 
   image: 'hmctspublic.azurecr.io/rpe/service-auth-provider:latest'
   ingressHost: rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
