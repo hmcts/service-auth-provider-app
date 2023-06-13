@@ -1,10 +1,10 @@
-provider azurerm {
+provider "azurerm" {
   features {}
 }
 
 locals {
-  vault_uri         = module.key-vault.key_vault_uri
-  vault_name        = module.key-vault.key_vault_name
+  vault_uri  = module.key-vault.key_vault_uri
+  vault_name = module.key-vault.key_vault_name
 }
 
 resource "azurerm_resource_group" "rg" {
