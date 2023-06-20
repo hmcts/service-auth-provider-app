@@ -41,9 +41,6 @@ withPipeline(type, product, component) {
     disableLegacyDeployment()
     syncBranchesWithMaster(branchesToSync)
     expires(expiresAfter)
-
-    onMaster() {
-        env.PACT_BRANCH_NAME = "master"
-        enablePactAs([AppPipelineDsl.PactRoles.PROVIDER])
-    }
+    env.PACT_BRANCH_NAME = "master"
+    enablePactAs([AppPipelineDsl.PactRoles.PROVIDER])
 }
