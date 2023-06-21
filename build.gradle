@@ -127,11 +127,6 @@ configurations.all {
         details.useVersion '2.11.0'
       }
 
-      /*  CVE-2020-17521 */
-      if (details.requested.name == 'groovy'|| details.requested.name == 'groovy-json'|| details.requested.name == 'groovy-xml') {
-        details.useVersion '3.0.8'
-      }
-
       /*  CVE-2018-10237, CVE-2020-8908 */
       if (details.requested.name == 'guava') {
         details.useVersion '30.1.1-jre'
