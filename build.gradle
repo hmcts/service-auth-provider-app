@@ -129,7 +129,7 @@ configurations.all {
 
       /*  CVE-2018-10237, CVE-2020-8908 */
       if (details.requested.name == 'guava') {
-        details.useVersion '30.1.1-jre'
+        details.useVersion '32.1.1-jre'
       }
 
       /*    CVE-2021-28657 */
