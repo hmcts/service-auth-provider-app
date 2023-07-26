@@ -258,6 +258,8 @@ java:
         alias: microserviceKeys.jps_judicial_payment_service
       - name: microservicekey-cui-ra
         alias: microserviceKeys.cui_ra
+      - name: microservicekey-cui
+        alias: microserviceKeys.civil_citizen_ui
       - name: microservicekey-civil-sdt
         alias: microserviceKeys.civil_sdt
       - name: microservicekey-idam-user-disposer
