@@ -266,6 +266,8 @@ java:
         alias: microserviceKeys.idam-user-disposer
       - name: microservicekey-et-hearings-api
         alias: microserviceKeys.et_hearings_api 
+      - name: microservicekey-idam-user-profile-bridge
+        alias: microserviceKeys.idam-user-profile-bridge
 
   image: 'hmctspublic.azurecr.io/rpe/service-auth-provider:latest'
   ingressHost: rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
