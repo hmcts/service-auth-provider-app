@@ -82,7 +82,7 @@
         <packageUrl regex="true">^pkg:maven/org\.apache\.tomcat\.embed/tomcat\-embed\-core@.*$</packageUrl>
         <cve>CVE-2023-28708</cve>
     </suppress>
-    <suppress until="2023-09-04">
+    <suppress until="2023-12-04">
       <notes><![CDATA[
      ** DISPUTED ** An issue was discovered jackson-databind thru 2.15.2 allows attackers to cause a denial of service or other unspecified impacts via crafted object that uses cyclic dependencies. NOTE: the vendor's perspective is that the product is not intended for use with untrusted input. 
      ]]></notes>
