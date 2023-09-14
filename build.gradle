@@ -106,7 +106,7 @@ sonarqube {
 def versions = [
   springBoot: plugins.getPlugin('org.springframework.boot').class.package.implementationVersion,
   pact_version: '4.6.2',
-  junit_jupiter: '5.10.0'
+  junit_jupiter: '5.9.3'
 ]
 
 ext["rest-assured.version"] = '4.5.1'
