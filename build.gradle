@@ -15,7 +15,7 @@ group = 'uk.gov.hmcts.auth.provider.service'
 
 java {
   toolchain {
-    languageVersion = JavaLanguageVersion.of(17)
+    languageVersion = JavaLanguageVersion.of(21)
   }
 }
 
