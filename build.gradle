@@ -182,10 +182,8 @@ dependencies {
   contractTestImplementation group: 'au.com.dius.pact.provider', name: 'junit5spring', version: versions.pact_version
   contractTestImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test'
   contractTestImplementation group: 'com.warrenstrange', name: 'googleauth', version: '1.5.0'
-  contractTestImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: versions.junit_jupiter
-  contractTestRuntimeOnly group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: versions.junit_jupiter
-  contractTestImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: versions.junit_jupiter
-  contractTestRuntimeOnly group: 'org.junit.platform', name: 'junit-platform-commons', version: '1.10.1'
+  contractTestImplementation group: 'org.junit.jupiter', name: 'junit-jupiter', version: versions.junit_jupiter
+  contractTestRuntimeOnly group: 'org.junit.jupiter', name: 'junit-jupiter', version: versions.junit_jupiter
 
   testImplementation(group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: versions.springBoot) {
     exclude(module: 'commons-logging')
