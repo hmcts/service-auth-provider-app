@@ -20,19 +20,19 @@ public abstract class JwtVerifier {
 
     public static String verifyAndExtractSubject(String jwt, Clock clock, String signatureVerificationKey) {
         return verifyAndExtractSubject(jwt, Jwts
-            .parser().setClock(clock).setSigningKey(signatureVerificationKey).build());
+            .parser().clock(clock).setSigningKey(signatureVerificationKey).build());
     }
 
     public static String verifyAndExtractSubject(String jwt, Clock clock, Key signatureVerificationKey) {
         return verifyAndExtractSubject(jwt, Jwts
-            .parser().setClock(clock).setSigningKey(signatureVerificationKey).build());
+            .parser().clock(clock).setSigningKey(signatureVerificationKey).build());
     }
 
     private static String verifyAndExtractSubject(String jwt, JwtParser jwtParser) {
         try {
             return jwtParser
-                .parseClaimsJws(jwt)
-                .getBody()
+                .parseSignedClaims(jwt)
+                .getPayload()
                 .getSubject();
 
         } catch (SignatureException e) {
