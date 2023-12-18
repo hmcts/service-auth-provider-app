@@ -4,14 +4,12 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.security.Keys;
 import org.junit.Test;
 import uk.gov.hmcts.auth.provider.service.api.auth.exceptions.TokenExpiredException;
 import uk.gov.hmcts.auth.provider.service.api.auth.exceptions.TokenSignatureException;
 import uk.gov.hmcts.auth.provider.service.api.auth.exceptions.UnmappedTokenException;
 import uk.gov.hmcts.auth.provider.service.api.auth.jwt.JwtHS512Tool;
 
-import javax.crypto.SecretKey;
 import java.time.Clock;
 import java.time.Duration;
 import java.util.Base64;
