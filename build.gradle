@@ -221,16 +221,23 @@ runProviderPactVerification.dependsOn contractTest
 
 runProviderPactVerification.finalizedBy pactVerify
 
-
 jacocoTestReport {
   executionData(test)
   reports {
     xml.required = true
-    html.required = true
-    html.destination file("${buildDir}/reports/jacoco")
     csv.required = false
+    html.required = true
   }
 }
+
+tasks.named('sonarqube') {
+  dependsOn jacocoTestReport
+}
+
+tasks.named('sonar') {
+  dependsOn jacocoTestReport
+}
+
 
 wrapper {
     distributionType = Wrapper.DistributionType.ALL
