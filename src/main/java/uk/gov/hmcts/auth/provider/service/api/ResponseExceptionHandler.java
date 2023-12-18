@@ -1,5 +1,6 @@
 package uk.gov.hmcts.auth.provider.service.api;
 
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -13,8 +14,6 @@ import uk.gov.hmcts.auth.provider.service.api.auth.exceptions.TokenSignatureExce
 import uk.gov.hmcts.auth.provider.service.api.auth.exceptions.UnmappedTokenException;
 import uk.gov.hmcts.auth.provider.service.api.error.ErrorDto;
 import uk.gov.hmcts.auth.provider.service.api.microservice.UnknownMicroserviceException;
-
-import javax.servlet.http.HttpServletRequest;
 
 import static org.springframework.http.HttpStatus.UNAUTHORIZED;
 import static org.springframework.http.ResponseEntity.status;
