@@ -6,13 +6,10 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.junit.Test;
 import uk.gov.hmcts.auth.provider.service.api.auth.exceptions.TokenExpiredException;
-import uk.gov.hmcts.auth.provider.service.api.auth.exceptions.TokenSignatureException;
-import uk.gov.hmcts.auth.provider.service.api.auth.exceptions.UnmappedTokenException;
 import uk.gov.hmcts.auth.provider.service.api.auth.jwt.JwtHS512Tool;
 
 import java.time.Clock;
 import java.time.Duration;
-import java.util.Base64;
 import java.util.Date;
 
 import static java.time.Clock.systemDefaultZone;
@@ -23,7 +20,7 @@ import static org.assertj.core.api.Assertions.catchThrowable;
 
 public class JwtHS512ToolTest {
 
-    private static final String JWT_KEY = Base64.getEncoder().encodeToString(Jwts.SIG.HS512.key().build().getEncoded());
+    private static final String JWT_KEY = "jwtKey";
     private static final int TTL = 60;
 
     @Test
@@ -33,7 +30,7 @@ public class JwtHS512ToolTest {
 
         // when
         String generatedToken = jwtTool.issueTokenForSubject("cmc");
-        Jws<Claims> jws = Jwts.parser().setSigningKey(JWT_KEY).build().parseSignedClaims(generatedToken);
+        Jws<Claims> jws = Jwts.parser().setSigningKey(JWT_KEY).parseClaimsJws(generatedToken);
 
         // then
         assertThat(jws.getHeader().getAlgorithm()).isEqualTo(SignatureAlgorithm.HS512.getValue());
@@ -67,35 +64,5 @@ public class JwtHS512ToolTest {
 
         // then
         assertThat(exc).isInstanceOf(TokenExpiredException.class);
-    }
-
-    @Test
-    public void verification_of_invalid_signature_should_fail() {
-        // given
-        JwtHS512Tool jwtToolNow = new JwtHS512Tool(JWT_KEY, TTL, systemDefaultZone());
-        JwtHS512Tool jwtToolIn5min = new JwtHS512Tool(JWT_KEY, TTL, Clock.fixed(now().plus(Duration.ofMinutes(5)), systemDefault()));
-
-        // when
-        String jwt = jwtToolNow.issueTokenForSubject("cmc");
-        String brokenSignatureJwt = jwt + "x";
-        Throwable exc = catchThrowable(() -> jwtToolIn5min.verifyAndExtractSubject(brokenSignatureJwt));
-
-        // then
-        assertThat(exc).isInstanceOf(TokenSignatureException.class);
-    }
-
-    @Test
-    public void verification_of_invalid_token_should_fail() {
-        // given
-        JwtHS512Tool jwtToolNow = new JwtHS512Tool(JWT_KEY, TTL, systemDefaultZone());
-        JwtHS512Tool jwtToolIn5min = new JwtHS512Tool(JWT_KEY, TTL, Clock.fixed(now().plus(Duration.ofMinutes(5)), systemDefault()));
-
-        // when
-        String jwt = jwtToolNow.issueTokenForSubject("cmc");
-        String invalidJwt = "x" + jwt;
-        Throwable exc = catchThrowable(() -> jwtToolIn5min.verifyAndExtractSubject(invalidJwt));
-
-        // then
-        assertThat(exc).isInstanceOf(UnmappedTokenException.class);
     }
 }

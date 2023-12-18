@@ -2,6 +2,7 @@ package uk.gov.hmcts.auth.provider.service.api.auth;
 
 import com.google.common.io.BaseEncoding;
 import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.impl.crypto.MacProvider;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,9 +14,7 @@ import uk.gov.hmcts.auth.provider.service.api.auth.jwt.JwtHS512Tool;
 import uk.gov.hmcts.auth.provider.service.api.auth.totp.TotpAuthenticator;
 import uk.gov.hmcts.auth.provider.service.api.microservice.Microservice;
 
-import javax.crypto.SecretKey;
 import java.time.Clock;
-import java.util.Base64;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
@@ -27,7 +26,7 @@ import static org.mockito.Mockito.mock;
 @RunWith(MockitoJUnitRunner.class)
 public class AuthServiceTest {
 
-    private static final SecretKey SOME_JWT_KEY = Jwts.SIG.HS512.key().build();
+    private static final String SOME_JWT_KEY = "wThK0f0/lh3FlxFcL4xUWDMI5C1J9KyQBgXV4wseh1e5J1uYJIjvTvArHxQDrYoHJ23xFxjHkOnvNbR5dXRoxA==";
 
     private TotpAuthenticator totpAuthenticator;
     private AuthService authService;
@@ -37,7 +36,7 @@ public class AuthServiceTest {
         totpAuthenticator = mock(TotpAuthenticator.class);
 
         authService = new AuthService(
-            new JwtHS512Tool(Base64.getEncoder().encodeToString(SOME_JWT_KEY.getEncoded()), 900, Clock.systemUTC()),
+            new JwtHS512Tool(SOME_JWT_KEY, 900, Clock.systemUTC()),
             (id) -> new Microservice(id, id),
             totpAuthenticator
         );
@@ -67,8 +66,8 @@ public class AuthServiceTest {
 
     @Test
     public void jwt_signed_with_wrong_key_should_throw_an_exception() {
-        SecretKey someOtherKey = Jwts.SIG.HS512.key().build();
-        String jwt = Jwts.builder().subject("divorce").signWith(someOtherKey).compact();
+        String someOtherKey = BaseEncoding.base64().encode(MacProvider.generateKey().getEncoded());
+        String jwt = Jwts.builder().setSubject("divorce").signWith(JwtHS512Tool.SIGNATURE_ALGORITHM, someOtherKey).compact();
 
         Throwable exc = catchThrowable(() -> authService.verify(jwt));
 
@@ -83,7 +82,7 @@ public class AuthServiceTest {
 
     @Test
     public void when_valid_jwt_is_passed_verify_should_return_service_name() {
-        String jwt = Jwts.builder().subject("divorce").signWith(SOME_JWT_KEY).compact();
+        String jwt = Jwts.builder().setSubject("divorce").signWith(JwtHS512Tool.SIGNATURE_ALGORITHM, SOME_JWT_KEY).compact();
 
         assertThat(authService.verify(jwt)).isEqualTo("divorce");
     }
