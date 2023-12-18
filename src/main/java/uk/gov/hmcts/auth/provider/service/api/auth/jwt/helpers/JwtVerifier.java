@@ -14,6 +14,7 @@ import uk.gov.hmcts.auth.provider.service.api.auth.exceptions.UnmappedTokenExcep
 
 import java.security.Key;
 
+@SuppressWarnings("deprecation") // will follow up in a specific PR for upgrading
 public abstract class JwtVerifier {
 
     private static final Logger log = LoggerFactory.getLogger(JwtVerifier.class);
