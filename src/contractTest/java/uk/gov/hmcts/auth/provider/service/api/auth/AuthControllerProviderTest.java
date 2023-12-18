@@ -23,8 +23,14 @@ import static org.mockito.Mockito.when;
 
 @ExtendWith(SpringExtension.class)
 @Provider("s2s_auth")
-@PactBroker(scheme = "${PACT_BROKER_SCHEME:http}", host = "${PACT_BROKER_URL:localhost}", port = "${PACT_BROKER_PORT:80}", consumerVersionSelectors = {
-    @VersionSelector(tag = "${PACT_BRANCH_NAME:Dev}")})
+@PactBroker(
+    url = "${PACT_BROKER_URL:https://pact-broker.platform.hmcts.net}",
+    consumerVersionSelectors = {
+        @VersionSelector(tag = "${PACT_BRANCH_NAME:Dev}")
+    },
+    providerTags = "${pactbroker.providerTags:master}",
+    enablePendingPacts = "${pactbroker.enablePending:true}"
+)
 @ContextConfiguration(classes = AuthControllerProviderContext.class)
 public class AuthControllerProviderTest {
 
