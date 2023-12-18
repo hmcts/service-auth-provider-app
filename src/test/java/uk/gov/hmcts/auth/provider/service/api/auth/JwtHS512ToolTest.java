@@ -4,12 +4,15 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.security.Keys;
 import org.junit.Test;
 import uk.gov.hmcts.auth.provider.service.api.auth.exceptions.TokenExpiredException;
 import uk.gov.hmcts.auth.provider.service.api.auth.jwt.JwtHS512Tool;
 
+import javax.crypto.SecretKey;
 import java.time.Clock;
 import java.time.Duration;
+import java.util.Base64;
 import java.util.Date;
 
 import static java.time.Clock.systemDefaultZone;
@@ -20,7 +23,7 @@ import static org.assertj.core.api.Assertions.catchThrowable;
 
 public class JwtHS512ToolTest {
 
-    private static final String JWT_KEY = "jwtKey";
+    private static final String JWT_KEY = Base64.getEncoder().encodeToString(Jwts.SIG.HS512.key().build().getEncoded());
     private static final int TTL = 60;
 
     @Test
@@ -30,7 +33,7 @@ public class JwtHS512ToolTest {
 
         // when
         String generatedToken = jwtTool.issueTokenForSubject("cmc");
-        Jws<Claims> jws = Jwts.parser().setSigningKey(JWT_KEY).parseClaimsJws(generatedToken);
+        Jws<Claims> jws = Jwts.parser().setSigningKey(JWT_KEY).build().parseSignedClaims(generatedToken);
 
         // then
         assertThat(jws.getHeader().getAlgorithm()).isEqualTo(SignatureAlgorithm.HS512.getValue());

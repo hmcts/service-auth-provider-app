@@ -33,8 +33,8 @@ public class JwtRS256ToolTest {
         String generatedToken = jwtTool.issueTokenForSubject("cmc");
 
         Jws<Claims> jws = Jwts.parser()
-            .setSigningKey(KeysHelper.Public.fromBase64(publicKey))
-            .parseClaimsJws(generatedToken);
+            .verifyWith(KeysHelper.Public.fromBase64(publicKey))
+            .build().parseSignedClaims(generatedToken);
 
         // then
         assertThat(jws.getHeader().getAlgorithm()).isEqualTo(SignatureAlgorithm.RS256.getValue());

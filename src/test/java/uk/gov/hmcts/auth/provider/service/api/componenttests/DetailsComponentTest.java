@@ -1,14 +1,13 @@
 package uk.gov.hmcts.auth.provider.service.api.componenttests;
 
-import com.google.common.io.BaseEncoding;
 import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.impl.crypto.MacProvider;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import uk.gov.hmcts.auth.provider.service.api.auth.jwt.JwtHS512Tool;
 import uk.gov.hmcts.auth.provider.service.api.error.ErrorDto;
 
+import javax.crypto.SecretKey;
 import java.util.Date;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -33,8 +32,8 @@ public class DetailsComponentTest extends ComponentTestBase {
 
     @Test
     public void invalidJwtSignatureShouldReturn403() throws Exception {
-        String someOtherKey = BaseEncoding.base64().encode(MacProvider.generateKey().getEncoded());
-        String jwt = Jwts.builder().setSubject("divorce").signWith(JwtHS512Tool.SIGNATURE_ALGORITHM, someOtherKey).compact();
+        SecretKey someOtherKey = Jwts.SIG.HS512.key().build();
+        String jwt = Jwts.builder().subject("divorce").signWith(someOtherKey).compact();
 
         scenario
             .given()

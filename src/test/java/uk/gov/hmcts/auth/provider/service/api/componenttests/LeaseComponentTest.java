@@ -54,7 +54,7 @@ public class LeaseComponentTest extends ComponentTestBase {
             .when().lease("divorce", validOneTimePassword)
             .then()
             .token(token -> {
-                Claims claims = Jwts.parser().setSigningKey(jwtKey).parseClaimsJws(token).getBody();
+                Claims claims = Jwts.parser().setSigningKey(jwtKey).build().parseSignedClaims(token).getBody();
                 assertThat(claims.getSubject()).isEqualTo("divorce");
             });
     }

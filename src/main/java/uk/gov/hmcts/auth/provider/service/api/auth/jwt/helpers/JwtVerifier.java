@@ -19,11 +19,13 @@ public abstract class JwtVerifier {
     private static final Logger log = LoggerFactory.getLogger(JwtVerifier.class);
 
     public static String verifyAndExtractSubject(String jwt, Clock clock, String signatureVerificationKey) {
-        return verifyAndExtractSubject(jwt, Jwts.parser().setClock(clock).setSigningKey(signatureVerificationKey));
+        return verifyAndExtractSubject(jwt, Jwts
+            .parser().setClock(clock).setSigningKey(signatureVerificationKey).build());
     }
 
     public static String verifyAndExtractSubject(String jwt, Clock clock, Key signatureVerificationKey) {
-        return verifyAndExtractSubject(jwt, Jwts.parser().setClock(clock).setSigningKey(signatureVerificationKey));
+        return verifyAndExtractSubject(jwt, Jwts
+            .parser().setClock(clock).setSigningKey(signatureVerificationKey).build());
     }
 
     private static String verifyAndExtractSubject(String jwt, JwtParser jwtParser) {
