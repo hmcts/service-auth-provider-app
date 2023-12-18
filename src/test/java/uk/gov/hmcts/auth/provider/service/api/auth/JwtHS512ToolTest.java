@@ -77,7 +77,7 @@ public class JwtHS512ToolTest {
 
         // when
         String jwt = jwtToolNow.issueTokenForSubject("cmc");
-        String brokenSignatureJwt = jwt.substring(0, jwt.length() - 1) + "x";
+        String brokenSignatureJwt = jwt + "x";
         Throwable exc = catchThrowable(() -> jwtToolIn5min.verifyAndExtractSubject(brokenSignatureJwt));
 
         // then
