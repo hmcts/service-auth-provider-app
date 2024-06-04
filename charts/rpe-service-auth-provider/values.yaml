@@ -270,8 +270,6 @@ java:
         alias: microserviceKeys.idam-user-profile-bridge
       - name: microservicekey-sptribs-dss-update-case-web
         alias: microserviceKeys.sptribs_dss_update_case_web
-      - name: microservicekey-st-cron-trigger
-        alias: microserviceKeys.st_cron_trigger
 
   image: 'hmctspublic.azurecr.io/rpe/service-auth-provider:latest'
   ingressHost: rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
