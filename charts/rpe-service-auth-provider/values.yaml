@@ -252,10 +252,6 @@ java:
         alias: microserviceKeys.ccd_next_hearing_date_updater
       - name: microservicekey-fis-hmc-api
         alias: microserviceKeys.fis_hmc_api
-      - name: microservicekey-jps-judicial-payment-frontend
-        alias: microserviceKeys.jps_judicial_payment_frontend
-      - name: microservicekey-jps-judicial-payment-service
-        alias: microserviceKeys.jps_judicial_payment_service
       - name: microservicekey-cui-ra
         alias: microserviceKeys.cui_ra
       - name: microservicekey-cui
