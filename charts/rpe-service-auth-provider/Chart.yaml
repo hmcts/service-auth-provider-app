@@ -1,8 +1,8 @@
 apiVersion: v2
 appVersion: "1.0"
 description: A Helm chart for Service Auth Provider App
-name: rpe-service-auth-provider
-home: https://github.com/hmcts/service-auth-provider-app
+name: opal-service-auth-provider
+home: https://github.com/hmcts/opal-service-auth-provider-app
 version: 0.3.113
 maintainers:
   - name: HMCTS Platform engineering team

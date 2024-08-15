@@ -13,11 +13,11 @@ public class OpenAPIConfiguration {
     @Bean
     public OpenAPI openAPI() {
         return new OpenAPI()
-            .info(new Info().title("Service Auth Provider")
+            .info(new Info().title("Opal Service Auth Provider")
                 .version("v1.0.0")
                 .license(new License().name("MIT").url("https://opensource.org/licenses/MIT")))
             .externalDocs(new ExternalDocumentation()
                 .description("README")
-                .url("https://github.com/hmcts/service-auth-provider-app"));
+                .url("https://github.com/hmcts/opal-service-auth-provider-app"));
     }
 }
