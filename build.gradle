@@ -98,7 +98,7 @@ dependencyUpdates.resolutionStrategy {
 
 sonarqube {
   properties {
-    property "sonar.projectName", "Reform :: Service Auth Provider"
+    property "sonar.projectName", "Reform :: Opal Service Auth Provider"
     property 'sonar.coverage.exclusions', "**/config/**"
   }
 }
@@ -127,7 +127,9 @@ dependencies {
   implementation group: 'org.springframework.boot', name: 'spring-boot-starter-actuator'
   implementation group: 'org.springframework.boot', name: 'spring-boot-starter-validation'
   implementation group: 'com.google.guava', name: 'guava', version: '33.2.1-jre'
-  implementation group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
+  implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
+  runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.5'
+  runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.5'
   implementation group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.14'
   implementation group: 'com.warrenstrange', name: 'googleauth', version: '1.5.0'
 
@@ -138,7 +140,7 @@ dependencies {
 
   implementation group: 'org.springdoc', name: 'springdoc-openapi-starter-webmvc-ui', version: '2.6.0'
 
-  implementation 'jakarta.xml.bind:jakarta.xml.bind-api:2.3.3'
+  implementation 'jakarta.xml.bind:jakarta.xml.bind-api:3.0.1'
 
   compileOnly group: 'net.sourceforge.findbugs', name: 'annotations', version: '1.3.2'
 
@@ -177,7 +179,7 @@ run {
 }
 
 bootJar {
-  archiveFileName = 'service-auth-provider.jar'
+  archiveFileName = 'opal-service-auth-provider.jar'
 
   manifest {
     attributes('Implementation-Version': project.version.toString())
