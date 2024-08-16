@@ -2,7 +2,6 @@ package uk.gov.hmcts.auth.provider.service.api.auth;
 
 import com.google.common.io.BaseEncoding;
 import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.impl.crypto.MacProvider;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,6 +13,8 @@ import uk.gov.hmcts.auth.provider.service.api.auth.jwt.JwtHS512Tool;
 import uk.gov.hmcts.auth.provider.service.api.auth.totp.TotpAuthenticator;
 import uk.gov.hmcts.auth.provider.service.api.microservice.Microservice;
 
+import javax.crypto.KeyGenerator;
+import java.security.NoSuchAlgorithmException;
 import java.time.Clock;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -65,8 +66,10 @@ public class AuthServiceTest {
     }
 
     @Test
-    public void jwt_signed_with_wrong_key_should_throw_an_exception() {
-        String someOtherKey = BaseEncoding.base64().encode(MacProvider.generateKey().getEncoded());
+    public void jwt_signed_with_wrong_key_should_throw_an_exception() throws NoSuchAlgorithmException {
+        KeyGenerator keyGen = KeyGenerator.getInstance("HmacSHA512");
+        keyGen.init(512);
+        String someOtherKey = BaseEncoding.base64().encode(keyGen.generateKey().getEncoded());
         String jwt = Jwts.builder().setSubject("divorce").signWith(JwtHS512Tool.SIGNATURE_ALGORITHM, someOtherKey).compact();
 
         Throwable exc = catchThrowable(() -> authService.verify(jwt));

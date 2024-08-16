@@ -5,6 +5,7 @@ import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Value;
 import uk.gov.hmcts.auth.provider.service.api.auth.exceptions.TokenExpiredException;
 import uk.gov.hmcts.auth.provider.service.api.auth.jwt.JwtHS512Tool;
 
@@ -20,7 +21,8 @@ import static org.assertj.core.api.Assertions.catchThrowable;
 
 public class JwtHS512ToolTest {
 
-    private static final String JWT_KEY = "jwtKey";
+    private static final String JWT_KEY = "wThK0f0/lh3FlxFcL4xUWDMI5C1J9KyQBgXV4wseh1e5J1uYJIjvTvArHxQDrYoHJ23xFxj" +
+        "HkOnvNbR5dXRoxA==";
     private static final int TTL = 60;
 
     @Test
