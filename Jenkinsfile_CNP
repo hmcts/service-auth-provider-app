@@ -26,7 +26,7 @@ def component = "service-auth-provider"
 def expiresAfter = "3000-01-01"
 
 // Vars for Kubernetes
-//def branchesToSync = ['demo', 'perftest', 'ithc']
+def branchesToSync = ['demo', 'perftest', 'ithc']
 
 withPipeline(type, product, component) {
     env.TEST_SERVICE_NAME =  "send_letter_tests"
