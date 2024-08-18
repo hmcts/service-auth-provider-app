@@ -21,16 +21,16 @@ static LinkedHashMap<String, Object> secret(String secretName, String envVar) {
 @Library("Infrastructure")
 
 def type = "java"
-def product = "rpe"
+def product = "opal"
 def component = "service-auth-provider"
 def expiresAfter = "3000-01-01"
 
 // Vars for Kubernetes
-def branchesToSync = ['demo', 'perftest', 'ithc']
+//def branchesToSync = ['demo', 'perftest', 'ithc']
 
 withPipeline(type, product, component) {
     env.TEST_SERVICE_NAME =  "send_letter_tests"
-    enableSlackNotifications('#platops-build-notices')
+    //enableSlackNotifications('#platops-build-notices')
     loadVaultSecrets(secrets)
     enableAksStagingDeployment()
     disableLegacyDeployment()
