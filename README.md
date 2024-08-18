@@ -26,7 +26,7 @@ In order to setup Service Auth Provider to work with a client service, you need 
 This has to be done in each environment the service is going to be deployed to. Service Auth Provider will use that secret
 for validating OTPs. It has to be a BASE32-encoded sequence of ten random bytes (16 characters after encoding). By convention,
 the Azure Key Vault secret's name should follow this format: `microservicekey-{service-name}`. [Here's](#generating-secret) how to generate it.
-* To make it work on AKS , Add the client service name (as in HTTP requests ) and Azure Key Vault secret created in the previous steps to [values.yaml](charts/rpe-service-auth-provider/values.yaml). 
+* To make it work on AKS , Add the client service name (as in HTTP requests ) and Azure Key Vault secret created in the previous steps to [values.yaml](charts/opal-service-auth-provider/values.yaml). 
 A service **TEST_SERVICE** with secret key **microservicekey-test-service**  needs to be configured as below :
 
  ```
@@ -38,7 +38,7 @@ java:
           alias: microserviceKeys.test_service
 ```
  Note: **test_service** is lower cased in alias mapping, though its not mandatory. 
-* Bump the helm chart minor version in [Chart.yaml](charts/rpe-service-auth-provider/Chart.yaml) 
+* Bump the helm chart minor version in [Chart.yaml](charts/opal-service-auth-provider/Chart.yaml) 
 
 #### <a name="generating-secret"></a>Generating the microservice secret
 
