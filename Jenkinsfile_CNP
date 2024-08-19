@@ -5,7 +5,7 @@ def secrets = [
     'opal-${env}':
         [
             secret('jwt-key', 'JWTKEY'),
-            secret('microservicekey-send-letter-tests', 'TEST_SERVICE_SECRET')
+           // secret('microservicekey-send-letter-tests', 'TEST_SERVICE_SECRET')
         ]
 ]
 
