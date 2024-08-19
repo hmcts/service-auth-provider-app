@@ -2,7 +2,7 @@
 @Library("Infrastructure") _
 
 def secrets = [
-    's2s-${env}':
+    'opal-${env}':
         [
             secret('microservicekey-send-letter-tests', 'TEST_SERVICE_SECRET')
         ]

@@ -2,7 +2,7 @@
 import uk.gov.hmcts.contino.AppPipelineDsl
 
 def secrets = [
-    's2s-${env}':
+    'opal-${env}':
         [
             secret('jwt-key', 'JWTKEY'),
             secret('microservicekey-send-letter-tests', 'TEST_SERVICE_SECRET')
