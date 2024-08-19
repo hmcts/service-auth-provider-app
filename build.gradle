@@ -50,6 +50,14 @@ sourceSets {
     }
     resources.srcDir file('src/contractTest/resources')
   }
+  integrationTest {
+    java {
+      compileClasspath += main.output
+      runtimeClasspath += main.output
+      srcDir file('src/integrationTest/java')
+    }
+    resources.srcDir file('src/integrationTest/resources')
+  }
 }
 
 repositories {
@@ -200,6 +208,12 @@ task functional(type: Test, group: 'Verification') {
   description = "Runs Functional Tests"
   testClassesDirs = sourceSets.functionalTest.output.classesDirs
   classpath = sourceSets.functionalTest.runtimeClasspath
+}
+
+task integration(type: Test, group: 'Verification') {
+  description = "Runs Integration Tests"
+  testClassesDirs = sourceSets.integrationTest.output.classesDirs
+  classpath = sourceSets.integrationTest.runtimeClasspath
 }
 
 task smoke(type: Test, group: 'Verification') {
