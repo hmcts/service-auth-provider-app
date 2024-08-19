@@ -2,7 +2,7 @@
 import uk.gov.hmcts.contino.AppPipelineDsl
 
 def secrets = [
-    's2s-${env}':
+    'opal-${env}':
         [
             secret('jwt-key', 'JWTKEY'),
             secret('microservicekey-send-letter-tests', 'TEST_SERVICE_SECRET')
@@ -21,7 +21,7 @@ static LinkedHashMap<String, Object> secret(String secretName, String envVar) {
 @Library("Infrastructure")
 
 def type = "java"
-def product = "rpe"
+def product = "opal"
 def component = "service-auth-provider"
 def expiresAfter = "3000-01-01"
 
@@ -30,7 +30,7 @@ def branchesToSync = ['demo', 'perftest', 'ithc']
 
 withPipeline(type, product, component) {
     env.TEST_SERVICE_NAME =  "send_letter_tests"
-    enableSlackNotifications('#platops-build-notices')
+    //enableSlackNotifications('#platops-build-notices')
     loadVaultSecrets(secrets)
     enableAksStagingDeployment()
     disableLegacyDeployment()
