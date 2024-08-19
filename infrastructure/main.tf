@@ -28,7 +28,7 @@ module "application_insights" {
   common_tags = var.common_tags
 }
 
-data "azurerm_user_assigned_identity" "rpe-shared-identity" {
+/*data "azurerm_user_assigned_identity" "rpe-shared-identity" {
   name                = "rpe-shared-${var.env}-mi"
   resource_group_name = "managed-identities-${var.env}-rg"
-}
+}*/
