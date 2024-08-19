@@ -20,7 +20,7 @@ static LinkedHashMap<String, Object> secret(String secretName, String envVar) {
 
 properties([
   parameters([
-    string(name: 'PRODUCT_NAME', defaultValue: 'rpe', description: ''),
+    string(name: 'PRODUCT_NAME', defaultValue: 'opal', description: ''),
     string(name: 'APP', defaultValue: 'service-auth-provider', description: ''),
     string(name: 'TYPE', defaultValue: 'java', description: ''),
     string(name: 'ENVIRONMENT', defaultValue: 'sandbox', description: 'Environment where code should be built and deployed'),
