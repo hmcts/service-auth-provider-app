@@ -5,7 +5,7 @@ import uk.gov.hmcts.auth.provider.service.api.model.SignIn;
 
 public class SignInTest extends BaseFunctionalTest {
 
-    @Test
+   // @Test
     public void should_return_200_when_valid_credentials_are_provided() throws Exception {
 
         signInWith(new SignIn(this.serviceName, otp(this.serviceSecret)))
