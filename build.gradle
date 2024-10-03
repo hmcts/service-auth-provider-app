@@ -112,7 +112,7 @@ sonarqube {
 }
 
 def versions = [
-  pact_version: '4.6.13',
+  pact_version: '4.6.14',
   junit_jupiter: '5.10.3'
 ]
 
