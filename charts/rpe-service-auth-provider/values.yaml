@@ -266,6 +266,9 @@ java:
         alias: microserviceKeys.idam-user-profile-bridge
       - name: microservicekey-sptribs-dss-update-case-web
         alias: microserviceKeys.sptribs_dss_update_case_web
-
+      - name: microservicekey-pcs-api
+        alias: microserviceKeys.pcs_api
+      - name: microservicekey-pcs-frontend
+        alias: microserviceKeys.pcs_frontend
   image: 'hmctspublic.azurecr.io/rpe/service-auth-provider:latest'
   ingressHost: rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
