@@ -260,6 +260,8 @@ java:
         alias: microserviceKeys.civil_sdt
       - name: microservicekey-disposer-idam-user
         alias: microserviceKeys.disposer-idam-user
+      - name: microservicekey-disposer-fee-and-pay
+        alias: microserviceKeys.disposer-fee-and-pay
       - name: microservicekey-et-hearings-api
         alias: microserviceKeys.et_hearings_api
       - name: microservicekey-idam-user-profile-bridge
