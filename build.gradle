@@ -105,7 +105,7 @@ sonarqube {
 
 def versions = [
   pact_version: '4.6.17',
-  junit_jupiter: '5.12.0'
+  junit_jupiter: '5.12.1'
 ]
 
 configurations.all {
@@ -159,7 +159,7 @@ dependencies {
   contractTestImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: versions.junit_jupiter
   contractTestRuntimeOnly group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: versions.junit_jupiter
   contractTestImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: versions.junit_jupiter
-  contractTestRuntimeOnly group: 'org.junit.platform', name: 'junit-platform-commons', version: '1.12.0'
+  contractTestRuntimeOnly group: 'org.junit.platform', name: 'junit-platform-commons', version: '1.12.1'
 
   testImplementation(group: 'org.springframework.boot', name: 'spring-boot-starter-test'){
     exclude(module: 'commons-logging')
