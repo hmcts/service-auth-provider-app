@@ -270,6 +270,8 @@ java:
         alias: microserviceKeys.sptribs_dss_update_case_web
       - name: microservicekey-pcs-api
         alias: microserviceKeys.pcs_api
+      - name: microservicekey-enforcement-api
+        alias: microserviceKeys.enforcement_api
       - name: microservicekey-pcs-frontend
         alias: microserviceKeys.pcs_frontend
       - name: microservicekey-civil-rtl-export
