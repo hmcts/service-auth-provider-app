@@ -239,7 +239,6 @@ tasks.named('sonar') {
   dependsOn jacocoTestReport
 }
 
-
 wrapper {
     distributionType = Wrapper.DistributionType.ALL
 }
