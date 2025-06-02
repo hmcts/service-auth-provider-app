@@ -13,6 +13,5 @@ services:
     environment:
         - jwtKey=wThK0f0/lh3FlxFcL4xUWDMI5C1J9KyQBgXV4wseh1e5J1uYJIjvTvArHxQDrYoHJ23xFxjHkOnvNbR5dXRoxA==
         - microserviceKeys_divorce=AAAAAAAAAAAAAAAA
-        - microserviceKeys_opal_external_api=CJAQXWUGSFMFK2GR
     ports:
      - 8489:8489
