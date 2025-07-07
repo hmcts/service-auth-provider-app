@@ -100,8 +100,6 @@ java:
         alias: microserviceKeys.bulk_scan_payment_processor
       - name: microservicekey-bulk-scan-ccd-sample-app
         alias: microserviceKeys.bulk_scan_ccd_sample_app
-      - name: microservicekey-bulk-scan-sample-app-tests
-        alias: microserviceKeys.bulk_scan_sample_app_tests
       - name: microservicekey-reform-scan-notification-tests
         alias: microserviceKeys.reform_scan_notification_tests
       - name: microserviceKey-reform-scan-blob-router
