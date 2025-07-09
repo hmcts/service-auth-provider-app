@@ -32,6 +32,8 @@ java:
         alias: microserviceKeys.ccd_gw
       - name: microservicekey-ccd-ps
         alias: microserviceKeys.ccd_ps
+      - name: microservicekey-ccpay-gw
+        alias: microserviceKeys.ccpay_gw
       - name: microservicekey-cmc
         alias: microserviceKeys.cmc
       - name: microservicekey-cmcLegalFrontend
