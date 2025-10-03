@@ -41,4 +41,8 @@ withPipeline(type, product, component) {
         env.PACT_BRANCH_NAME = "master"
         enablePactAs([AppPipelineDsl.PactRoles.PROVIDER])
     }
+    onPR() {
+        env.PACT_BRANCH_NAME = "master"
+        enablePactAs([AppPipelineDsl.PactRoles.PROVIDER])
+    }
 }
