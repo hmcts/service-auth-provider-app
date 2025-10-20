@@ -206,6 +206,10 @@ task smoke(type: Test, group: 'Verification') {
   classpath = sourceSets.functionalTest.runtimeClasspath
 }
 
+def getCheckedOutGitCommitHash() {
+  'git rev-parse --verify --short HEAD'.execute().text.trim()
+}
+
 project.ext {
   pactVersion = getCheckedOutGitCommitHash()
 }
