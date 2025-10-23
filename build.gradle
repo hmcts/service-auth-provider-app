@@ -210,15 +210,6 @@ def getCheckedOutGitCommitHash() {
   'git rev-parse --verify --short HEAD'.execute().text.trim()
 }
 
-pact {
-  publish {
-    pactDirectory = 'pacts'
-    pactBrokerUrl = System.getenv("PACT_BROKER_FULL_URL") ?: 'http://localhost:9292'
-    tags = [System.getenv("PACT_BRANCH_NAME") ?:'Dev']
-    version = project.pactVersion
-  }
-}
-
 project.ext {
   pactVersion = getCheckedOutGitCommitHash()
 }
@@ -244,6 +235,15 @@ task runProviderPactVerification(type: Test) {
 runProviderPactVerification.dependsOn contractTest
 
 runProviderPactVerification.finalizedBy pactVerify
+
+pact {
+  publish {
+    pactDirectory = 'pacts'
+    pactBrokerUrl = System.getenv("PACT_BROKER_FULL_URL") ?: 'http://localhost:9292'
+    tags = [System.getenv("PACT_BRANCH_NAME") ?:'Dev']
+    version = project.pactVersion
+  }
+}
 
 jacocoTestReport {
   executionData(test)
