@@ -210,6 +210,15 @@ def getCheckedOutGitCommitHash() {
   'git rev-parse --verify --short HEAD'.execute().text.trim()
 }
 
+pact {
+  publish {
+    pactDirectory = 'pacts'
+    pactBrokerUrl = System.getenv("PACT_BROKER_FULL_URL") ?: 'http://localhost:9292'
+    tags = [System.getenv("PACT_BRANCH_NAME") ?:'Dev']
+    version = project.pactVersion
+  }
+}
+
 project.ext {
   pactVersion = getCheckedOutGitCommitHash()
 }
@@ -218,14 +227,19 @@ task contractTest(type: Test) {
   useJUnitPlatform()
   testClassesDirs = sourceSets.contractTest.output.classesDirs
   classpath = sourceSets.contractTest.runtimeClasspath
-
 }
 
 task runProviderPactVerification(type: Test) {
+  useJUnitPlatform()
   testClassesDirs = sourceSets.contractTest.output.classesDirs
   classpath = sourceSets.contractTest.runtimeClasspath
+  if (project.hasProperty('pact.verifier.publishResults')) {
+    systemProperty 'pact.verifier.publishResults', project.property('pact.verifier.publishResults')
+  }
   systemProperty 'pact.provider.version', project.pactVersion
+  include "java/uk/gov/hmcts/auth/provider/**"
 }
+
 
 runProviderPactVerification.dependsOn contractTest
 
