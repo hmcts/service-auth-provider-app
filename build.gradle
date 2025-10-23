@@ -50,6 +50,14 @@ sourceSets {
     }
     resources.srcDir file('src/contractTest/resources')
   }
+  pactTest {
+    java {
+      compileClasspath += main.output
+      runtimeClasspath += main.output
+      srcDir file('src/pactTest/java')
+    }
+    resources.srcDir file('src/pactTest/resources')
+  }
 }
 
 repositories {
@@ -151,8 +159,12 @@ dependencies {
   functionalTestImplementation group: 'io.rest-assured', name: 'rest-assured'
   functionalTestImplementation group: 'junit', name: 'junit', version: '4.13.2'
 
+  contractTestImplementation group: 'au.com.dius.pact.consumer', name: 'junit5', version: versions.pact_version
+  contractTestRuntimeOnly group: 'au.com.dius.pact.consumer', name: 'junit5', version: versions.pact_version
+
   contractTestImplementation group: 'au.com.dius.pact.provider', name: 'junit5', version: versions.pact_version
-  contractTestImplementation group: 'au.com.dius.pact.provider', name: 'spring6', version: versions.pact_version
+  contractTestImplementation group: 'au.com.dius.pact.provider', name: 'spring', version: versions.pact_version
+  contractTestImplementation group: 'au.com.dius.pact.provider', name: 'junit5spring', version: versions.pact_version
   contractTestImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test'
   contractTestImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-web'
   contractTestImplementation group: 'com.warrenstrange', name: 'googleauth', version: '1.5.0'
@@ -164,6 +176,9 @@ dependencies {
   testImplementation(group: 'org.springframework.boot', name: 'spring-boot-starter-test'){
     exclude(module: 'commons-logging')
   }
+  
+  pactTestImplementation sourceSets.main.runtimeClasspath
+  pactTestImplementation sourceSets.test.runtimeClasspath
 }
 
 mainClassName = 'uk.gov.hmcts.auth.provider.service.api.ServiceAuthProviderApplication'
@@ -218,6 +233,7 @@ task contractTest(type: Test) {
   useJUnitPlatform()
   testClassesDirs = sourceSets.contractTest.output.classesDirs
   classpath = sourceSets.contractTest.runtimeClasspath
+  include "java/uk/gov/hmcts/auth/provider/**"
 }
 
 task runProviderPactVerification(type: Test) {
