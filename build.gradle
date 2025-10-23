@@ -163,7 +163,7 @@ dependencies {
   contractTestRuntimeOnly group: 'au.com.dius.pact.consumer', name: 'junit5', version: versions.pact_version
 
   contractTestImplementation group: 'au.com.dius.pact.provider', name: 'junit5', version: versions.pact_version
-  contractTestImplementation group: 'au.com.dius.pact.provider', name: 'spring', version: versions.pact_version
+  contractTestImplementation group: 'au.com.dius.pact.provider', name: 'spring6', version: versions.pact_version
   contractTestImplementation group: 'au.com.dius.pact.provider', name: 'junit5spring', version: versions.pact_version
   contractTestImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test'
   contractTestImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-web'
@@ -176,7 +176,7 @@ dependencies {
   testImplementation(group: 'org.springframework.boot', name: 'spring-boot-starter-test'){
     exclude(module: 'commons-logging')
   }
-  
+
   pactTestImplementation sourceSets.main.runtimeClasspath
   pactTestImplementation sourceSets.test.runtimeClasspath
 }
