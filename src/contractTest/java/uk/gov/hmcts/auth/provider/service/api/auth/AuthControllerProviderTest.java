@@ -29,6 +29,7 @@ import static org.mockito.Mockito.when;
         @VersionSelector(tag = "${PACT_BRANCH_NAME:Dev}")
     },
     providerTags = "${pactbroker.providerTags:master}",
+    providerVersion = "${pact.provider.version:0.0.1}",
     enablePendingPacts = "${pactbroker.enablePending:true}"
 )
 @ContextConfiguration(classes = AuthControllerProviderContext.class)

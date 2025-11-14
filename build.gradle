@@ -233,6 +233,7 @@ task contractTest(type: Test) {
   useJUnitPlatform()
   testClassesDirs = sourceSets.contractTest.output.classesDirs
   classpath = sourceSets.contractTest.runtimeClasspath
+  systemProperty 'pact.provider.version', project.pactVersion
   include "java/uk/gov/hmcts/auth/provider/**"
 }
 
@@ -240,10 +241,10 @@ task runProviderPactVerification(type: Test) {
   useJUnitPlatform()
   testClassesDirs = sourceSets.contractTest.output.classesDirs
   classpath = sourceSets.contractTest.runtimeClasspath
+  systemProperty 'pact.provider.version', project.pactVersion
   if (project.hasProperty('pact.verifier.publishResults')) {
     systemProperty 'pact.verifier.publishResults', project.property('pact.verifier.publishResults')
   }
-  systemProperty 'pact.provider.version', project.pactVersion
   include "java/uk/gov/hmcts/auth/provider/**"
 }
 
