@@ -39,6 +39,7 @@ withPipeline(type, product, component) {
 
     onMaster() {
         env.PACT_BRANCH_NAME = "master"
+        env.PACT_BROKER_FULL_URL = "https://pact-broker.platform.hmcts.net"
         enablePactAs([AppPipelineDsl.PactRoles.PROVIDER])
     }
 }
