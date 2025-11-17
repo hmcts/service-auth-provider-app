@@ -125,7 +125,7 @@ configurations.all {
 }
 
 ext {
-  log4JVersion = "2.22.0"
+  log4JVersion = "2.25.0"
 }
 
 dependencies {
