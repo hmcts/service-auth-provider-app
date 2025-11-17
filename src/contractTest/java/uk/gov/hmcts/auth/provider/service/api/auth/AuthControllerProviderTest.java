@@ -32,6 +32,7 @@ import static org.mockito.Mockito.when;
     enablePendingPacts = "${pactbroker.enablePending:true}"
 )
 @ContextConfiguration(classes = AuthControllerProviderContext.class)
+@IgnoreNoPactsToVerify
 public class AuthControllerProviderTest {
 
     @Autowired
