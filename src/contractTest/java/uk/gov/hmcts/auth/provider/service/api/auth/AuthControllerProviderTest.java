@@ -4,6 +4,7 @@ import au.com.dius.pact.provider.junit5.PactVerificationContext;
 import au.com.dius.pact.provider.junit5.PactVerificationInvocationContextProvider;
 import au.com.dius.pact.provider.junitsupport.Provider;
 import au.com.dius.pact.provider.junitsupport.State;
+import au.com.dius.pact.provider.junitsupport.IgnoreNoPactsToVerify;
 import au.com.dius.pact.provider.junitsupport.loader.PactBroker;
 import au.com.dius.pact.provider.junitsupport.loader.VersionSelector;
 import au.com.dius.pact.provider.spring.spring6.Spring6MockMvcTestTarget;
@@ -21,6 +22,7 @@ import uk.gov.hmcts.auth.provider.service.api.microservice.Microservice;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
+@IgnoreNoPactsToVerify
 @ExtendWith(SpringExtension.class)
 @Provider("s2s_auth")
 @PactBroker(
@@ -32,7 +34,6 @@ import static org.mockito.Mockito.when;
     enablePendingPacts = "${pactbroker.enablePending:true}"
 )
 @ContextConfiguration(classes = AuthControllerProviderContext.class)
-@IgnoreNoPactsToVerify
 public class AuthControllerProviderTest {
 
     @Autowired
@@ -48,16 +49,20 @@ public class AuthControllerProviderTest {
     @TestTemplate
     @ExtendWith(PactVerificationInvocationContextProvider.class)
     void pactVerificationTestTemplate(PactVerificationContext context) {
-        context.verifyInteraction();
+        if (context != null) {
+            context.verifyInteraction();
+        }
     }
 
 
     @BeforeEach
     void before(PactVerificationContext context) {
-        System.getProperties().setProperty("pact.verifier.publishResults", "true");
-        Spring6MockMvcTestTarget testTarget = new Spring6MockMvcTestTarget();
-        testTarget.setControllers(new AuthController(authService));
-        context.setTarget(testTarget);
+        if (context != null) {
+            System.getProperties().setProperty("pact.verifier.publishResults", "true");
+            Spring6MockMvcTestTarget testTarget = new Spring6MockMvcTestTarget();
+            testTarget.setControllers(new AuthController(authService));
+            context.setTarget(testTarget);
+        }
     }
 
     @State({"microservice with valid credentials"})
