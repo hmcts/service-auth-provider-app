@@ -226,7 +226,10 @@ def getCheckedOutGitCommitHash() {
 }
 
 project.ext {
-  pactVersion = getCheckedOutGitCommitHash()
+  // Use the property passed from command line if available, otherwise use git hash
+  pactVersion = project.hasProperty('pact.provider.version') 
+    ? project.property('pact.provider.version') 
+    : getCheckedOutGitCommitHash()
 }
 
 task contractTest(type: Test) {
