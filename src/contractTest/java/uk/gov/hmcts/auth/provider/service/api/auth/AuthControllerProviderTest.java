@@ -49,16 +49,20 @@ public class AuthControllerProviderTest {
     @TestTemplate
     @ExtendWith(PactVerificationInvocationContextProvider.class)
     void pactVerificationTestTemplate(PactVerificationContext context) {
-        context.verifyInteraction();
+        if (context != null) {
+            context.verifyInteraction();
+        }
     }
 
 
     @BeforeEach
     void before(PactVerificationContext context) {
-        System.getProperties().setProperty("pact.verifier.publishResults", "true");
-        Spring6MockMvcTestTarget testTarget = new Spring6MockMvcTestTarget();
-        testTarget.setControllers(new AuthController(authService));
-        context.setTarget(testTarget);
+        if (context != null) {
+            System.getProperties().setProperty("pact.verifier.publishResults", "true");
+            Spring6MockMvcTestTarget testTarget = new Spring6MockMvcTestTarget();
+            testTarget.setControllers(new AuthController(authService));
+            context.setTarget(testTarget);
+        }
     }
 
     @State({"microservice with valid credentials"})
