@@ -21,6 +21,7 @@ import uk.gov.hmcts.auth.provider.service.api.microservice.Microservice;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
+@IgnoreNoPactsToVerify
 @ExtendWith(SpringExtension.class)
 @Provider("s2s_auth")
 @PactBroker(
@@ -32,7 +33,6 @@ import static org.mockito.Mockito.when;
     enablePendingPacts = "${pactbroker.enablePending:true}"
 )
 @ContextConfiguration(classes = AuthControllerProviderContext.class)
-@IgnoreNoPactsToVerify
 public class AuthControllerProviderTest {
 
     @Autowired
