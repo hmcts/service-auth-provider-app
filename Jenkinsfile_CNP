@@ -38,7 +38,7 @@ withPipeline(type, product, component) {
     expires(expiresAfter)
 
     onPR() {
-        env.PACT_BRANCH_NAME = "master"
+        env.PACT_BRANCH_NAME = env.CHANGE_BRANCH
         env.PACT_BROKER_FULL_URL = "https://pact-broker.platform.hmcts.net"
         enablePactAs([AppPipelineDsl.PactRoles.PROVIDER])
     }
