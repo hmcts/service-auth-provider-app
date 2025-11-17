@@ -26,7 +26,7 @@ import static org.mockito.Mockito.when;
 @PactBroker(
     url = "${PACT_BROKER_URL:https://pact-broker.platform.hmcts.net}",
     consumerVersionSelectors = {
-        @VersionSelector(tag = "${PACT_BRANCH_NAME:Dev}")
+        @VersionSelector(latest = "true") // Get latest pacts regardless of tag
     },
     providerTags = "${pactbroker.providerTags:master}",
     enablePendingPacts = "${pactbroker.enablePending:true}"
