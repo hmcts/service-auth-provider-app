@@ -235,7 +235,7 @@ task contractTest(type: Test) {
   testClassesDirs = sourceSets.contractTest.output.classesDirs
   classpath = sourceSets.contractTest.runtimeClasspath
   systemProperty 'pact.provider.version', project.pactVersion
-  include "java/uk/gov/hmcts/auth/provider/**"
+  include "uk/gov/hmcts/auth/provider/**"
 }
 
 task runProviderPactVerification(type: Test) {
@@ -246,7 +246,7 @@ task runProviderPactVerification(type: Test) {
   if (project.hasProperty('pact.verifier.publishResults')) {
     systemProperty 'pact.verifier.publishResults', project.property('pact.verifier.publishResults')
   }
-  include "java/uk/gov/hmcts/auth/provider/**"
+  include "uk/gov/hmcts/auth/provider/**"
 }
 
 
