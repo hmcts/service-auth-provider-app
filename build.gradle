@@ -48,7 +48,7 @@ sourceSets {
       runtimeClasspath += main.output
       srcDir file('src/contractTest/java')
     }
-    resources.srcDir file('src/contractTest/resources')
+    resources.srcDir file('src/contractTest/java/uk/gov/hmcts/auth/provider/service/api/auth')
   }
   pactTest {
     java {
