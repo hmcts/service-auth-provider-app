@@ -212,6 +212,8 @@ java:
         alias: microserviceKeys.em_hrs_api
       - name: microservicekey-em-hrs-ingestor
         alias: microserviceKeys.em_hrs_ingestor
+      - name: microservicekey-dm-store
+        alias: microserviceKeys.dm_store
       - name: microservicekey-refunds-api
         alias: microserviceKeys.refunds_api
       - name: microservicekey-ccpay-cpo-function-node
