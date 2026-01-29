@@ -3,7 +3,7 @@ appVersion: "1.0"
 description: A Helm chart for Service Auth Provider App
 name: rpe-service-auth-provider
 home: https://github.com/hmcts/service-auth-provider-app
-version: 0.3.131
+version: 0.3.132
 maintainers:
   - name: HMCTS Platform engineering team
 dependencies:

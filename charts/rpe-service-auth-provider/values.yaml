@@ -86,6 +86,8 @@ java:
         alias: microserviceKeys.finrem_payment_service
       - name: microservicekey-finrem-ccd-data-migrator
         alias: microserviceKeys.finrem_ccd_data_migrator
+      - name: microservicekey-finrem-citizen-ui
+        alias: microserviceKeys.finrem_citizen_ui
       - name: microservicekey-jui-webapp
         alias: microserviceKeys.jui_webapp
       - name: microservicekey-pui-webapp
@@ -284,5 +286,6 @@ java:
         alias: microserviceKeys.civil_rtl_export
       - name: microservicekey-hmc-admin-ui
         alias: microserviceKeys.hmc-admin-ui
+
   image: 'hmctspublic.azurecr.io/rpe/service-auth-provider:latest'
   ingressHost: rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
