@@ -221,7 +221,7 @@ java:
       - name: microservicekey-ccpay-cpo-function-node
         alias: microserviceKeys.ccpay_cpo_function_node
       - name: microservicekey-cpo-case-payment-orders-api
-        alias: microserviceKeys.cpo-case-payment-orders-api
+        alias: microserviceKeys.cpo_case_payment_orders_api
       - name: microservicekey-paymentoutcome-web
         alias: microserviceKeys.paymentoutcome_web
       - name: microservicekey-service-request-cpo-update-service
