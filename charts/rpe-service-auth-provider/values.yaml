@@ -288,6 +288,10 @@ java:
         alias: microserviceKeys.civil_rtl_export
       - name: microservicekey-hmc-admin-ui
         alias: microserviceKeys.hmc-admin-ui
+      - name: microservicekey-et-sya
+        alias: microserviceKeys.et_sya
+      - name: microservicekey-et-syr
+        alias: microserviceKeys.et_syr
 
   image: 'hmctsprod.azurecr.io/rpe/service-auth-provider:latest'
   ingressHost: rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
