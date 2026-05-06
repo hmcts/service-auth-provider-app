@@ -292,6 +292,10 @@ java:
         alias: microserviceKeys.et_sya
       - name: microservicekey-et-syr
         alias: microserviceKeys.et_syr
+      - name: microservicekey-pt-frontend
+        alias: microserviceKeys.pt_frontend
+      - name: microservicekey-pt-api
+        alias: microserviceKeys.pt_api
 
   image: 'hmctsprod.azurecr.io/rpe/service-auth-provider:latest'
   ingressHost: rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
