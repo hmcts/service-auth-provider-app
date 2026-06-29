@@ -184,6 +184,8 @@ java:
         alias: microserviceKeys.rd_location_ref_data_load
       - name: microservicekey-wa-camunda-pipeline-upload
         alias: microserviceKeys.wa_camunda_pipeline_upload
+      - name: microservicekey-wa-reporting-frontend
+        alias: microserviceKeys.wa_reporting_frontend
       - name: microservicekey-wa-workflow-api
         alias: microserviceKeys.wa_workflow_api
       - name: microservicekey-wa-task-management-api
