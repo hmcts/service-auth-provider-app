@@ -121,7 +121,7 @@ configurations.all {
         details.useVersion '1.5.18'
       }
       if (details.requested.group == 'net.bytebuddy') {
-        details.useVersion '1.15.11'
+        details.useVersion '1.17.0'
       }
     }
   }
@@ -185,10 +185,6 @@ dependencies {
 application {
   mainClass = 'uk.gov.hmcts.auth.provider.service.api.ServiceAuthProviderApplication'
   applicationDefaultJvmArgs = ["-Djava.security.egd=file:/dev/./urandom"]
-}
-
-test {
-  jvmArgs '-XX:+EnableDynamicAgentLoading', '--add-opens=java.base/java.lang=ALL-UNNAMED'
 }
 
 bootJar {
