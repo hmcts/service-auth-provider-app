@@ -120,6 +120,9 @@ configurations.all {
       if (details.requested.group == 'ch.qos.logback') {
         details.useVersion '1.5.18'
       }
+      if (details.requested.group == 'net.bytebuddy') {
+        details.useVersion '1.15.11'
+      }
     }
   }
 }
