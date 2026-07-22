@@ -184,14 +184,6 @@ application {
   applicationDefaultJvmArgs = ["-Djava.security.egd=file:/dev/./urandom"]
 }
 
-installDist {
-  applicationDefaultJvmArgs = ["-Djava.security.egd=file:/dev/./urandom"]
-}
-
-run {
-  applicationDefaultJvmArgs = ["-Djava.security.egd=file:/dev/./urandom"]
-}
-
 bootJar {
   archiveFileName = 'service-auth-provider.jar'
 
