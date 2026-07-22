@@ -179,7 +179,10 @@ dependencies {
   pactTestImplementation sourceSets.test.runtimeClasspath
 }
 
-mainClassName = 'uk.gov.hmcts.auth.provider.service.api.ServiceAuthProviderApplication'
+application {
+  mainClass = 'uk.gov.hmcts.auth.provider.service.api.ServiceAuthProviderApplication'
+  applicationDefaultJvmArgs = ["-Djava.security.egd=file:/dev/./urandom"]
+}
 
 installDist {
   applicationDefaultJvmArgs = ["-Djava.security.egd=file:/dev/./urandom"]
