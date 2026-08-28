@@ -233,6 +233,7 @@ task contractTest(type: Test) {
   testClassesDirs = sourceSets.contractTest.output.classesDirs
   classpath = sourceSets.contractTest.runtimeClasspath
   systemProperty 'pact.provider.version', project.pactVersion
+  systemProperty 'pact.provider.branch', System.getenv('PACT_BRANCH_NAME') ?: 'Dev'
   include "uk/gov/hmcts/auth/provider/**"
 }
 
@@ -241,12 +242,12 @@ task runProviderPactVerification(type: Test) {
   testClassesDirs = sourceSets.contractTest.output.classesDirs
   classpath = sourceSets.contractTest.runtimeClasspath
   systemProperty 'pact.provider.version', project.pactVersion
+  systemProperty 'pact.provider.branch', System.getenv('PACT_BRANCH_NAME') ?: 'Dev'
   if (project.hasProperty('pact.verifier.publishResults')) {
     systemProperty 'pact.verifier.publishResults', project.property('pact.verifier.publishResults')
   }
   include "uk/gov/hmcts/auth/provider/**"
 }
-
 
 runProviderPactVerification.dependsOn contractTest
 

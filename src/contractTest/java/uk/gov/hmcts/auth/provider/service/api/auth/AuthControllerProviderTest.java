@@ -6,7 +6,8 @@ import au.com.dius.pact.provider.junitsupport.Provider;
 import au.com.dius.pact.provider.junitsupport.State;
 import au.com.dius.pact.provider.junitsupport.IgnoreNoPactsToVerify;
 import au.com.dius.pact.provider.junitsupport.loader.PactBroker;
-import au.com.dius.pact.provider.junitsupport.loader.VersionSelector;
+import au.com.dius.pact.provider.junitsupport.loader.PactBrokerConsumerVersionSelectors;
+import au.com.dius.pact.provider.junitsupport.loader.SelectorBuilder;
 import au.com.dius.pact.provider.spring.spring6.Spring6MockMvcTestTarget;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.TestTemplate;
@@ -27,14 +28,19 @@ import static org.mockito.Mockito.when;
 @Provider("s2s_auth")
 @PactBroker(
     url = "${PACT_BROKER_URL:https://pact-broker.platform.hmcts.net}",
-    consumerVersionSelectors = {
-        @VersionSelector(tag = "${PACT_BRANCH_NAME:Dev}")
-    },
-    providerTags = "${pactbroker.providerTags:master}",
+    providerBranch = "${pact.provider.branch}",
     enablePendingPacts = "${pactbroker.enablePending:true}"
 )
 @ContextConfiguration(classes = AuthControllerProviderContext.class)
 public class AuthControllerProviderTest {
+
+    @PactBrokerConsumerVersionSelectors
+    public static SelectorBuilder consumerVersionSelectors() {
+        return new SelectorBuilder()
+            .matchingBranch()
+            .mainBranch()
+            .deployedOrReleased();
+    }
 
     @Autowired
     private AuthService authService;
