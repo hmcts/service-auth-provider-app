@@ -18,7 +18,7 @@ static LinkedHashMap<String, Object> secret(String secretName, String envVar) {
   ]
 }
 
-@Library("Infrastructure@2.5.2")
+@Library("Infrastructure@DTSPO-30107-jenkins-agents-3")
 
 def type = "java"
 def product = "rpe"

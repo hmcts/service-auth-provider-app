@@ -86,7 +86,7 @@ data "azurerm_user_assigned_identity" "jenkins" {
 }
 
 resource "azurerm_key_vault_secret" "connection-string" {
-  name         = "app-insights-connection-string"
+  name         = "app-insights-connection-strin"
   value        = module.application_insights.connection_string
   key_vault_id = module.key-vault.key_vault_id
 }
