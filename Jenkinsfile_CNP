@@ -36,7 +36,6 @@ withPipeline(type, product, component) {
     disableLegacyDeployment()
     syncBranchesWithMaster(branchesToSync)
     expires(expiresAfter)
-    alwaysTerraformPlanOnPR()
 
     onPR() {
         env.PACT_BRANCH_NAME = env.CHANGE_BRANCH
