@@ -18,7 +18,7 @@ static LinkedHashMap<String, Object> secret(String secretName, String envVar) {
   ]
 }
 
-@Library("Infrastructure")
+@Library("Infrastructure@DTSPO-301017-jenkins-agents-3")
 
 def type = "java"
 def product = "rpe"
@@ -36,6 +36,7 @@ withPipeline(type, product, component) {
     disableLegacyDeployment()
     syncBranchesWithMaster(branchesToSync)
     expires(expiresAfter)
+    alwaysTerraformPlanOnPR(true)
 
     onPR() {
         env.PACT_BRANCH_NAME = env.CHANGE_BRANCH
