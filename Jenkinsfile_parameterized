@@ -1,5 +1,5 @@
 #!groovy
-@Library("Infrastructure@2.5.2") _
+@Library("Infrastructure@2.6.0") _
 
 def secrets = [
     's2s-${env}':
@@ -32,4 +32,5 @@ withParameterizedPipeline(params.TYPE, params.PRODUCT_NAME, params.APP, params.E
   enableSlackNotifications('#platops-build-notices')
   loadVaultSecrets(secrets)
   expires(expiresAfter)
+  alwaysTerraformPlanOnPR()
 }
