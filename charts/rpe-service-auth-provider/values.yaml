@@ -298,6 +298,10 @@ java:
         alias: microserviceKeys.pt_frontend
       - name: microservicekey-pt-api
         alias: microserviceKeys.pt_api
+      - name: microservicekey-deed-poll-web
+        alias: microserviceKeys.deed_poll_web
+      - name: microservicekey-deed-poll-api
+        alias: microserviceKeys.deed_poll_api
 
   image: 'hmctsprod.azurecr.io/rpe/service-auth-provider:latest'
   ingressHost: rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
