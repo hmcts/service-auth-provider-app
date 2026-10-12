@@ -58,17 +58,42 @@ import base64
 base64.b32encode(os.urandom(10))
 ```
 #### Writing a secret into all the needed vaults
-Please make sure `realpath` is installed as script uses it.
-```
-Ubuntu: sudo apt-get install coreutils
-OS X  : brew install coreutils
+Use `./bin/set-secret-in-all-vaults <microservice-name>` with the hyphenated secret-name suffix
+(for example, `deed-poll-api`). It checks sandbox, demo, aat, prod, perftest and ithc before writing,
+preserves existing enabled secrets, and creates only missing secrets. Each new secret contains an
+independently generated BASE32 encoding of ten cryptographically random bytes. It then verifies all
+six vaults; paste the actual output into the PR template.
 
-On Debian or Ubuntu realpath should be installed by default
-```
-There's a script provided `./bin/set-secret-in-all-vaults <microservice-name>`
-This will write the secret into all the vaults and then it will run the check script to check it can find the secret
+The script requires Python 3, `azure-cli`, an authenticated session (`az login`), and the appropriate
+vault permissions. The documented AAD group is `dcd_reform_dev_logs`; verify access for every target
+vault before provisioning. The preflight lists active secret metadata in all vaults and deleted-secret
+metadata where a name is missing. Access failures, disabled secrets, malformed responses and soft-deleted
+names stop the run with a non-zero exit code. A disabled or deleted secret needs a separate decision;
+the script does not enable, recover, purge or rotate it.
 
-You need to have the `azure-cli` installed and be logged in (`az login`) for it to work, also ensure you are in the `dcd_reform_dev_logs` group in AAD.
+To check without creating anything, run:
+
+```bash
+./bin/check-all-vaults-for-s2s-secret <microservice-name>
+```
+
+Both commands read metadata only for existing secrets. New values are passed to Azure through a
+private temporary file, removed after the write; they are not printed or put in command-line arguments.
+The checker verifies presence and enabled status, not secret contents, expiry, or successful token leasing.
+
+Run provisioning for a given service sequentially: the script checks again immediately before each
+write, but Azure's [`secret set`](https://learn.microsoft.com/en-us/cli/azure/keyvault/secret#az-keyvault-secret-set)
+is not an atomic create-only operation. Another operator creating the
+same secret between that check and the write could still be overwritten. Coordinate provisioning
+rather than running concurrent copies. If a write fails or its result is uncertain, the script stops
+without retrying it. Inspect metadata before rerunning; completed creations are preserved on a rerun.
+There is no rollback of secrets already created in earlier vaults.
+
+Run the script tests locally (a fake Azure CLI is used; no credentials or network needed):
+
+```bash
+python3 -m unittest discover -s bin/tests -v
+```
 
 #### Getting the change to production
 Create a pull request after you've set the secret in all vaults, once your build is green you can request a review by posting on the #platops-code-review Slack channel.
