@@ -95,6 +95,10 @@ Run the script tests locally (a fake Azure CLI is used; no credentials or networ
 python3 -m unittest discover -s bin/tests -v
 ```
 
+The same tests run as `./gradlew secretScriptTest`, which is required by `./gradlew check`
+and therefore by Jenkins' unit-test stage. Python 3 must be available on the build agent;
+no Azure login or vault access is needed. A failing script test fails the Gradle check.
+
 #### Getting the change to production
 Create a pull request after you've set the secret in all vaults, once your build is green you can request a review by posting on the #platops-code-review Slack channel.
 If the build is green, and the PR template was filled out correctly showing that the secret has been entered in all vaults then the change will be merged and a build automatically triggered. Once the build is finished and passed it will be automatically deployed to the AAT and production environments. If you need it in demo you can merge the code to demo and `git push`.
