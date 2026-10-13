@@ -15,3 +15,6 @@ api/*.iml
 target/
 *.iml
 out/
+
+# Python script tests
+__pycache__/

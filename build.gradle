@@ -195,6 +195,18 @@ bootJar {
   }
 }
 
+// Jenkins' GradleBuilder runs check. These tests use a fake az executable and never access Azure.
+def secretScriptTest = tasks.register('secretScriptTest', Exec) {
+  group = 'verification'
+  description = 'Tests S2S secret provisioning and verification without accessing Azure'
+  workingDir projectDir
+  commandLine 'python3', '-B', '-m', 'unittest', 'discover', '-s', 'bin/tests', '-v'
+}
+
+tasks.named('check') {
+  dependsOn secretScriptTest
+}
+
 task printVersion {
   doLast {
     print project.version
