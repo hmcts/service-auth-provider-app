@@ -25,3 +25,7 @@ client:
 spring:
   application:
     name: Service Auth Provider
+
+# Exercise server-selected SHA-256 without changing the legacy divorce caller.
+microserviceOtpAlgorithms:
+  cmc: HmacSHA256
