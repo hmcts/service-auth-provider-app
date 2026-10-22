@@ -1,5 +1,7 @@
 package uk.gov.hmcts.auth.provider.service.api.config;
 
+import com.warrenstrange.googleauth.HmacHashFunction;
+import java.util.HashMap;
 import java.util.Map;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
@@ -14,7 +16,17 @@ public class AppProperties {
 
     private Map<String, String> microserviceKeys;
 
+    private Map<String, HmacHashFunction> microserviceOtpAlgorithms = new HashMap<>();
+
     private RS256Config rs256 = new RS256Config();
+
+    public Map<String, HmacHashFunction> getMicroserviceOtpAlgorithms() {
+        return microserviceOtpAlgorithms;
+    }
+
+    public void setMicroserviceOtpAlgorithms(Map<String, HmacHashFunction> algorithms) {
+        this.microserviceOtpAlgorithms = algorithms;
+    }
 
     public String getJwtKey() {
         return jwtKey;

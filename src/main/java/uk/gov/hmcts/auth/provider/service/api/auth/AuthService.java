@@ -36,7 +36,7 @@ public class AuthService {
     public String lease(String microserviceId, String oneTimePassword) {
         Microservice microservice = microserviceRepository.findOne(microserviceId);
 
-        if (totpAuthenticator.isOneTimePasswordValid(microservice.key, oneTimePassword)) {
+        if (totpAuthenticator.isOneTimePasswordValid(microservice.key, oneTimePassword, microservice.otpAlgorithm)) {
             return jwtTool.issueTokenForSubject(microservice.id);
         } else {
             log.info("Invalid one-time password");

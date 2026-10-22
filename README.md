@@ -163,3 +163,30 @@ $ ./gradlew test
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE.md) file for details.
+
+## Migrating a service identity to SHA-256 OTP
+
+OTP verification is selected by server configuration, never by a caller-supplied algorithm.
+Existing identities use HMAC-SHA1 until explicitly migrated. Configure a migrated identity with:
+
+```yaml
+microserviceOtpAlgorithms:
+  ccpay_gw: HmacSHA256
+```
+
+The identity must already have a `microserviceKeys` entry. Unknown identity names fail startup;
+invalid algorithms fail configuration binding. A configured identity is verified with exactly one
+algorithm; SHA-1 is not tried as a fallback. TOTP remains six digits with a 30-second time step and
+the existing clock-skew window. `/lease` request and JWT formats are unchanged.
+
+Deploy this server capability without enabling identity overrides first. Inventory every caller of
+the chosen identity, including APIM policies and Java clients; a shared identity must migrate all
+of its callers together. Deploy client capability, then coordinate activation of the new algorithm
+on both sides during a controlled cutover. Use a separate identity with a separate secret if a
+shared caller cannot migrate. Rollback likewise requires restoring both sides together.
+
+For refunds, APIM reads its identity from `ccpay-s2s-client-id`; verify that named value before
+selecting the override. Do not assume it is `refunds_api`, which is the application identity.
+Do not enable an override solely because a client PR has merged. After activation, test a valid
+SHA-256 `/lease` request, reject SHA-1 for the upgraded identity, and confirm legacy identities
+still work. Run an authenticated callback through APIM as well as application health checks.
