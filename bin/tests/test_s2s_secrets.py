@@ -143,20 +143,14 @@ class SecretScriptsTest(unittest.TestCase):
                 self.assertIn("disabled or has unknown", result.stderr)
                 self.assertEqual(self.state.get("writes", []), [])
 
-    def test_soft_deleted_name_is_not_recreated_or_purged(self):
+    def test_missing_secret_does_not_query_deleted_metadata(self):
         del self.state["existing"]["s2s-prod"]
         self.state["deleted"] = ["s2s-prod"]
         result = self.run_script()
-        self.assertNotEqual(result.returncode, 0)
-        self.assertIn("soft-deleted", result.stderr)
-        self.assertEqual(self.state.get("writes", []), [])
-
-    def test_deleted_metadata_access_failure_is_not_absence(self):
-        del self.state["existing"]["s2s-prod"]
-        self.state["fail"] = ["list-deleted", "s2s-prod"]
-        result = self.run_script()
-        self.assertNotEqual(result.returncode, 0)
-        self.assertEqual(self.state.get("writes", []), [])
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual([write["vault"] for write in self.state["writes"]], ["s2s-prod"])
+        self.assertFalse(any(call["operation"] == "list-deleted"
+                             for call in self.state["calls"]))
 
     def test_malformed_metadata_prevents_writes(self):
         self.state["malformed"] = "s2s-prod"

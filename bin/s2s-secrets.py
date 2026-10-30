@@ -30,18 +30,17 @@ def azure(operation, vault, arguments):
     return result.stdout
 
 
-def metadata(vault, name, deleted=False):
-    operation = "list-deleted" if deleted else "list"
+def metadata(vault, name):
     # Key Vault identifiers are case-insensitive; JMESPath equality is not.
     query = "[].{name:name,enabled:attributes.enabled}"
-    raw = azure(operation, vault, ["--query", query, "--output", "json"])
+    raw = azure("list", vault, ["--query", query, "--output", "json"])
     try:
         rows = json.loads(raw)
     except ValueError:
-        raise VaultError("Invalid metadata returned by {} for {}".format(operation, vault)) from None
+        raise VaultError("Invalid metadata returned by list for {}".format(vault)) from None
     if (not isinstance(rows, list) or
             any(not isinstance(row, dict) or not isinstance(row.get("name"), str) for row in rows)):
-        raise VaultError("Unexpected metadata returned by {} for {}".format(operation, vault))
+        raise VaultError("Unexpected metadata returned by list for {}".format(vault))
     matches = [row for row in rows if row["name"].lower() == name.lower()]
     if len(matches) > 1:
         raise VaultError("Ambiguous metadata for {} in {}".format(name, vault))
@@ -59,12 +58,7 @@ def exists(vault, name):
 
 
 def provisionable(vault, name):
-    if exists(vault, name):
-        return False
-    if metadata(vault, name, deleted=True) is not None:
-        raise VaultError("{} is soft-deleted in {}; resolve recovery separately."
-                         .format(name, vault))
-    return True
+    return not exists(vault, name)
 
 
 def create(vault, name):
