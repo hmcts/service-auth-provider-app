@@ -1,6 +1,7 @@
 package uk.gov.hmcts.auth.provider.service.api.auth;
 
 import com.google.common.io.BaseEncoding;
+import com.warrenstrange.googleauth.HmacHashFunction;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.impl.crypto.MacProvider;
 import org.junit.Before;
@@ -20,6 +21,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.assertj.core.api.Assertions.catchThrowable;
 import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.mock;
 
@@ -44,7 +46,7 @@ public class AuthServiceTest {
 
     @Test
     public void invalid_totp_should_result_in_exception() {
-        given(totpAuthenticator.isOneTimePasswordValid(anyString(), anyString()))
+        given(totpAuthenticator.isOneTimePasswordValid(anyString(), anyString(), eq(HmacHashFunction.HmacSHA1)))
             .willReturn(false);
 
         Throwable exc = catchThrowable(() -> authService.lease("some_service", "0123"));
@@ -54,7 +56,7 @@ public class AuthServiceTest {
 
     @Test
     public void valid_totp_should_result_in_valid_jwt_token() {
-        given(totpAuthenticator.isOneTimePasswordValid(anyString(), anyString()))
+        given(totpAuthenticator.isOneTimePasswordValid(anyString(), anyString(), eq(HmacHashFunction.HmacSHA1)))
             .willReturn(true);
 
         String jwt = authService.lease("some_service", "1234");

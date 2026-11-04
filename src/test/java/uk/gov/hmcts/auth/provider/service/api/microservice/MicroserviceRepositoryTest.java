@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableMap;
 import org.junit.Test;
 
 import java.util.List;
+import com.warrenstrange.googleauth.HmacHashFunction;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -42,5 +43,20 @@ public class MicroserviceRepositoryTest {
 
         // then
         assertThat(names).containsExactly("a", "b", "c", "d");
+    }
+    @Test
+    public void algorithmIsControlledByServerConfiguration() {
+        MicroserviceRepository repo = new MicroserviceRepository(
+            ImmutableMap.of("CCPAY.GW", "secret", "legacy", "other"),
+            ImmutableMap.of("CCPAY.GW", HmacHashFunction.HmacSHA256)
+        );
+        assertThat(repo.findOne("CCPAY_GW").otpAlgorithm).isEqualTo(HmacHashFunction.HmacSHA256);
+        assertThat(repo.findOne("legacy").otpAlgorithm).isEqualTo(HmacHashFunction.HmacSHA1);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void misspelledServiceConfigurationFailsAtStartup() {
+        new MicroserviceRepository(ImmutableMap.of("real", "key"),
+            ImmutableMap.of("typo", HmacHashFunction.HmacSHA256));
     }
 }

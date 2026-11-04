@@ -1,5 +1,6 @@
 package uk.gov.hmcts.auth.provider.service.api.componenttests;
 
+import com.warrenstrange.googleauth.HmacHashFunction;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import org.junit.Test;
@@ -57,6 +58,15 @@ public class LeaseComponentTest extends ComponentTestBase {
                 Claims claims = Jwts.parser().setSigningKey(jwtKey).parseClaimsJws(token).getBody();
                 assertThat(claims.getSubject()).isEqualTo("divorce");
             });
+    }
+
+    @Test
+    public void sha256IdentityCanLeaseToken() throws Exception {
+        String otp = new TotpAuthenticator().issueOneTimePassword("BBBBBBBBBBBBBBBB", HmacHashFunction.HmacSHA256);
+        scenario.given().when().lease("cmc", otp).then().token(token -> {
+            Claims claims = Jwts.parser().setSigningKey(jwtKey).parseClaimsJws(token).getBody();
+            assertThat(claims.getSubject()).isEqualTo("cmc");
+        });
     }
 
     @Test
